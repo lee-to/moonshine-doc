@@ -135,7 +135,7 @@ MoonShine\Resources\ → MoonShine\Laravel\Resources\
 MoonShine\Fields\Relationships\ → MoonShine\Laravel\Fields\Relationships\
 MoonShine\Fields\Slug → MoonShine\Laravel\Fields\Slug
 MoonShine\Fields\ → MoonShine\UI\Fields\
-MoonShine\Decorations\Block → MoonShine\UI\Components\Layout\Box
+MoonShine\Decorations\Block → MoonShine\UI\Components\Layout\Div
 MoonShine\Decorations\ → MoonShine\UI\Components\Layout\* 
     (некоторые на MoonShine\UI\Components\, проверьте вручную)
 MoonShine\Enums\ → MoonShine\Support\Enums\
