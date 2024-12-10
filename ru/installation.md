@@ -21,7 +21,10 @@
 ```shell
 composer require moonshine/moonshine
 ```
-
+## Необходимо выполнить миграцию
+```shell
+php artisan migrate
+```
 <a name="install"></a>
 ## Установка панели
 
