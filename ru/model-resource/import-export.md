@@ -47,7 +47,7 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 <a name="import-fields"></a>
 ### Поля
 
-Для импорта yеобходимо в ресурсе объявить поля, которые будут участвовать в импорте
+Для импорта необходимо в ресурсе объявить поля, которые будут участвовать в импорте
 
 ```php
 /**
