@@ -1,3 +1,7 @@
+---
+title: Upgrade guide
+---
+
 # Руководство по обновлению MoonShine 2.x → 3.0
 
 - [Обновление пакета](#update)
