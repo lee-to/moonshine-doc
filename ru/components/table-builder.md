@@ -167,6 +167,12 @@ TableBuilder::make()
 ])
 ```
 
+Если вам необходимо зафиксировать кнопки (sticky), тогда воспользуйтесь методом `stickyButtons()`:
+
+```php
+->stickyButtons()
+```
+
 <a name="view-methods"></a>
 ## Отображение
 

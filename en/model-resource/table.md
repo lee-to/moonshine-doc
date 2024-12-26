@@ -7,12 +7,14 @@
 - [Click Actions](#click)
 - [Sticky Header](#sticky-table)
 - [Column Display](#column-display)
+- [Sticky](#sticky)
 - [Pagination](#pagination)
   - [Cursor](#simple-pagination)
   - [Simple](#simple-pagination)
   - [Disable Pagination](#disable-pagination)
 - [Async Mode](#async)
   - [Updating a row](#update-row)
+  - [Lazy](#lazy)
 - [Modifiers](#modifiers)
   - [Components](#components)
   - [Elements thead, tbody, tfoot](#thead-tbody-tfoot)
@@ -255,6 +257,35 @@ class PostResource extends ModelResource
 }
 ```
 
+<a name="sticky"></a>
+## Sticky columns
+
+You can freeze cells in large tables, suitable for ID columns and buttons
+
+To fix buttons in the table, switch the resource to `stickyButtons` mode:
+
+```php
+class PostResource extends ModelResource
+{
+    protected string $model = Post::class;
+
+    protected string $title = 'Posts';
+
+    protected bool $stickyButtons = true;
+}
+```
+
+To fix a column, call the `sticky()` method on the Field:
+
+```php
+protected function indexFields(): iterable
+{
+    return [
+        ID::make()->sticky(),
+    ];
+}
+```
+
 <a name="pagination"></a>
 ## Pagination
 
@@ -443,6 +474,19 @@ class PostResource extends ModelResource
     }
 
     //...
+}
+```
+
+<a name="lazy"></a>
+## Lazy mode
+
+If you want to display a page without waiting for data to load,
+and then send a query to get the table data, use *Lazy* mode:
+
+```php
+class PostResource extends ModelResource
+{
+    protected bool $isLazy = true;
 }
 ```
 

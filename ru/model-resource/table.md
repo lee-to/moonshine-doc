@@ -7,12 +7,14 @@
 - [Действия по клику](#click)
 - [Фиксированная шапка](#sticky-table)
 - [Отображение колонок](#column-display)
+- [Sticky ячейки](#sticky)
 - [Пагинация](#pagination)
   - [Курсорная](#simple-pagination)
   - [Упрощенная](#simple-pagination)
   - [Отключение пагинации](#disable-pagination)
 - [Асинхронный режим](#async)
   - [Обновление ряда](#update-row)
+  - [Lazy режим](#lazy)
 - [Модификаторы](#modifiers)
   - [Компоненты](#components)
   - [Элементы thead, tbody, tfoot](#thead-tbody-tfoot)
@@ -195,7 +197,6 @@ class PostResource extends ModelResource
     // ...
 }
 ```
-
 <a name="column-display"></a>
 ## Отображение колонок
 
@@ -255,6 +256,35 @@ class PostResource extends ModelResource
     }
 
     //...
+}
+```
+
+<a name="sticky"></a>
+## Sticky ячейки
+
+Вы можете фиксировать ячейки при больших таблицах, подойдет для колонок ID и кнопок
+
+Чтобы зафиксировать кнопки в таблице, переключить ресурс в режим `stickyButtons`:
+
+```php
+class PostResource extends ModelResource
+{
+    protected string $model = Post::class;
+
+    protected string $title = 'Posts';
+
+    protected bool $stickyButtons = true;
+}
+```
+
+Для фиксации колонки вызовите у поля метод `sticky()`:
+
+```php
+protected function indexFields(): iterable
+{
+    return [
+        ID::make()->sticky(),
+    ];
 }
 ```
 
@@ -446,6 +476,19 @@ class PostResource extends ModelResource
     }
 
     //...
+}
+```
+
+<a name="lazy"></a>
+## Lazy режим
+
+Если необходимо отобразить страницу без ожидания загрузки данных, 
+а затем отправить запрос для получения данных таблицы, используйте режим *Lazy*:
+
+```php
+class PostResource extends ModelResource
+{
+    protected bool $isLazy = true;
 }
 ```
 

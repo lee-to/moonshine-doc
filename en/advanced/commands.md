@@ -67,6 +67,8 @@ Available options:
 
 - `--m|model=` - Eloquent model for the resource model,
 - `--t|title=` - section title,
+- `--type=` - Quick selection of resource type (1 - default, 2 - with pages, 3 - empty),
+- `--p|policy` - Also create Policy,
 - `--test` or `--pest` - additionally generate a test class.
 
 When creating a `Resource`, several options are available:

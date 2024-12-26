@@ -165,6 +165,12 @@ To specify bulk actions on table items, the `bulk` method should be set on `Acti
 ])
 ```
 
+If you need to stick buttons, then use the `stickyButtons()` method:
+
+```php
+->stickyButtons()
+```
+
 <a name="view-methods"></a>
 ## View Methods
 
