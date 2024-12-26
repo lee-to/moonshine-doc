@@ -35,7 +35,7 @@ tab: Class
 ```php
 use MoonShine\UI\Components\FormBuilder;
 
-TableBuilder::make(
+FormBuilder::make(
   string $action = '',
   FormMethod $method = FormMethod::POST,
   FieldsContract|iterable $fields = [],
