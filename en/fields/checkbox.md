@@ -55,27 +55,6 @@ Checkbox::make('Publish', 'is_publish')
     ->offValue('no')
 ```
 
-<a name="editing-in-preview"></a>
-## Preview Editing
-
-The `updateOnPreview()` method allows editing the *Checkbox* field in *preview* mode.
-
-```php
-updateOnPreview(?Closure $url = null, ?ResourceContract $resource = null, mixed $condition = null)
-```
-
-- `$url` - url for handling asynchronous requests,
-- `$resource` - model resource that the relation refers to,
-- `$condition` - condition for executing the method.
-
-> [!TIP]
-> The settings are optional and should be provided if the field is working outside of a resource.
-
-```php
-Checkbox::make('Public')
-    ->updateOnPreview()
-```
-
 <a name="preview-edit"></a>
 ## Preview Editing
 

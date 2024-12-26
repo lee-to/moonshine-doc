@@ -55,27 +55,6 @@ Checkbox::make('Публиковать', 'is_publish')
     ->offValue('no')
 ```
 
-<a name="editing-in-preview"></a>
-## Редактирование в режиме preview
-
-Метод `updateOnPreview()` позволяет редактировать поле *Checkbox* в режиме *предпросмотра*.
-
-```php
-updateOnPreview(?Closure $url = null, ?ResourceContract $resource = null, mixed $condition = null)
-```
-
-- `$url` - url для обработки асинхронного запроса,
-- `$resource` - ресурс модели, на которую ссылается отношение,
-- `$condition` - условие выполнения метода.
-
-> [!TIP]
-> Настройки не обязательны и должны быть переданы, если поле работает вне ресурса.
-
-```php
-Checkbox::make('Публичный')
-    ->updateOnPreview()
-```
-
 <a name="preview-edit"></a>
 ## Редактирование в режиме preview
 
