@@ -21,7 +21,7 @@
 ```php
 use MoonShine\UI\Fields\RangeSlider;
 
-RangeSlider::make('Возраст')
+RangeSlider::make('Возраст', 'age')
     ->fromTo('age_from', 'age_to')
 ```
 

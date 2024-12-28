@@ -54,7 +54,7 @@ toAttributes(array $attributes)
 В данном примере добавляется подсказка.
 
 ```php
-Range::make('Возраст')
+Range::make('Возраст', 'age')
     ->fromTo('age_from', 'age_to')
     ->fromAttributes(['placeholder' => 'от'])
     ->toAttributes(['placeholder' => 'до'])
