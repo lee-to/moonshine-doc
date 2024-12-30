@@ -35,7 +35,8 @@ Image::make('Images', 'images')
         if($values !== false) {
             foreach ($values as $value) {
                 DB::table('images')->insert([
-                    'file' => $field->store($value),
+                    'file' => $field->getApplyClass()->store($field, $value),
+                    // or 'file' => $value->store(),
                 ]);
             }
         }
