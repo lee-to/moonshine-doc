@@ -34,6 +34,8 @@ In the MoonShine admin panel, there are many methods that allow you to override 
 The `modifyCreateButton()` method allows you to modify the button for creating a new item.
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+
 protected function modifyCreateButton(ActionButtonContract $button): ActionButtonContract
 {
     return $button->error();
@@ -43,6 +45,9 @@ protected function modifyCreateButton(ActionButtonContract $button): ActionButto
 You can also override the button through this method
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+use MoonShine\UI\Components\ActionButton;
+
 protected function modifyCreateButton(ActionButtonContract $button): ActionButtonContract
 {
     return ActionButton::make('Create');
@@ -58,6 +63,8 @@ protected function modifyCreateButton(ActionButtonContract $button): ActionButto
 The `modifyDetailButton()` method allows you to modify or override the button for viewing the details of an item.
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+
 protected function modifyDetailButton(ActionButtonContract $button): ActionButtonContract
 {
     return $button->warning();
@@ -73,6 +80,8 @@ protected function modifyDetailButton(ActionButtonContract $button): ActionButto
 The `modifyEditButton()` method allows you to modify or override the button for editing an item.
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+
 protected function modifyEditButton(ActionButtonContract $button): ActionButtonContract
 {
     return $button->icon('pencil-square');
@@ -88,6 +97,8 @@ protected function modifyEditButton(ActionButtonContract $button): ActionButtonC
 The `modifyDeleteButton()` method allows you to modify or override the button for deleting an item.
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+
 protected function modifyDeleteButton(ActionButtonContract $button): ActionButtonContract
 {
     return $button->icon('x-mark');
@@ -103,6 +114,8 @@ protected function modifyDeleteButton(ActionButtonContract $button): ActionButto
 The `modifyMassDeleteButton()` method allows you to modify or override the button for mass deleting.
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+
 protected function modifyMassDeleteButton(ActionButtonContract $button): ActionButtonContract
 {
     return $button->icon('x-mark');
@@ -119,6 +132,8 @@ protected function modifyMassDeleteButton(ActionButtonContract $button): ActionB
 The `modifyFiltersButton()` method allows you to overwrite or modify the filters button.
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+
 protected function modifyFiltersButton(ActionButtonContract $button): ActionButtonContract
 {
     return $button->error();
@@ -135,6 +150,11 @@ By default, the model resource index page has only a create button.
 The `topButtons()` method allows you to add additional [buttons](/docs/{{version}}/components/action-button).
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Components\ActionButton;
+use MoonShine\Support\Enums\JsEvent;
+use MoonShine\Support\ListOf;
+
 class PostResource extends ModelResource
 {
     //...
@@ -160,6 +180,11 @@ class PostResource extends ModelResource
 To add buttons in the index table, use the `indexButtons()` method.
 
 ```php
+use Illuminate\Database\Eloquent\Model;
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Components\ActionButton;
+use MoonShine\Support\ListOf;
+
 class PostResource extends ModelResource
 {
     //...
@@ -184,6 +209,9 @@ class PostResource extends ModelResource
 For bulk actions with elements, you need to add the `bulk()` method.
 
 ```php
+use MoonShine\UI\Components\ActionButton;
+use MoonShine\Support\ListOf;
+
 protected function indexButtons(): ListOf
 {
     return parent::indexButtons()->prepend(
@@ -203,6 +231,10 @@ protected function indexButtons(): ListOf
 To add buttons to the form page, use the `formButtons()` method.
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Components\ActionButton;
+use MoonShine\Support\ListOf;
+
 class PostResource extends ModelResource
 {
     //...
@@ -222,6 +254,10 @@ class PostResource extends ModelResource
 The `formBuilderButtons()` method allows you to add additional [buttons](/docs/{{version}}/components/action-button) in the create or edit form.
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Components\ActionButton;
+use MoonShine\Support\ListOf;
+
 class PostResource extends ModelResource
 {
     //...
@@ -246,6 +282,10 @@ class PostResource extends ModelResource
 To add buttons to the detail view page, use the `detailButtons()` method.
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Components\ActionButton;
+use MoonShine\Support\ListOf;
+
 class PostResource extends ModelResource
 {
     //...
