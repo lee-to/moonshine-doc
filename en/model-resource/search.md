@@ -82,6 +82,9 @@ class PostResource extends ModelResource
 For `Json` fields that are used as key-value `keyValue()`, you can specify which field key participates in the search.
 
 ```php
+use App\Models\Post;
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
@@ -102,6 +105,9 @@ class PostResource extends ModelResource
 For multidimensional `Json`, which are formed through `fields()`, the search key should be specified as follows:
 
 ```php
+use App\Models\Post;
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
@@ -125,6 +131,9 @@ class PostResource extends ModelResource
 You can perform a search on relations; for this, you need to specify which relation field to search by.
 
 ```php
+use App\Models\Post;
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
@@ -202,6 +211,11 @@ class Article extends Model implements HasGlobalSearch
 4. Replace the component in `Layout`
 
 ```php
+use MoonShine\Laravel\Components\Layout\Locales;
+use MoonShine\Laravel\Components\Layout\Notifications;
+use MoonShine\UI\Components\Layout\Header;
+use MoonShine\UI\Components\Breadcrumbs;
+
 protected function getHeaderComponent(): Header
 {
     return Header::make([
