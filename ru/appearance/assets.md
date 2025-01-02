@@ -106,6 +106,8 @@ Raw::make('<link rel="preconnect" href="https://fonts.googleapis.com">')
 Также MoonShine предоставляет удобные методы взаимодействия с *AssetManager* в разных сущностях, таких как *CrudResource*, *Page*, *Layout*, *Component*, *Field*
 
 ```php
+use MoonShine\AssetManager\Js;
+
 // Добавить ресурсы в конец
 $assetManager->append([
     Js::make('/js/last.js')
@@ -149,6 +151,8 @@ $assetManager->modifyAssets(function($assets) {
 *AssetManager* поддерживает версионирование ресурсов для управления кешированием, по умолчанию будет использоваться версия *MoonShine*, но вы можете переопределить у конкретного ресурса:
 
 ```php
+use MoonShine\AssetManager\Js;
+
 // Добавление версии к отдельному ресурсу
 Js::make('/js/app.js')->version('1.0.0')
 
@@ -166,6 +170,10 @@ Js::make('/js/app.js')->version('1.0.0')
 
 ```php
 // MoonShineServiceProvider
+use MoonShine\AssetManager\Js;
+use MoonShine\Contracts\AssetManager\AssetManagerContract;
+use MoonShine\Contracts\Core\DependencyInjection\ConfiguratorContract;
+use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
 
 public function boot(
     CoreContract $core,
@@ -181,6 +189,9 @@ public function boot(
 ### Шаблон
 
 ```php
+use Illuminate\Support\Facades\Vite;
+use MoonShine\AssetManager\Js;
+
 final class MoonShineLayout extends CompactLayout
 {
     protected function assets(): array
@@ -195,6 +206,9 @@ final class MoonShineLayout extends CompactLayout
 ### CrudResource
 
 ```php
+use MoonShine\AssetManager\InlineJs;
+use MoonShine\AssetManager\Js;
+
 protected function onLoad(): void
 {
     $this->getAssetManager()
@@ -207,6 +221,9 @@ protected function onLoad(): void
 ### Page
 
 ```php
+use MoonShine\AssetManager\Css;
+use MoonShine\AssetManager\Js;
+
 protected function onLoad(): void
 {
     parent::onLoad();
@@ -223,6 +240,10 @@ protected function onLoad(): void
 #### На лету
 
 ```php
+use MoonShine\AssetManager\Css;
+use MoonShine\AssetManager\Js;
+use MoonShine\UI\Components\Layout\Box;
+
 Box::make()->addAssets([
     Js::make('/js/custom.js'),
     Css::make('/css/styles.css')
@@ -232,6 +253,10 @@ Box::make()->addAssets([
 #### При создании компонента
 
 ```php
+use MoonShine\AssetManager\Css;
+use MoonShine\AssetManager\Js;
+use MoonShine\UI\Components\MoonShineComponent;
+
 final class MyComponent extends MoonShineComponent
 {
     /**
@@ -250,6 +275,10 @@ final class MyComponent extends MoonShineComponent
 #### При создании компонента через AssetManager
 
 ```php
+use MoonShine\AssetManager\Css;
+use MoonShine\AssetManager\Js;
+use MoonShine\UI\Components\MoonShineComponent;
+
 final class MyComponent extends MoonShineComponent
 {
     protected function booted(): void
