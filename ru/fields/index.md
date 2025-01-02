@@ -21,6 +21,8 @@
 Создать экземпляр поля очень просто, для этого есть удобный метод `make` и для базового использования достаточно указать label и name поля.
 
 ```php
+use MoonShine\UI\Fields\Text;
+
 Text::make('Title')
 Text::make('Title', 'title')
 ```
@@ -83,6 +85,9 @@ Text::make('Title', 'title')
 Вы используете поле Select c опциями ссылками на изображения и хотите в режиме preview выводить не ссылки а сразу рендерить изображения, ваш код будет выглядеть следующим образом, а результат будет достигнут за счет метода changePreview:
 
 ```php
+use MoonShine\UI\Components\Carousel;
+use MoonShine\UI\Fields\Select;
+
 Select::make('Links')->options([
     '/images/1.png' => 'Picture 1',
     '/images/2.png' => 'Picture 2',
@@ -106,6 +111,9 @@ Select::make('Links')->options([
 В данном случае наполнение происходит автоматически, эти действия сделает за нас FormBuilder и ModelResource, мы же только изменим процесс:
 
 ```php
+use MoonShine\UI\Components\Carousel;
+use MoonShine\UI\Fields\Select;
+
 Select::make('Images')->options([
     '/images/1.png' => 'Picture 1',
     '/images/2.png' => 'Picture 2',
@@ -129,6 +137,9 @@ Select::make('Images')->options([
 
 
 ```php
+use MoonShine\UI\Components\Carousel;
+use MoonShine\UI\Fields\Select;
+
 Select::make('Links')->options([
     '/images/1.png' => 'Picture 1',
     '/images/2.png' => 'Picture 2',
@@ -153,6 +164,8 @@ Select::make('Links')->options([
 Но всё же представим, что из поля Select по каким-то причинам мы хотим сделать поле Text:
 
 ```php
+use MoonShine\UI\Fields\Select;
+
 Select::make('Links')->options([
     '/images/1.png' => 'Picture 1',
     '/images/2.png' => 'Picture 2',
@@ -176,7 +189,7 @@ Text::make('Title')->defaultMode()
 
 Независимо от того где мы будем выводить это поле, оно всегда будет в режиме по умолчанию в виде элемента формы:
 
-```php
+```ph
 Text::make('Title')->previewMode()
 ```
 
@@ -191,12 +204,16 @@ Text::make('Title')->rawMode()
 Раз уж мы с вами затронули тему `rawMode` и уже обсуждали процесс изменения наполнения, давайте также взглянем на метод, который позволяет модифицировать исходное значение. Пример - мы используем поле для экспорта и нам не нужно выполнять последующий импорт, необходимо отобразить значение для менеджера в понятном формате:
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('User')->modifyRawValue(fn(int $rawUserId, Article $model, BelongsTo $ctx) => $model->user->name)
 ```
 
 Давайте также представим ситуацию, что вам необходимо делать экспорт в понятном для менеджеров формате, но при этом также в дальнейшем импортировать этот файл и, каким бы MoonShine не был умным, он не поймет, что значение "Иван Иванов" нужно найти в таблице users по полю name и взять только id, но мы с вами можем решить эту задачу:
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('User')->fromRaw(fn(string $name) => User::where('name', $name)->value('id'))
 ```
 
@@ -227,6 +244,9 @@ BelongsTo::make('User')->fromRaw(fn(string $name) => User::where('name', $name)-
 Построитель полей позволяет легко достичь этих целей на лету:
 
 ```php
+use Illuminate\Support\Facades\Storage;
+use MoonShine\UI\Fields\Text;
+
 Text::make('Thumbnail by link', 'thumbnail')
 	->onApply(function(Model $item, $value, Text $field) {
 		$path = 'thumbnail.jpg';
