@@ -50,6 +50,12 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 Для импорта необходимо в ресурсе объявить поля, которые будут участвовать в импорте
 
 ```php
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Text;
+
 /**
  * @extends ModelResource<Category>
  */
@@ -75,6 +81,13 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 Если вам необходимо модифицировать значение при импорте, необходимо воспользоваться методом поля `fromRaw`
 
 ```php
+use App\Enums\StatusEnum;
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Enum;
+
 /**
  * @extends ModelResource<Category>
  */
@@ -102,6 +115,9 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 Для настройки импорта доступны опциональные методы, чтобы ими воспользоваться необходимо добавить метод `import`, который возвращает `ImportHandler`:
 
 ```php
+use MoonShine\ImportExport\ImportHandler;
+use MoonShine\UI\Components\ActionButton;
+
 protected function import(): ?Handler
 {
     return ImportHandler::make(__('moonshine::ui.import'))
@@ -160,6 +176,13 @@ public function afterImported(mixed $item): mixed
 Для экспорта необходимо в ресурсе объявить поля, которые будут участвовать в экспорте
 
 ```php
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Position;
+use MoonShine\UI\Fields\Text;
+
 /**
  * @extends ModelResource<Category>
  */
@@ -183,6 +206,13 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 Если вам необходимо модифицировать значение при экспорте, необходимо воспользоваться методом поля `modifyRawValue`
 
 ```php
+use App\Enums\StatusEnum;
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Enum;
+
 /**
  * @extends ModelResource<Category>
  */
@@ -210,6 +240,9 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 Для настройки экмпорта доступны опциональные методы, чтобы ими воспользоваться необходимо добавить метод `export`, который возвращает `ExportHandler`:
 
 ```php
+use MoonShine\ImportExport\ExportHandler;
+use MoonShine\UI\Components\ActionButton;
+
 protected function export(): ?Handler
 {
     return ExportHandler::make(__('moonshine::ui.export'))
@@ -258,6 +291,7 @@ queue()
 #### modifyButton
 
 ```php
+use MoonShine\UI\Components\ActionButton;
 // модификация кнопки
 modifyButton(fn(ActionButton $btn) => $btn->class('my-class'))
 ```
@@ -281,6 +315,7 @@ when($value = null, callable $callback = null, callable $default = null)
 `$default` - `callback` функция, которая будет выполнена, если условие имеет значение `FALSE`.
 
 ```php
+use MoonShine\ImportExport\ImportHandler;
 //...
 
 protected function import(): ?Handler
