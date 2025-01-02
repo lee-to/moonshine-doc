@@ -244,6 +244,7 @@ BelongsTo::make('User')->fromRaw(fn(string $name) => User::where('name', $name)-
 Построитель полей позволяет легко достичь этих целей на лету:
 
 ```php
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use MoonShine\UI\Fields\Text;
 

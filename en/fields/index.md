@@ -242,6 +242,7 @@ As a result of the knowledge gained and the use of MoonShine in real conditions,
 The field builder allows you to easily achieve these goals on the fly:
 
 ```php
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use MoonShine\UI\Fields\Text;
 
