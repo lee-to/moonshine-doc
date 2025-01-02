@@ -44,6 +44,9 @@ class PostResource extends ModelResource
 Если вам необходимо обвернуть метрики во *Fragment*:
 
 ```php
+use Closure;
+use MoonShine\Laravel\Components\Fragment;
+
 protected function fragmentMetrics(): ?Closure
 {
     return static fn(array $components): Fragment => Fragment::make($components)->name('metrics');

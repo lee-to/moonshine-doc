@@ -43,6 +43,9 @@ class PostResource extends ModelResource
 If you need to wrap the metrics in a *Fragment*:
 
 ```php
+use Closure;
+use MoonShine\Laravel\Components\Fragment;
+
 protected function fragmentMetrics(): ?Closure
 {
     return static fn(array $components): Fragment => Fragment::make($components)->name('metrics');
