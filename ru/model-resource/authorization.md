@@ -109,6 +109,8 @@ php artisan moonshine:policy
 Также вы можете переопределить метод `isCan` в ресурсе и реализовать собственную логику или дополнить текущую:
 
 ```php
+use MoonShine\Laravel\Enums\Ability;
+
 protected function isCan(Ability $ability): bool
 {
     return parent::isCan($ability);
