@@ -69,6 +69,8 @@ class CustomPage extends Page
 If some logic is required for the title and subtitle, the `title()` and `subtitle()` methods allow you to implement it:
 
 ```php
+use MoonShine\Laravel\Pages\Page;
+
 class CustomPage extends Page
 {
     // ...
@@ -93,6 +95,11 @@ class CustomPage extends Page
 To register the components of the page, the `components()` method is used.
 
 ```php
+use MoonShine\Laravel\Pages\Page;
+use MoonShine\UI\Components\Layout\Box;
+use MoonShine\UI\Components\Layout\Column;
+use MoonShine\UI\Components\Layout\Grid;
+
 class CustomPage extends Page
 {
     // ...
@@ -128,7 +135,7 @@ class CustomPage extends Page
 The `getBreadcrumbs()` method is responsible for generating the breadcrumbs.
 
 ```php
-use MoonShine\Pages\Page;
+use MoonShine\Laravel\Pages\Page;
 
 class CustomPage extends Page
 {
@@ -152,6 +159,7 @@ By default, pages use the `AppLayout` or `CompactLayout` display template. For m
 
 ```php
 use MoonShine\Laravel\Layouts\AppLayout;
+use MoonShine\Laravel\Pages\Page;
 
 class CustomPage extends Page
 {
@@ -172,6 +180,8 @@ Example usage
 Consider an example from the `moonshine-software/two-factor` package that demonstrates how to use `modifyLayout` for customizing the authentication template:
 
 ```php
+use MoonShine\Contracts\UI\LayoutContract;
+
 /**
  * @param  LoginLayout  $layout
  */
@@ -191,6 +201,8 @@ protected function modifyLayout(LayoutContract $layout): LayoutContract
 If you need to change the page alias, this can be done through the `alias` property.
 
 ```php
+use MoonShine\Laravel\Pages\Page;
+
 class CustomPage extends Page
 {
     protected ?string $alias = null;
@@ -202,7 +214,7 @@ class CustomPage extends Page
 You can also override the `getAlias()` method.
 
 ```php
-use MoonShine\Pages\Page;
+use MoonShine\Laravel\Pages\Page;
 
 class CustomPage extends Page
 {
@@ -242,6 +254,8 @@ Fortify::loginView(static fn() => app(ProfilePage::class));
 The `prepareBeforeRender()` method allows you to execute actions before displaying the page.
 
 ```php
+use MoonShine\Laravel\Pages\Page;
+
 class CustomPage extends Page
 {
     protected function prepareBeforeRender(): void
@@ -263,6 +277,8 @@ By default, the page is rendered through the `PageController`, invoking the `ren
 The `modifyResponse()` method allows you to modify the page response before it is sent. Here’s an example of its usage:
 
 ```php
+use Symfony\Component\HttpFoundation\Response;
+
 protected function modifyResponse(): ?Response
 {
     if (request()->has('id')) {
@@ -332,6 +348,9 @@ class PostPage extends Page
 In this example, to create a link to a new page, we'll use the [ActionButton](/docs/{{version}}/components/action-button) and the [getPageUrl](/docs/{{version}}/model-resource/routes) method.
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 /**
  * @throws Throwable
  */
@@ -351,6 +370,9 @@ public function indexButtons(): ListOf
 ## Assets
 
 ```php
+use MoonShine\AssetManager\Css;
+use MoonShine\AssetManager\Js;
+
 protected function onLoad(): void
 {
     parent::onLoad();
