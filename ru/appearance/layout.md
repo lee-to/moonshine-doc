@@ -208,7 +208,7 @@ final class MoonShineLayout extends CompactLayout
 }
 ```
 
-В примере с помощью методов `getFooterMenu`, `getFooterMenu` мы переопределили вывод меню в футере и copyright
+В примере, с помощью методов `getFooterMenu` и `getFooterCopyright`, мы переопределили вывод меню в футере и copyright.
 
 Доступные быстрые методы:
 
@@ -322,7 +322,7 @@ final class MyLayout extends AppLayout
 <a name="menu"></a>
 ## Меню
 
-Для каждого шаблона можно объявить список пунктов меню через метод `menu()`, которые автоматически будут переданы в компонент `Menu`
+Для каждого шаблона можно объявить список пунктов меню через метод `menu()`, которые автоматически будут переданы в компонент `Menu`:
 
 ```php
 final class MyLayout extends AppLayout
