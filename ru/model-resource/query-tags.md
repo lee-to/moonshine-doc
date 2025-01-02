@@ -54,6 +54,7 @@ class PostResource extends ModelResource
 
 ```php
 use Illuminate\Database\Eloquent\Builder;
+use MoonShine\Laravel\QueryTags\QueryTag;
 //...
 
 QueryTag::make(
@@ -77,7 +78,7 @@ default(Closure|bool|null $condition = null)
 
 ```php
 use Illuminate\Database\Eloquent\Builder;
-
+use MoonShine\Laravel\QueryTags\QueryTag;
 //...
 
 QueryTag::make(
@@ -94,7 +95,7 @@ QueryTag::make(
 
 ```php
 use Illuminate\Database\Eloquent\Builder;
-
+use MoonShine\Laravel\QueryTags\QueryTag;
 //...
 
 QueryTag::make(
@@ -113,7 +114,7 @@ QueryTag::make(
 
 ```php
 use Illuminate\Database\Eloquent\Builder;
-
+use MoonShine\Laravel\QueryTags\QueryTag;
 //...
 
 QueryTag::make(
