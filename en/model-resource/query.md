@@ -46,6 +46,10 @@ class PostResource extends ModelResource
 The `modifyItemQueryBuilder()` method is used if you need to modify the query for retrieving a record from the database.
 
 ```php
+use App\Models\Post;
+use Illuminate\Contracts\Database\Eloquent\Builder;
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
@@ -67,6 +71,8 @@ class PostResource extends ModelResource
 ## Eager Load
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     //...
@@ -84,6 +90,8 @@ class PostResource extends ModelResource
 The `searchQuery()` method allows you to modify the query when searching for records.
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected function searchQuery(string $terms): void
@@ -112,6 +120,9 @@ protected function resolveSearch(string $terms, ?iterable $fullTextColumns = nul
 By overriding the `resolveOrder()` method, you can customize the sorting of records.
 
 ```php
+use App\Models\Post;
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
