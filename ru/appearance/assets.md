@@ -71,7 +71,7 @@ Css::make('/css/styles.css')->customAttributes([
 ```php
 use MoonShine\AssetManager\InlineJs;
 
-InlineJs::make(<<<JS
+InlineJs::make(<<<'JS'
     document.addEventListener("DOMContentLoaded", function() {
         console.log("Loaded");
     });
@@ -83,7 +83,7 @@ JS);
 ```php
 use MoonShine\AssetManager\InlineCss;
 
-InlineCss::make(<<<CSS
+InlineCss::make(<<<'CSS'
     .custom-class {
         color: red;
     }
