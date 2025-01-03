@@ -207,7 +207,9 @@ tab: config/moonshine.php
 ```
 tab: app/Providers/MoonShineServiceProvider.php
 ```php
-$config->logo('/assets/logo.png')->logo('/assets/logo-small.png', small: true);
+$config
+    ->logo('/assets/logo.png')
+    ->logo('/assets/logo-small.png', small: true);
 ```
 ~~~
 
