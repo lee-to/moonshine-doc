@@ -108,7 +108,7 @@ ___
 // [tl! collapse:start] 
 use MoonShine\UI\Fields\Text; 
 // [tl! collapse:end]
-Text::make('Title') // [tl! focus]
+Text::make('Title')
 ```
 
 <a name="list"></a>
