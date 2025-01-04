@@ -184,6 +184,7 @@ final class MoonShineLayout extends CompactLayout
 
 ```php
 <?php
+use MoonShine\Laravel\Layouts\CompactLayout;
 // ..
 final class MoonShineLayout extends CompactLayout
 {
@@ -284,6 +285,7 @@ php artisan moonshine:layout
 
 ```php
 use App\MoonShine\Layouts\MyLayout;
+use MoonShine\Laravel\Pages\Page;
 
 class CustomPage extends Page
 {
@@ -299,6 +301,9 @@ class CustomPage extends Page
 Каждый шаблон может иметь свой набор стилей и скриптов, определяемых через метод `assets()`:
 
 ```php
+use MoonShine\Laravel\Layouts\AppLayout;
+use MoonShine\AssetManager\Css;
+
 final class MyLayout extends AppLayout
 {
     // ..
@@ -325,6 +330,9 @@ final class MyLayout extends AppLayout
 Для каждого шаблона можно объявить список пунктов меню через метод `menu()`, которые автоматически будут переданы в компонент `Menu`.
 
 ```php
+use MoonShine\Laravel\Layouts\AppLayout;
+use MoonShine\MenuManager\MenuItem;
+
 final class MyLayout extends AppLayout
 {
     // ..
@@ -351,6 +359,7 @@ final class MyLayout extends AppLayout
 По умолчанию `MoonShine` имеет компонент верхнего меню, который можно использовать вместо `Sidebar` или совместно с ним. Давайте посмотрим, как заменить `Sidebar` на `TopBar` в `Layout`.
 
 ```php
+use MoonShine\Laravel\Layouts\CompactLayout;
 // ..
 final class MoonShineLayout extends CompactLayout
 {
@@ -399,6 +408,9 @@ final class MoonShineLayout extends CompactLayout
 Каждый шаблон может иметь собственную цветовую схему, определяемую в методе `colors`:
 
 ```php
+use MoonShine\Laravel\Layouts\AppLayout;
+use MoonShine\Contracts\ColorManager\ColorManagerContract;
+
 final class MyLayout extends AppLayout
 {
     // ..

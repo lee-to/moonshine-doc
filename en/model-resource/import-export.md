@@ -50,6 +50,12 @@ All set! Next, just declare the fields.
 To import, you need to declare the fields in the resource that will participate in the import.
 
 ```php
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Text;
+
 /**
  * @extends ModelResource<Category>
  */
@@ -75,6 +81,13 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 If you need to modify a value during import, you should use the field method `fromRaw`.
 
 ```php
+use App\Enums\StatusEnum;
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Enum;
+
 /**
  * @extends ModelResource<Category>
  */
@@ -102,6 +115,9 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 For configuring the import, optional methods are available. To use them, you need to add the `import` method that returns `ImportHandler`:
 
 ```php
+use MoonShine\ImportExport\ImportHandler;
+use MoonShine\UI\Components\ActionButton;
+
 protected function import(): ?Handler
 {
     return ImportHandler::make(__('moonshine::ui.import'))
@@ -160,6 +176,13 @@ In the MoonShine admin panel, exporting all data considering the current filteri
 To export, you need to declare the fields in the resource that will participate in the export.
 
 ```php
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Position;
+use MoonShine\UI\Fields\Text;
+
 /**
  * @extends ModelResource<Category>
  */
@@ -183,6 +206,13 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 If you need to modify a value during export, you should use the field method `modifyRawValue`.
 
 ```php
+use App\Enums\StatusEnum;
+use MoonShine\ImportExport\Traits\ImportExportConcern;
+use MoonShine\ImportExport\Contracts\HasImportExportContract;
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Enum;
+
 /**
  * @extends ModelResource<Category>
  */
@@ -210,6 +240,9 @@ class CategoryResource extends ModelResource implements HasImportExportContract
 For configuring the export, optional methods are available. To use them, you need to add the `export` method that returns `ExportHandler`:
 
 ```php
+use MoonShine\ImportExport\ExportHandler;
+use MoonShine\UI\Components\ActionButton;
+
 protected function export(): ?Handler
 {
     return ExportHandler::make(__('moonshine::ui.export'))
@@ -258,6 +291,7 @@ queue()
 #### modifyButton
 
 ```php
+ use MoonShine\UI\Components\ActionButton;
 // modify button
 modifyButton(fn(ActionButton $btn) => $btn->class('my-class'))
 ```
@@ -281,6 +315,7 @@ when($value = null, callable $callback = null, callable $default = null)
 `$default` - `callback` function that will be executed if the condition is `FALSE`.
 
 ```php
+use MoonShine\ImportExport\ImportHandler;
 //...
 
 protected function import(): ?Handler

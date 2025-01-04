@@ -56,6 +56,9 @@
 Для создания экземпляра поля используется статический метод `make()`.
 
 ```php
+use Closure;
+use MoonShine\UI\Fields\Text;
+
 Text::make(Closure|string|null $label = null, ?string $column = null, ?Closure $formatted = null)
 ```
 
@@ -69,6 +72,8 @@ Text::make(Closure|string|null $label = null, ?string $column = null, ?Closure $
 
 Пример замыкания `$formatted` для форматирования значения.
 ```php
+use MoonShine\UI\Fields\Text;
+
 Text::make(
     'Name',
     'first_name',
@@ -91,6 +96,9 @@ setLabel(Closure|string $label)
 ```
 
 ```php
+use MoonShine\UI\Fields\Field;
+use MoonShine\UI\Fields\Slug;
+
 Slug::make('Slug')
     ->setLabel(
         fn(Field $field) => $field->getData()?->exists
@@ -200,6 +208,8 @@ badge(string|Color|Closure|null $color = null)
 
 
 ```php
+use MoonShine\Support\Enums\Color;
+
 Text::make('Title')
     ->badge(Color::PRIMARY)
 ```
@@ -207,6 +217,8 @@ Text::make('Title')
 или
 
 ```php
+use MoonShine\UI\Fields\Field;
+
 Text::make('Title')
     ->badge(fn($status, Field $field) => 'green')
 ```
@@ -256,6 +268,9 @@ Text::make('Title')->sortable()
 Метод `sortable()` в качестве параметра может принимать название поля в базе данных или замыкание.
 
 ```php
+use Illuminate\Contracts\Database\Eloquent\Builder;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Author')->sortable('author_id'),
 
 Text::make('Title')->sortable(function (Builder $query, string $column, string $direction) {
@@ -445,6 +460,9 @@ Text::make('Title')->customView('fields.my-custom-input')
 Метод `changePreview()` позволяет переопределить view для превью (везде кроме формы).
 
 ```php
+use MoonShine\UI\Components\Thumbnails;
+use MoonShine\UI\Fields\Text;
+
 Text::make('Thumbnail')
   ->changePreview(function (?string $value, Text $field) {
       return Thumbnails::make($value);
@@ -494,6 +512,8 @@ afterRender(Closure $closure)
 ```
 
 ```php
+use MoonShine\UI\Fields\Field;
+
 Text::make('Title')
     ->beforeRender(function(Field $field) {
         return $field->preview();
@@ -514,6 +534,8 @@ Text::make('Name')
 или для полей отношений:
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Item', 'item', resource: ItemResource::class)
     ->canSee(function (Comment $comment, BelongsTo $field) {
         //ваше условие
@@ -528,6 +550,8 @@ when($value = null, ?callable $callback = null, ?callable $default = null)
 ```
 
 ```php
+use MoonShine\UI\Fields\Field;
+
 Text::make('Slug')
     ->when(fn() => true, fn(Field $field) => $field->locked())
 ```
@@ -552,6 +576,10 @@ onApply(Closure $onApply)
 ```
 
 ```php
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use MoonShine\UI\Fields\Text;
+
 Text::make('Thumbnail by link', 'thumbnail')
     ->onApply(function(Model $item, $value, Field $field) {
         $path = 'thumbnail.jpg';
@@ -593,6 +621,8 @@ php artisan moonshine:apply FileModelApply
 ```
 
 ```php
+use MoonShine\Contracts\UI\ApplyContract;
+use MoonShine\Contracts\UI\FieldContract;
 /**
  * @implements ApplyContract<File>
  */
@@ -779,6 +809,8 @@ Switcher::make('Active')
 ```
 
 ```php
+use MoonShine\Laravel\MoonShineRequest;
+
 public function someMethod(MoonShineRequest $request): void
 {
     // Logic
@@ -928,6 +960,9 @@ Text::make('Name')->updateInPopover('index-table-post-resource')
 Для добавления ассетов к полю можно использовать метод `addAssets()`.
 
 ```php
+use Illuminate\Support\Facades\Vite;
+use MoonShine\AssetManager\Css;
+
 Text::make('Name')
     ->addAssets([
         new Css(Vite::asset('resources/css/text-field.css'))
@@ -939,6 +974,9 @@ Text::make('Name')
 1. Через метод `assets()`:
 
 ```php
+use MoonShine\AssetManager\Css;
+use MoonShine\AssetManager\Js;
+
 /**
  * @return list<AssetElementContract>
  */
@@ -954,6 +992,9 @@ protected function assets(): array
 1. Через метод `booted()`:
 
 ```php
+use MoonShine\AssetManager\Css;
+use MoonShine\AssetManager\Js;
+
 protected function booted(): void
 {
     parent::booted();
@@ -970,6 +1011,8 @@ protected function booted(): void
 Всем полям доступен трейт `Illuminate\Support\Traits\Macroable` c методами `mixin` и `macro`. С помощью этого трейта вы можете расширять возможности полей, добавляя в них новый функционал без использования наследования.
 
 ```php
+use MoonShine\UI\Fields\Field;
+
 Field::macro('myMethod', fn() => /*реализация*/)
 
 Text::make()->myMethod()
@@ -978,6 +1021,8 @@ Text::make()->myMethod()
 или
 
 ```php
+use MoonShine\UI\Fields\Field;
+
 Field::mixin(new MyNewMethods())
 ```
 
@@ -1004,6 +1049,9 @@ reactive(
 > Поля поддерживающие реактивность: Text, Number, Checkbox, Select, Date и их наследующие.
 
 ```php
+use MoonShine\UI\Collections\Fields;
+use MoonShine\UI\Components\FormBuilder;
+
 FormBuilder::make()
     ->name('my-form')
     ->fields([
@@ -1029,6 +1077,10 @@ Slug будет генерироваться в процессе ввода те
 Для изменения состояния поля инициирующего реактивность удобно воспользоваться параметрами `callback` функции.
 
 ```php
+use MoonShine\UI\Fields\Field;
+use MoonShine\UI\Fields\Select;
+use MoonShine\UI\Collections\Fields;
+
 Select::make('Category', 'category_id')
     ->reactive(function(Fields $fields, ?string $value, Field $field, array $values): Fields {
         $field->setValue($value);

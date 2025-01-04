@@ -108,6 +108,8 @@ After executing the command, a class will be created in the `app/Policies` direc
 You can also override the `isCan` method in the resource and implement your own logic or supplement the current one:
 
 ```php
+use MoonShine\Laravel\Enums\Ability;
+
 protected function isCan(Ability $ability): bool
 {
     return parent::isCan($ability);

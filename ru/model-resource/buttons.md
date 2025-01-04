@@ -34,6 +34,8 @@
 Метод `modifyCreateButton()` позволяет модифицировать кнопку для создания нового элемента.
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+
 protected function modifyCreateButton(ActionButtonContract $button): ActionButtonContract
 {
     return $button->error();
@@ -43,6 +45,9 @@ protected function modifyCreateButton(ActionButtonContract $button): ActionButto
 Вы также можете переопределить кнопку через этот метод
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+use MoonShine\UI\Components\ActionButton;
+
 protected function modifyCreateButton(ActionButtonContract $button): ActionButtonContract
 {
     return ActionButton::make('Create');
@@ -58,6 +63,8 @@ protected function modifyCreateButton(ActionButtonContract $button): ActionButto
 Метод `modifyDetailButton()` позволяет модифицировать или переопределить кнопку детального просмотра элемента.
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+
 protected function modifyDetailButton(ActionButtonContract $button): ActionButtonContract
 {
     return $button->warning();
@@ -73,6 +80,8 @@ protected function modifyDetailButton(ActionButtonContract $button): ActionButto
 Метод `modifyEditButton()` позволяет модифицировать или переопределить кнопку редактирования элемента.
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+
 protected function modifyEditButton(ActionButtonContract $button): ActionButtonContract
 {
     return $button->icon('pencil-square');
@@ -88,6 +97,8 @@ protected function modifyEditButton(ActionButtonContract $button): ActionButtonC
 Метод `modifyDeleteButton()` позволяет модифицировать или переопределить кнопку удаления элемента.
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+
 protected function modifyDeleteButton(ActionButtonContract $button): ActionButtonContract
 {
     return $button->icon('x-mark');
@@ -103,6 +114,8 @@ protected function modifyDeleteButton(ActionButtonContract $button): ActionButto
 Метод `modifyMassDeleteButton()` позволяет модифицировать или переопределить кнопку массового удаления.
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+
 protected function modifyMassDeleteButton(ActionButtonContract $button): ActionButtonContract
 {
     return $button->icon('x-mark');
@@ -119,6 +132,8 @@ protected function modifyMassDeleteButton(ActionButtonContract $button): ActionB
 Метод `modifyFiltersButton()` позволяет или переопределить модифицировать кнопку фильтров.
 
 ```php
+use MoonShine\Contracts\UI\ActionButtonContract;
+
 protected function modifyFiltersButton(ActionButtonContract $button): ActionButtonContract
 {
     return $button->error();
@@ -135,6 +150,11 @@ protected function modifyFiltersButton(ActionButtonContract $button): ActionButt
 Метод `topButtons()` позволяет добавить дополнительные [кнопки](/docs/{{version}}/components/action-button).
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Components\ActionButton;
+use MoonShine\Support\Enums\JsEvent;
+use MoonShine\Support\ListOf;
+
 class PostResource extends ModelResource
 {
     //...
@@ -160,6 +180,11 @@ class PostResource extends ModelResource
 Для добавления кнопок в таблицу индекса используйте метод `indexButtons()`.
 
 ```php
+use Illuminate\Database\Eloquent\Model;
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Components\ActionButton;
+use MoonShine\Support\ListOf;
+
 class PostResource extends ModelResource
 {
     //...
@@ -184,6 +209,9 @@ class PostResource extends ModelResource
 Для массовых действий с элементами необходимо добавить метод `bulk()`
 
 ```php
+use MoonShine\UI\Components\ActionButton;
+use MoonShine\Support\ListOf;
+
 protected function indexButtons(): ListOf
 {
     return parent::indexButtons()->prepend(
@@ -203,6 +231,10 @@ protected function indexButtons(): ListOf
 Чтобы добавить кнопки на страницу с формой, используйте метод `formButtons()`.
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Components\ActionButton;
+use MoonShine\Support\ListOf;
+
 class PostResource extends ModelResource
 {
     //...
@@ -222,6 +254,10 @@ class PostResource extends ModelResource
 Метод `formBuilderButtons()` позволяет добавить дополнительные [кнопки](/docs/{{version}}/components/action-button) в форму создания или редактирования.
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Components\ActionButton;
+use MoonShine\Support\ListOf;
+
 class PostResource extends ModelResource
 {
     //...
@@ -246,6 +282,10 @@ class PostResource extends ModelResource
 Чтобы добавить кнопки на страницу детального просмотра, используйте метод `detailButtons()`.
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Components\ActionButton;
+use MoonShine\Support\ListOf;
+
 class PostResource extends ModelResource
 {
     //...

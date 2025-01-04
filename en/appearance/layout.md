@@ -184,6 +184,8 @@ Find the complete list of components in the [Components](/docs/{{version}}/compo
 ```php
 <?php
 // ..
+use MoonShine\Laravel\Layouts\CompactLayout;
+
 final class MoonShineLayout extends CompactLayout
 {
     // ...
@@ -282,6 +284,7 @@ Read more about pages in the [Page](/docs/{{version}}/page/index) section.
 
 ```php
 use App\MoonShine\Layouts\MyLayout;
+use MoonShine\Laravel\Pages\Page;
 
 class CustomPage extends Page
 {
@@ -297,6 +300,9 @@ class CustomPage extends Page
 Each template can have its own set of styles and scripts defined through the `assets()` method:
 
 ```php
+use MoonShine\Laravel\Layouts\AppLayout;
+use MoonShine\AssetManager\Css;
+
 final class MyLayout extends AppLayout
 {
     // ..
@@ -323,6 +329,9 @@ final class MyLayout extends AppLayout
 For each template, you can declare a list of menu items via the `menu()` method, which will be automatically passed to the `Menu` component.
 
 ```php
+use MoonShine\Laravel\Layouts\AppLayout;
+use MoonShine\MenuManager\MenuItem;
+
 final class MyLayout extends AppLayout
 {
     // ..
@@ -349,6 +358,7 @@ final class MyLayout extends AppLayout
 By default, `MoonShine` has a top menu component that can be used instead of `Sidebar` or together with it. Let’s see how to replace `Sidebar` with `TopBar` in `Layout`.
 
 ```php
+use MoonShine\Laravel\Layouts\CompactLayout;
 // ..
 final class MoonShineLayout extends CompactLayout
 {
@@ -397,6 +407,9 @@ final class MoonShineLayout extends CompactLayout
 Each template can have its own color scheme defined in the `colors` method:
 
 ```php
+use MoonShine\Laravel\Layouts\AppLayout;
+use MoonShine\Contracts\ColorManager\ColorManagerContract;
+
 final class MyLayout extends AppLayout
 {
     // ..

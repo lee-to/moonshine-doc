@@ -39,6 +39,8 @@ php artisan make:controller Controller --resource
 ```
 
 ```php
+use Illuminate\Support\Facades\Route;
+
 Route::resource('resources', Controller::class);
 ```
 
@@ -284,6 +286,8 @@ class PostResource extends ModelResource
 By default, when creating and editing a record, a redirect to the form page is performed, but this behavior can be controlled.
 
 ```php
+use MoonShine\Support\Enums\PageType;
+
 // Through a property in the resource
 protected ?PageType $redirectAfterSave = PageType::FORM;
 
@@ -310,6 +314,7 @@ namespace App\MoonShine\Resources;
 
 use MoonShine\Support\ListOf;
 use MoonShine\Laravel\Enums\Action;
+use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
@@ -329,6 +334,8 @@ class PostResource extends ModelResource
 
 You can also create a new list:
 ```php
+use MoonShine\Laravel\Enums\Action;
+
 protected function activeActions(): ListOf
 {
     return new ListOf(Action::class, [Action::VIEW, Action::UPDATE]);
@@ -342,6 +349,11 @@ By default, the index page of the resource model contains only a button for crea
 
 ```php
 namespace App\MoonShine\Resources;
+
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\Support\AlpineJs;
+use MoonShine\Support\Enums\JsEvent;
+use MoonShine\UI\Components\ActionButton;
 
 class PostResource extends ModelResource
 {
@@ -367,6 +379,8 @@ You can also change the button display, showing them inline or in a dropdown men
 ```php
 namespace App\MoonShine\Resources;
 
+use MoonShine\UI\Components\ActionButton;
+
 class PostResource extends ModelResource
 {
     //...
@@ -391,6 +405,8 @@ class PostResource extends ModelResource
 To modify the main component of `IndexPage`, `FormPage`, or `DetailPage` from the resource, you can override the corresponding methods `modifyListComponent()`, `modifyFormComponent()`, and `modifyDetailComponent()`.
 
 ```php
+use MoonShine\Contracts\UI\ComponentContract;
+
 public function modifyListComponent(ComponentContract $component): ComponentContract
 {
     return parent::modifyListComponent($component)->customAttributes([
@@ -400,6 +416,9 @@ public function modifyListComponent(ComponentContract $component): ComponentCont
 ```
 
 ```php
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\UI\Components\FlexibleRender;
+
 public function modifyFormComponent(ComponentContract $component): ComponentContract
 {
     return parent::modifyFormComponent($component)->fields([
@@ -411,6 +430,8 @@ public function modifyFormComponent(ComponentContract $component): ComponentCont
 ```
 
 ```php
+use MoonShine\Contracts\UI\ComponentContract;
+
 public function modifyDetailComponent(ComponentContract $component): ComponentContract
 {
     return parent::modifyDetailComponent($component)->customAttributes([
@@ -425,6 +446,9 @@ public function modifyDetailComponent(ComponentContract $component): ComponentCo
 The best way to change page components is to publish the pages and interact through them, but if you want to quickly add components to pages, you can use the resource methods `pageComponents`, `indexPageComponents`, `formPageComponents`, `detailPageComponents`.
 
 ```php
+use MoonShine\UI\Components\FormBuilder;
+use MoonShine\UI\Fields\Text;
+
 // or indexPageComponents/formPageComponents/detailPageComponents
 protected function pageComponents(): array
 {
@@ -491,6 +515,8 @@ class PostResource extends ModelResource
 ```
 
 ```php
+use MoonShine\Support\Enums\PageType;
+
 trait WithPermissions
 {
     protected function loadWithPermissions(): void
@@ -536,6 +562,9 @@ You can also attach a `trait` to the resource and within the `trait`, add a meth
 ## Assets
 
 ```php
+use MoonShine\AssetManager\Css;
+use MoonShine\AssetManager\Js;
+
 protected function onLoad(): void
 {
     $this->getAssetManager()

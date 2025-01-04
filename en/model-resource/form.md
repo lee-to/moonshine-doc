@@ -60,6 +60,8 @@ class PostResource extends ModelResource
 Using the `validationMessages()` method, you can create your own validation error messages.
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
@@ -118,6 +120,8 @@ The `$errorsAbove` property is used to control the display of validation errors 
 > Relevant only if "Asynchronous Mode" is turned off
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
   // ..
@@ -136,6 +140,8 @@ If it is necessary to perform `precognition` validation in advance, you need the
 [Details in the Laravel documentation](https://laravel.com/docs/precognition)
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     // ...
@@ -155,6 +161,9 @@ To add buttons, use `ActionButton` and the `formButtons` method in the resource.
 > More about [ActionButton](/docs/{{version}}/components/action-button)
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function formButtons(): ListOf
 {
     return parent::formButtons()->add(ActionButton::make('Link', '/endpoint'));
@@ -167,6 +176,8 @@ protected function formButtons(): ListOf
 By default, "Asynchronous Mode" is enabled in `ModelResource`, but if you need to turn it off, set the `$isAsync` property to false.
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     // ...
@@ -186,6 +197,8 @@ class PostResource extends ModelResource
 You can fully replace or modify the resource's `FormBuilder` for the edit page. To do this, use the `modifyFormComponent` method.
 
 ```php
+use MoonShine\Contracts\UI\ComponentContract;
+
 public function modifyFormComponent(ComponentContract $component): ComponentContract
 {
     return parent::modifyFormComponent($component)->customAttributes([

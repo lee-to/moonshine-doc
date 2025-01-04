@@ -78,6 +78,8 @@ PageType::DETAIL;
 namespace App\MoonShine\Pages\Post;
 
 use MoonShine\Laravel\Pages\Crud\IndexPage;
+use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Text;
 
 class PostIndexPage extends IndexPage
 {
@@ -110,6 +112,10 @@ getItemsComponent(iterable $items, Fields $fields): ComponentContract
 - `$fields` - поля.
 
 ```php
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Contracts\UI\TableBuilderContract;
+use MoonShine\UI\Components\Table\TableBuilder;
+
 class ArticleIndexPage extends IndexPage
 {
     // ...
@@ -174,6 +180,11 @@ getDetailComponent(?DataWrapperContract $item, Fields $fields): ComponentContrac
 -`$fields` - поля
 
 ```php
+use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Laravel\Collections\Fields;
+use MoonShine\UI\Components\Table\TableBuilder;
+
 class ArticleDetailPage extends DetailPage
 {
     // ...
@@ -194,6 +205,10 @@ class ArticleDetailPage extends DetailPage
 Метод `getFormComponent()` позволяет изменить основной компонент на странице с формой.
 
 ```php
+use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Laravel\Collections\Fields;
+
 getFormComponent(
   string $action,
   ?DataWrapperContract $item,
@@ -208,6 +223,16 @@ getFormComponent(
 -`$isAsync` - асинхронный режим.
 
 ```php
+use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Contracts\UI\FormBuilderContract;
+use MoonShine\Laravel\Collections\Fields;
+use MoonShine\Laravel\Pages\Crud\FormPage;
+use MoonShine\Support\AlpineJs;
+use MoonShine\Support\Enums\JsEvent;
+use MoonShine\UI\Components\FormBuilder;
+use MoonShine\UI\Fields\Hidden;
+
 class ArticleFormPage extends FormPage
 {
     // ...
@@ -286,6 +311,9 @@ class ArticleFormPage extends FormPage
 Для настройки слоев используются соответствующие методы: `topLayer()`, `mainLayer()` и `bottomLayer()`. Методы должны возвращать массив [Компонентов](/docs/{{version}}/page/index#components).
 
 ```php
+use MoonShine\Laravel\Pages\Crud\IndexPage;
+use MoonShine\UI\Components\Heading;
+
 class PostIndexPage extends IndexPage
 {
     //...
@@ -322,7 +350,6 @@ class PostIndexPage extends IndexPage
 
 ```php
 use MoonShine\Support\Enums\Layer;
-use MoonShine\Support\Enums\PageType;
 
 // ...
 
@@ -337,6 +364,9 @@ $this->getLayerComponents(Layer::BOTTOM);
 > Если вам нужно добавить компонент для указанной страницы в нужный слой через ресурс, то используйте метод `onLoad` ресурса и `pushToLayer` страницы.
 
 ```php
+use MoonShine\Permissions\Components\Permissions;
+use MoonShine\Support\Enums\Layer;
+
 protected function onLoad(): void
 {
     $this->getFormPage()->pushToLayer(

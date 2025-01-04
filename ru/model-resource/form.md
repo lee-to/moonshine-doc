@@ -60,6 +60,8 @@ class PostResource extends ModelResource
 Используя метод `validationMessages()`, вы можете создать свои собственные сообщения об ошибках валидации.
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
@@ -85,6 +87,8 @@ class PostResource extends ModelResource
 Если вам нужно подготовить или очистить какие-либо данные из запроса перед применением правил валидации, вы можете использовать метод `prepareForValidation()`.
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
@@ -118,6 +122,8 @@ class PostResource extends ModelResource
 > Актуально только если "Асинхронный режим" выключен
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
   // ..
@@ -136,6 +142,8 @@ class PostResource extends ModelResource
 [Подробности в документации Laravel](https://laravel.com/docs/precognition)
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     // ...
@@ -155,6 +163,9 @@ class PostResource extends ModelResource
 > Подробнее о [ActionButton](/docs/{{version}}/components/action-button)
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function formButtons(): ListOf
 {
     return parent::formButtons()->add(ActionButton::make('Ссылка', '/endpoint'));
@@ -167,6 +178,8 @@ protected function formButtons(): ListOf
 По умолчанию в `ModelResource` включен "Асинхронный режим", но если вам требуется его выключить, то установить свойство `$isAsync` = false
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     // ...
@@ -186,6 +199,8 @@ class PostResource extends ModelResource
 Вы можете полностью заменить или модифицировать `FormBuilder` ресурса для страницы редактирования. Для этого воспользуйтесь методом `modifyFormComponent`
 
 ```php
+use MoonShine\Contracts\UI\ComponentContract;
+
 public function modifyFormComponent(ComponentContract $component): ComponentContract
 {
     return parent::modifyFormComponent($component)->customAttributes([

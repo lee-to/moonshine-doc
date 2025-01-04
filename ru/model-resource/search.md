@@ -82,6 +82,9 @@ class PostResource extends ModelResource
 Для `Json` полей, которые используются в качестве ключ-значение `keyValue()`, можно указать, какой ключ поля участвует в поиске.
 
 ```php
+use App\Models\Post;
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
@@ -102,6 +105,9 @@ class PostResource extends ModelResource
 Для многомерных `Json`, которые формируются через поля `fields()`, ключ поиска нужно указывать следующим образом:
 
 ```php
+use App\Models\Post;
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
@@ -125,6 +131,9 @@ class PostResource extends ModelResource
 Вы можете осуществлять поиск по связям; для этого нужно указать, по какому полю связи осуществлять поиск.
 
 ```php
+use App\Models\Post;
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
@@ -202,6 +211,11 @@ class Article extends Model implements HasGlobalSearch
 4. Заменить компонент в `Layout`
 
 ```php
+use MoonShine\Laravel\Components\Layout\Locales;
+use MoonShine\Laravel\Components\Layout\Notifications;
+use MoonShine\UI\Components\Layout\Header;
+use MoonShine\UI\Components\Breadcrumbs;
+
 protected function getHeaderComponent(): Header
 {
     return Header::make([

@@ -54,6 +54,7 @@ You can add an icon to the tag using the `icon()` method.
 
 ```php
 use Illuminate\Database\Eloquent\Builder;
+use MoonShine\Laravel\QueryTags\QueryTag;
 //...
 
 QueryTag::make(
@@ -77,7 +78,7 @@ default(Closure|bool|null $condition = null)
 
 ```php
 use Illuminate\Database\Eloquent\Builder;
-
+use MoonShine\Laravel\QueryTags\QueryTag;
 //...
 
 QueryTag::make(
@@ -94,7 +95,7 @@ You might want to display tags only under certain conditions. You can use the `c
 
 ```php
 use Illuminate\Database\Eloquent\Builder;
-
+use MoonShine\Laravel\QueryTags\QueryTag;
 //...
 
 QueryTag::make(
@@ -113,7 +114,7 @@ The `alias()` method allows you to set a custom value for the URL.
 
 ```php
 use Illuminate\Database\Eloquent\Builder;
-
+use MoonShine\Laravel\QueryTags\QueryTag;
 //...
 
 QueryTag::make(

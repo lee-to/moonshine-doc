@@ -21,6 +21,8 @@ Fields are elements of a form, so their default rendering state is simply an HTM
 Creating an instance of a field is very simple; there is a convenient `make` method, and for basic usage, it is sufficient to specify the label and name of the field.
 
 ```php
+use MoonShine\UI\Fields\Text;
+
 Text::make('Title')
 Text::make('Title', 'title')
 ```
@@ -82,6 +84,9 @@ In the process of interacting with the fields, you may encounter a number of tas
 You use a Select field with options that are links to images and want to output not links in preview mode, but to render the images directly; your code would look as follows, and the result will be achieved thanks to the changePreview method:
 
 ```php
+use MoonShine\UI\Components\Carousel;
+use MoonShine\UI\Fields\Select;
+
 Select::make('Links')->options([
     '/images/1.png' => 'Picture 1',
     '/images/2.png' => 'Picture 2',
@@ -105,6 +110,9 @@ Let's look at the same example with Select and images, but transform the relativ
 In this case, the filling happens automatically; these actions will be done for us by FormBuilder and ModelResource; we will just change the process:
 
 ```php
+use MoonShine\UI\Components\Carousel;
+use MoonShine\UI\Fields\Select;
+
 Select::make('Images')->options([
     '/images/1.png' => 'Picture 1',
     '/images/2.png' => 'Picture 2',
@@ -127,6 +135,9 @@ In the process, we returned the values necessary for the field but changed the c
 Let's consider another example of filling. Suppose we need to check its value against a certain condition when outputting the Select in the table and add a class to the cell if it is met. Therefore, we need to obtain the final value with which the Select is filled, and it is important for us that the filling has already occurred (since the conditional `when` method is called before filling, and we do not want that).
 
 ```php
+use MoonShine\UI\Components\Carousel;
+use MoonShine\UI\Fields\Select;
+
 Select::make('Links')->options([
     '/images/1.png' => 'Picture 1',
     '/images/2.png' => 'Picture 2',
@@ -151,6 +162,8 @@ The field builder has wide capabilities, and you can change any states on the fl
 But let's assume for some reason we want to turn a Select field into a Text field:
 
 ```php
+use MoonShine\UI\Fields\Select;
+
 Select::make('Links')->options([
     '/images/1.png' => 'Picture 1',
     '/images/2.png' => 'Picture 2',
@@ -189,12 +202,16 @@ Text::make('Title')->rawMode()
 Since we have touched on the topic of `rawMode` and have already discussed the process of changing the filling, let's also take a look at the method that allows us to modify the original value. For example, we use the field for export and we do not need to perform subsequent imports; it is necessary to display the value for the manager in a clear format:
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('User')->modifyRawValue(fn(int $rawUserId, Article $model, BelongsTo $ctx) => $model->user->name)
 ```
 
 Let's also imagine a situation where you need to export in a manager-friendly format but also import this file later, and no matter how smart MoonShine is, it will not understand that the value "Ivan Ivanov" should be found in the users table by the name field and take only the id, but we can solve this task:
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('User')->fromRaw(fn(string $name) => User::where('name', $name)->value('id'))
 ```
 
@@ -225,6 +242,10 @@ As a result of the knowledge gained and the use of MoonShine in real conditions,
 The field builder allows you to easily achieve these goals on the fly:
 
 ```php
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use MoonShine\UI\Fields\Text;
+
 Text::make('Thumbnail by link', 'thumbnail')
 	->onApply(function(Model $item, $value, Text $field) {
 		$path = 'thumbnail.jpg';

@@ -56,6 +56,9 @@ All fields inherit the base class `Field`, which provides basic methods for work
 To create an instance of a field, the static method `make()` is used.
 
 ```php
+use Closure;
+use MoonShine\UI\Fields\Text;
+
 Text::make(Closure|string|null $label = null, ?string $column = null, ?Closure $formatted = null)
 ```
 
@@ -69,6 +72,8 @@ Text::make(Closure|string|null $label = null, ?string $column = null, ?Closure $
 
 Example of a closure `$formatted` for formatting a value.
 ```php
+use MoonShine\UI\Fields\Text;
+
 Text::make(
     'Name',
     'first_name',
@@ -91,6 +96,9 @@ setLabel(Closure|string $label)
 ```
 
 ```php
+use MoonShine\UI\Fields\Field;
+use MoonShine\UI\Fields\Slug;
+
 Slug::make('Slug')
     ->setLabel(
         fn(Field $field) => $field->getData()?->exists
@@ -198,6 +206,8 @@ Available colors:
 <span style="background-color: rgb(243 244 246 / 1); color: rgb(31 41 55 / 1); padding: 5px; border-radius: 0.375rem">gray</span>
 
 ```php
+use MoonShine\Support\Enums\Color;
+
 Text::make('Title')
     ->badge(Color::PRIMARY)
 ```
@@ -205,6 +215,8 @@ Text::make('Title')
 or
 
 ```php
+use MoonShine\UI\Fields\Field;
+
 Text::make('Title')
     ->badge(fn($status, Field $field) => 'green')
 ```
@@ -253,6 +265,9 @@ Text::make('Title')->sortable()
 The `sortable()` method can accept a database field name or a closure as a parameter.
 
 ```php
+use Illuminate\Contracts\Database\Eloquent\Builder;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Author')->sortable('author_id'),
 
 Text::make('Title')->sortable(function (Builder $query, string $column, string $direction) {
@@ -442,6 +457,9 @@ Text::make('Title')->customView('fields.my-custom-input')
 The `changePreview()` method allows overriding the view for preview (everywhere except the form).
 
 ```php
+use MoonShine\UI\Components\Thumbnails;
+use MoonShine\UI\Fields\Text;
+
 Text::make('Thumbnail')
   ->changePreview(function (?string $value, Text $field) {
       return Thumbnails::make($value);
@@ -491,6 +509,8 @@ afterRender(Closure $closure)
 ```
 
 ```php
+use MoonShine\UI\Fields\Field;
+
 Text::make('Title')
     ->beforeRender(function(Field $field) {
         return $field->preview();
@@ -511,6 +531,8 @@ Text::make('Name')
 or for relationship fields:
 
 ```php
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+
 BelongsTo::make('Item', 'item', resource: ItemResource::class)
     ->canSee(function (Comment $comment, BelongsTo $field) {
         // your condition
@@ -525,6 +547,8 @@ when($value = null, ?callable $callback = null, ?callable $default = null)
 ```
 
 ```php
+use MoonShine\UI\Fields\Field;
+
 Text::make('Slug')
     ->when(fn() => true, fn(Field $field) => $field->locked())
 ```
@@ -548,6 +572,10 @@ onApply(Closure $onApply)
 ```
 
 ```php
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use MoonShine\UI\Fields\Text;
+
 Text::make('Thumbnail by link', 'thumbnail')
     ->onApply(function(Model $item, $value, Field $field) {
         $path = 'thumbnail.jpg';
@@ -589,6 +617,8 @@ php artisan moonshine:apply FileModelApply
 ```
 
 ```php
+use MoonShine\Contracts\UI\ApplyContract;
+use MoonShine\Contracts\UI\FieldContract;
 /**
  * @implements ApplyContract<File>
  */
@@ -775,6 +805,8 @@ Switcher::make('Active')
 ```
 
 ```php
+use MoonShine\Laravel\MoonShineRequest;
+
 public function someMethod(MoonShineRequest $request): void
 {
     // Logic
@@ -924,6 +956,9 @@ Text::make('Name')->updateInPopover('index-table-post-resource')
 To add assets to the field, you can use the `addAssets()` method.
 
 ```php
+use Illuminate\Support\Facades\Vite;
+use MoonShine\AssetManager\Css;
+
 Text::make('Name')
     ->addAssets([
         new Css(Vite::asset('resources/css/text-field.css'))
@@ -935,6 +970,9 @@ If you are implementing your custom field, you can declare the asset set in it i
 1. Through the `assets()` method:
 
 ```php
+use MoonShine\AssetManager\Css;
+use MoonShine\AssetManager\Js;
+
 /**
  * @return list<AssetElementContract>
  */
@@ -950,6 +988,9 @@ protected function assets(): array
 2. Through the `booted()` method:
 
 ```php
+use MoonShine\AssetManager\Css;
+use MoonShine\AssetManager\Js;
+
 protected function booted(): void
 {
     parent::booted();
@@ -966,6 +1007,8 @@ protected function booted(): void
 All fields have access to the `Illuminate\Support\Traits\Macroable` trait with the `mixin` and `macro` methods. You can use this trait to extend the functionality of fields by adding new features without the need for inheritance.
 
 ```php
+use MoonShine\UI\Fields\Field;
+
 Field::macro('myMethod', fn() => /*implementation*/)
 
 Text::make()->myMethod()
@@ -974,6 +1017,8 @@ Text::make()->myMethod()
 or
 
 ```php
+use MoonShine\UI\Fields\Field;
+
 Field::mixin(new MyNewMethods())
 ```
 
@@ -999,6 +1044,9 @@ reactive(
 > Fields that support reactivity: Text, Number, Checkbox, Select, Date, and their descendants.
 
 ```php
+use MoonShine\UI\Collections\Fields;
+use MoonShine\UI\Components\FormBuilder;
+
 FormBuilder::make()
     ->name('my-form')
     ->fields([
@@ -1023,6 +1071,10 @@ In this example, the slug field is created based on the title. The slug will be 
 To change the state of the field initiating reactivity, it is convenient to use the parameters of the `callback` function.
 
 ```php
+use MoonShine\UI\Fields\Field;
+use MoonShine\UI\Fields\Select;
+use MoonShine\UI\Collections\Fields;
+
 Select::make('Category', 'category_id')
     ->reactive(function(Fields $fields, ?string $value, Field $field, array $values): Fields {
         $field->setValue($value);

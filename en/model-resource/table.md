@@ -55,6 +55,9 @@ To add buttons to the table, you can use `ActionButton` and the methods `indexBu
 > [More details ActionButton](/docs/{{version}}/components/action-button)
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function customIndexButtons(): ListOf
 {
    return parent::customIndexButtons()->add(ActionButton::make('Link', '/endpoint'));
@@ -66,6 +69,9 @@ When using the `customIndexButtons` method, all your buttons will be added befor
 After the main buttons:
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function indexButtons(): ListOf
 {
    return parent::indexButtons()->add(ActionButton::make('Link', '/endpoint'));
@@ -75,6 +81,9 @@ protected function indexButtons(): ListOf
 Before the main buttons:
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function indexButtons(): ListOf
 {
    return parent::indexButtons()->prepend(ActionButton::make('Link', '/endpoint'));
@@ -84,6 +93,9 @@ protected function indexButtons(): ListOf
 Remove the delete button:
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function indexButtons(): ListOf
 {
    return parent::indexButtons()->except(fn(ActionButton $btn) => $btn->getName() === 'resource-delete-button');
@@ -93,6 +105,9 @@ protected function indexButtons(): ListOf
 Clear the button set and add your own:
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function indexButtons(): ListOf
 {
    parent::indexButtons()->empty()->add(ActionButton::make('Link', '/endpoint'));
@@ -105,6 +120,9 @@ protected function indexButtons(): ListOf
 For bulk actions, you need to add the `bulk` method.
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function customIndexButtons(): ListOf
 {
    return parent::customIndexButtons()->add(ActionButton::make('Link', '/endpoint')->bulk());
@@ -117,6 +135,8 @@ protected function customIndexButtons(): ListOf
 To add attributes for the `td` element of the table, you can use the `customWrapperAttributes` method on the field that represents the cell you need.
 
 ```php
+use MoonShine\UI\Fields\Text;
+
 protected function indexFields(): iterable
 {
   return [
@@ -168,9 +188,10 @@ class PostResource extends ModelResource
 By default, clicking on `tr` does nothing, but you can change the behavior to navigate to editing, selection, or to the detailed view.
 
 ```php
-    // ClickAction::SELECT, ClickAction::DETAIL, ClickAction::EDIT
+use MoonShine\Support\Enums\ClickAction;
+// ClickAction::SELECT, ClickAction::DETAIL, ClickAction::EDIT
 
-    protected ?ClickAction $clickAction = ClickAction::SELECT;
+protected ?ClickAction $clickAction = ClickAction::SELECT;
 ```
 
 <a name="sticky-table"></a>
@@ -265,6 +286,9 @@ You can freeze cells in large tables, suitable for ID columns and buttons
 To fix buttons in the table, switch the resource to `stickyButtons` mode:
 
 ```php
+use App\Models\Post;
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
@@ -278,6 +302,8 @@ class PostResource extends ModelResource
 To fix a column, call the `sticky()` method on the Field:
 
 ```php
+use MoonShine\UI\Fields\ID;
+
 protected function indexFields(): iterable
 {
     return [
@@ -294,7 +320,6 @@ To change the number of items per page, use the property `$itemsPerPage`.
 ```php
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
@@ -315,7 +340,6 @@ When dealing with a large volume of data, the best solution is to use cursor pag
 ```php
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
@@ -336,7 +360,6 @@ If you do not plan to display the total number of pages, use `Simple Pagination`
 ```php
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
@@ -359,7 +382,6 @@ If you do not plan to use pagination, it can be disabled.
 ```php
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
@@ -380,7 +402,6 @@ In the resource, async mode is used by default. This mode allows for pagination,
 ```php
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
@@ -417,13 +438,13 @@ AlpineJs::event(JsEvent::TABLE_ROW_UPDATED, 'main-table-{row-id}')
 namespace App\MoonShine\Resources;
 
 use App\Models\Post;
-use MoonShine\Support\Enums\JsEvent;
 use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Switcher;
 use MoonShine\UI\Fields\Text;
 use MoonShine\UI\Fields\Textarea;
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Support\AlpineJs;
+use MoonShine\Support\Enums\JsEvent;
 
 class PostResource extends ModelResource
 {
@@ -484,6 +505,8 @@ If you want to display a page without waiting for data to load,
 and then send a query to get the table data, use *Lazy* mode:
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected bool $isLazy = true;
@@ -499,6 +522,8 @@ class PostResource extends ModelResource
 You can completely replace or modify the resource's `TableBuilder` for both the index and detail pages. Use the `modifyListComponent` or `modifyDetailComponent` methods for this.
 
 ```php
+use MoonShine\Contracts\UI\ComponentContract;
+
 public function modifyListComponent(ComponentContract $component): ComponentContract
 {
     return parent::modifyListComponent($component)->customAttributes([
@@ -508,7 +533,9 @@ public function modifyListComponent(ComponentContract $component): ComponentCont
 ```
 
 ```php
-public function modifyDetailComponent(MoonShineRenderable $component): MoonShineRenderable
+use MoonShine\Contracts\UI\ComponentContract;
+
+public function modifyDetailComponent(ComponentContract $component): ComponentContract
 {
     return parent::modifyDetailComponent($component)->customAttributes([
         'data-my-attr' => 'value'
@@ -522,6 +549,7 @@ public function modifyDetailComponent(MoonShineRenderable $component): MoonShine
 If it is not enough to just automatically output fields in `thead`, `tbody`, and `tfoot`, you can override or extend this logic based on the resource methods `thead()`, `tbody()`, `tfoot()`.
 
 ```php
+use Closure;
 use MoonShine\Contracts\UI\Collection\TableRowsContract;
 use MoonShine\Contracts\UI\TableRowContract;
 use MoonShine\UI\Collections\TableCells;
@@ -557,15 +585,23 @@ protected function tfoot(): null|TableRowsContract|Closure
 
 #### Example of adding an additional row in tfoot
 ```php
-    protected function tfoot(): null|TableRowsContract|Closure
-    {
-        return static function(?TableRowContract $default, TableBuilder $table) {
-            $cells = TableCells::make();
+use Closure;
+use MoonShine\Contracts\UI\Collection\TableRowsContract;
+use MoonShine\Contracts\UI\TableRowContract;
+use MoonShine\UI\Collections\TableCells;
+use MoonShine\UI\Collections\TableRows;
+use MoonShine\UI\Components\Table\TableBuilder;
+use MoonShine\UI\Components\Table\TableRow;
 
-            $cells->pushCell('Balancе:');
-            $cells->pushCell('1000 р.');
+protected function tfoot(): null|TableRowsContract|Closure
+{
+    return static function(?TableRowContract $default, TableBuilder $table) {
+        $cells = TableCells::make();
 
-            return TableRows::make([TableRow::make($cells), $default]);
-        };
-    }
+        $cells->pushCell('Balancе:');
+        $cells->pushCell('1000 р.');
+
+        return TableRows::make([TableRow::make($cells), $default]);
+    };
+}
 ```

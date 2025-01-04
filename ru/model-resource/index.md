@@ -39,6 +39,8 @@ php artisan make:controller Controller --resource
 ```
 
 ```php
+use Illuminate\Support\Facades\Route;
+
 Route::resource('resources', Controller::class);
 ```
 
@@ -287,6 +289,8 @@ class PostResource extends ModelResource
 По умолчанию при создании и редактировании записи осуществляется редирект на страницу с формой, но это поведение можно контролировать.
 
 ```php
+use MoonShine\Support\Enums\PageType;
+
 // Через свойство в ресурсе
 protected ?PageType $redirectAfterSave = PageType::FORM;
 
@@ -313,6 +317,7 @@ namespace App\MoonShine\Resources;
 
 use MoonShine\Support\ListOf;
 use MoonShine\Laravel\Enums\Action;
+use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
@@ -332,6 +337,8 @@ class PostResource extends ModelResource
 
 Также можно просто создать новый список:
 ```php
+use MoonShine\Laravel\Enums\Action;
+
 protected function activeActions(): ListOf
 {
     return new ListOf(Action::class, [Action::VIEW, Action::UPDATE]);
@@ -346,6 +353,11 @@ protected function activeActions(): ListOf
 
 ```php
 namespace App\MoonShine\Resources;
+
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\Support\AlpineJs;
+use MoonShine\Support\Enums\JsEvent;
+use MoonShine\UI\Components\ActionButton;
 
 class PostResource extends ModelResource
 {
@@ -370,6 +382,8 @@ class PostResource extends ModelResource
 
 ```php
 namespace App\MoonShine\Resources;
+
+use MoonShine\UI\Components\ActionButton;
 
 class PostResource extends ModelResource
 {
@@ -396,6 +410,8 @@ class PostResource extends ModelResource
 Для модификации основного компонента `IndexPage`, `FormPage` или `DetailPage` страницы из ресурса можно переопределить соответствующие методы `modifyListComponent()`, `modifyFormComponent()` и `modifyDetailComponent()`.
 
 ```php
+use MoonShine\Contracts\UI\ComponentContract;
+
 public function modifyListComponent(ComponentContract $component): ComponentContract
 {
     return parent::modifyListComponent($component)->customAttributes([
@@ -405,6 +421,9 @@ public function modifyListComponent(ComponentContract $component): ComponentCont
 ```
 
 ```php
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\UI\Components\FlexibleRender;
+
 public function modifyFormComponent(ComponentContract $component): ComponentContract
 {
     return parent::modifyFormComponent($component)->fields([
@@ -416,6 +435,8 @@ public function modifyFormComponent(ComponentContract $component): ComponentCont
 ```
 
 ```php
+use MoonShine\Contracts\UI\ComponentContract;
+
 public function modifyDetailComponent(ComponentContract $component): ComponentContract
 {
     return parent::modifyDetailComponent($component)->customAttributes([
@@ -430,6 +451,9 @@ public function modifyDetailComponent(ComponentContract $component): ComponentCo
 Лучший способ изменять компоненты страниц это опубликовать страницы и взаимодействовать через них, но если вы хотите быстро добавить компоненты на страницы, то можете воспользоваться методами ресурса `pageComponents`, `indexPageComponents`, `formPageComponents`, `detailPageComponents`
 
 ```php
+use MoonShine\UI\Components\FormBuilder;
+use MoonShine\UI\Fields\Text;
+
 // or indexPageComponents/formPageComponents/detailPageComponents
 protected function pageComponents(): array
 {
@@ -496,6 +520,8 @@ class PostResource extends ModelResource
 ```
 
 ```php
+use MoonShine\Support\Enums\PageType;
+
 trait WithPermissions
 {
     protected function loadWithPermissions(): void
@@ -541,6 +567,9 @@ class PostResource extends ModelResource
 ## Assets
 
 ```php
+use MoonShine\AssetManager\Css;
+use MoonShine\AssetManager\Js;
+
 protected function onLoad(): void
 {
     $this->getAssetManager()

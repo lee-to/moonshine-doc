@@ -47,6 +47,10 @@ class PostResource extends ModelResource
 Метод `modifyItemQueryBuilder()` используется, если вам нужно модифицировать запрос для получения записи из базы данных.
 
 ```php
+use App\Models\Post;
+use Illuminate\Contracts\Database\Eloquent\Builder;
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
@@ -68,6 +72,8 @@ class PostResource extends ModelResource
 ## Eager load
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     //...
@@ -85,6 +91,8 @@ class PostResource extends ModelResource
 Метод `searchQuery()` позволяет изменить запрос при поиске записей.
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected function searchQuery(string $terms): void
@@ -113,6 +121,9 @@ protected function resolveSearch(string $terms, ?iterable $fullTextColumns = nul
 Переопределив метод `resolveOrder()`, вы можете настроить сортировку записей.
 
 ```php
+use App\Models\Post;
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;

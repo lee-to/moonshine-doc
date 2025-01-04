@@ -78,6 +78,8 @@ The `fields()` method in the `CRUD` page class allows you to specify the necessa
 namespace App\MoonShine\Pages\Post;
 
 use MoonShine\Laravel\Pages\Crud\IndexPage;
+use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Text;
 
 class PostIndexPage extends IndexPage
 {
@@ -110,6 +112,10 @@ getItemsComponent(iterable $items, Fields $fields): ComponentContract
 - `$fields` - fields.
 
 ```php
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Contracts\UI\TableBuilderContract;
+use MoonShine\UI\Components\Table\TableBuilder;
+
 class ArticleIndexPage extends IndexPage
 {
     // ...
@@ -167,6 +173,10 @@ class ArticleIndexPage extends IndexPage
 The `getDetailComponent()` method allows you to change the main component of the detail page.
 
 ```php
+use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Laravel\Collections\Fields;
+
 getDetailComponent(?DataWrapperContract $item, Fields $fields): ComponentContract
 ```
 
@@ -174,6 +184,11 @@ getDetailComponent(?DataWrapperContract $item, Fields $fields): ComponentContrac
 - `$fields` - fields
 
 ```php
+use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Laravel\Collections\Fields;
+use MoonShine\UI\Components\Table\TableBuilder;
+
 class ArticleDetailPage extends DetailPage
 {
     // ...
@@ -194,6 +209,10 @@ class ArticleDetailPage extends DetailPage
 The `getFormComponent()` method allows you to change the main component on the form page.
 
 ```php
+use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Laravel\Collections\Fields;
+
 getFormComponent(
   string $action,
   ?DataWrapperContract $item,
@@ -208,6 +227,16 @@ getFormComponent(
 - `$isAsync` - asynchronous mode.
 
 ```php
+use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Contracts\UI\FormBuilderContract;
+use MoonShine\Laravel\Collections\Fields;
+use MoonShine\Laravel\Pages\Crud\FormPage;
+use MoonShine\Support\AlpineJs;
+use MoonShine\Support\Enums\JsEvent;
+use MoonShine\UI\Components\FormBuilder;
+use MoonShine\UI\Fields\Hidden;
+
 class ArticleFormPage extends FormPage
 {
     // ...
@@ -286,6 +315,9 @@ For convenience, all *CRUD* pages are divided into three layers, which are respo
 To configure the layers, the corresponding methods are used: `topLayer()`, `mainLayer()`, and `bottomLayer()`. The methods must return an array of [Components](/docs/{{version}}/page/index#components).
 
 ```php
+use MoonShine\Laravel\Pages\Crud\IndexPage;
+use MoonShine\UI\Components\Heading;
+
 class PostIndexPage extends IndexPage
 {
     //...
@@ -322,7 +354,6 @@ class PostIndexPage extends IndexPage
 
 ```php
 use MoonShine\Support\Enums\Layer;
-use MoonShine\Support\Enums\PageType;
 
 // ...
 
@@ -337,6 +368,9 @@ $this->getLayerComponents(Layer::BOTTOM);
 > If you need to add a component to a specified page in the desired layer from a resource, use the resource's `onLoad` method and the page's `pushToLayer`.
 
 ```php
+use MoonShine\Permissions\Components\Permissions;
+use MoonShine\Support\Enums\Layer;
+
 protected function onLoad(): void
 {
     $this->getFormPage()->pushToLayer(

@@ -57,6 +57,9 @@ class PostResource extends ModelResource
 > [More details ActionButton](/docs/{{version}}/components/action-button)
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function customIndexButtons(): ListOf
 {
    return parent::customIndexButtons()->add(ActionButton::make('Link', '/endpoint'));
@@ -68,6 +71,9 @@ protected function customIndexButtons(): ListOf
 После основных:
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function indexButtons(): ListOf
 {
    return parent::indexButtons()->add(ActionButton::make('Link', '/endpoint'));
@@ -77,6 +83,9 @@ protected function indexButtons(): ListOf
 До основных:
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function indexButtons(): ListOf
 {
    return parent::indexButtons()->prepend(ActionButton::make('Link', '/endpoint'));
@@ -86,6 +95,9 @@ protected function indexButtons(): ListOf
 Убрать кнопку удаления:
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function indexButtons(): ListOf
 {
    return parent::indexButtons()->except(fn(ActionButton $btn) => $btn->getName() === 'resource-delete-button');
@@ -95,6 +107,9 @@ protected function indexButtons(): ListOf
 Очистить набор кнопок и добавить свою:
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function indexButtons(): ListOf
 {
    parent::indexButtons()->empty()->add(ActionButton::make('Link', '/endpoint'));
@@ -107,6 +122,9 @@ protected function indexButtons(): ListOf
 Для массовых действий необходимо добавить метод `bulk`
 
 ```php
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\ActionButton;
+
 protected function customIndexButtons(): ListOf
 {
    return parent::customIndexButtons()->add(ActionButton::make('Link', '/endpoint')->bulk());
@@ -119,6 +137,8 @@ protected function customIndexButtons(): ListOf
 Чтобы добавить атрибуты для `td` элемента таблицы, можно воспользоваться методом `customWrapperAttributes` у поля, которое представляет нужную вам ячейку
 
 ```php
+use MoonShine\UI\Fields\Text;
+
 protected function indexFields(): iterable
 {
   return [
@@ -171,9 +191,10 @@ class PostResource extends ModelResource
 По умолчанию на клик по `tr` ничего не произойдет, но можно изменить поведение на переход в редактирование, выбор или переход к детальному просмотру
 
 ```php
-    // ClickAction::SELECT, ClickAction::DETAIL, ClickAction::EDIT
+use MoonShine\Support\Enums\ClickAction;
+// ClickAction::SELECT, ClickAction::DETAIL, ClickAction::EDIT
 
-    protected ?ClickAction $clickAction = ClickAction::SELECT;
+protected ?ClickAction $clickAction = ClickAction::SELECT;
 ```
 
 <a name="sticky-table"></a>
@@ -267,6 +288,9 @@ class PostResource extends ModelResource
 Чтобы зафиксировать кнопки в таблице, переключить ресурс в режим `stickyButtons`:
 
 ```php
+use App\Models\Post;
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected string $model = Post::class;
@@ -280,6 +304,8 @@ class PostResource extends ModelResource
 Для фиксации колонки вызовите у поля метод `sticky()`:
 
 ```php
+use MoonShine\UI\Fields\ID;
+
 protected function indexFields(): iterable
 {
     return [
@@ -296,7 +322,6 @@ protected function indexFields(): iterable
 ```php
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
@@ -317,7 +342,6 @@ class PostResource extends ModelResource
 ```php
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
@@ -338,7 +362,6 @@ class PostResource extends ModelResource
 ```php
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
@@ -361,7 +384,6 @@ class PostResource extends ModelResource
 ```php
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
@@ -382,7 +404,6 @@ class PostResource extends ModelResource
 ```php
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
@@ -419,13 +440,13 @@ AlpineJs::event(JsEvent::TABLE_ROW_UPDATED, 'main-table-{row-id}')
 namespace App\MoonShine\Resources;
 
 use App\Models\Post;
-use MoonShine\Support\Enums\JsEvent;
 use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Switcher;
 use MoonShine\UI\Fields\Text;
 use MoonShine\UI\Fields\Textarea;
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Support\AlpineJs;
+use MoonShine\Support\Enums\JsEvent;
 
 class PostResource extends ModelResource
 {
@@ -486,6 +507,8 @@ class PostResource extends ModelResource
 а затем отправить запрос для получения данных таблицы, используйте режим *Lazy*:
 
 ```php
+use MoonShine\Laravel\Resources\ModelResource;
+
 class PostResource extends ModelResource
 {
     protected bool $isLazy = true;
@@ -501,6 +524,8 @@ class PostResource extends ModelResource
 Вы можете полностью заменить или модифицировать `TableBuilder` ресурса для индексной и детальной страницы. Для этого воспользуйтесь методами `modifyListComponent` или `modifyDetailComponent`
 
 ```php
+use MoonShine\Contracts\UI\ComponentContract;
+
 public function modifyListComponent(ComponentContract $component): ComponentContract
 {
     return parent::modifyListComponent($component)->customAttributes([
@@ -510,7 +535,9 @@ public function modifyListComponent(ComponentContract $component): ComponentCont
 ```
 
 ```php
-public function modifyDetailComponent(MoonShineRenderable $component): MoonShineRenderable
+use MoonShine\Contracts\UI\ComponentContract;
+
+public function modifyDetailComponent(ComponentContract $component): ComponentContract
 {
     return parent::modifyDetailComponent($component)->customAttributes([
         'data-my-attr' => 'value'
@@ -559,17 +586,23 @@ protected function tfoot(): null|TableRowsContract|Closure
 
 #### Пример добавления дополнительной строки в tfoot
 ```php
-    protected function tfoot(): null|TableRowsContract|Closure
-    {
-        return static function(?TableRowContract $default, TableBuilder $table) {
-            $cells = TableCells::make();
+use Closure;
+use MoonShine\Contracts\UI\Collection\TableRowsContract;
+use MoonShine\Contracts\UI\TableRowContract;
+use MoonShine\UI\Collections\TableCells;
+use MoonShine\UI\Collections\TableRows;
+use MoonShine\UI\Components\Table\TableBuilder;
+use MoonShine\UI\Components\Table\TableRow;
 
-            $cells->pushCell('Баланс:');
-            $cells->pushCell('1000 р.');
+protected function tfoot(): null|TableRowsContract|Closure
+{
+    return static function(?TableRowContract $default, TableBuilder $table) {
+        $cells = TableCells::make();
 
-            return TableRows::make([TableRow::make($cells), $default]);
-        };
-    }
+        $cells->pushCell('Баланс:');
+        $cells->pushCell('1000 р.');
+
+        return TableRows::make([TableRow::make($cells), $default]);
+    };
+}
 ```
-
-
