@@ -103,7 +103,7 @@ Raw::make('<link rel="preconnect" href="https://fonts.googleapis.com">')
 
 *AssetManager* позволяет управлять порядком загрузки ресурсов. 
 Мы рекомендуем использовать DI, чтобы начать взаимодействие с *AssetManager*, за сервис отвечает интерфейс *MoonShine\Contracts\AssetManager\AssetManagerContract*.
-Также MoonShine предоставляет удобные методы взаимодействия с *AssetManager* в разных сущностях, таких как *CrudResource*, *Page*, *Layout*, *Component*, *Field*
+Также MoonShine предоставляет удобные методы взаимодействия с *AssetManager* в разных сущностях, таких как *CrudResource*, *Page*, *Layout*, *Component* и *Field*.
 
 ```php
 use MoonShine\AssetManager\Js;
@@ -128,7 +128,7 @@ $assetManager->add([
 > Вы также можете воспользоваться хелпером `moonshine()->getAssetManager()`
 
 Метод *append* всегда будет добавлять ресурсы до основного списка из *CrudResource*, *Page*, *Layout*, *Component*, *Field*, а *prepend* после.
-Метод *add* будет зависеть от жизненного цикла приложения. Допустим вы добавляете ассеты в *ModelResource*,
+Метод *add* будет зависеть от жизненного цикла приложения. Допустим, вы добавляете ассеты в *ModelResource*,
 но перед отображением страницы будет вызван *Layout*, который также в свою очередь добавит ассеты, тем самым ассеты *Layout* добавятся в конце.
 
 <a name="asset-modification"></a>
@@ -295,4 +295,4 @@ final class MyComponent extends MoonShineComponent
 <a name="field"></a>
 ### Field
 
-То же самое как и у *Component*, так как *Field* является компонентом
+То же самое как и у *Component*, так как *Field* является компонентом.
