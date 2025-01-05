@@ -103,7 +103,7 @@ Raw::make('<link rel="preconnect" href="https://fonts.googleapis.com">')
 
 *AssetManager* allows managing the loading order of assets. 
 We recommend using DI to start interacting with *AssetManager*, for the service is responsible through the interface *MoonShine\Contracts\AssetManager\AssetManagerContract*.
-Also, MoonShine provides convenient methods to interact with *AssetManager* in different entities such as *CrudResource*, *Page*, *Layout*, *Component*, *Field*
+Also, MoonShine provides convenient methods to interact with *AssetManager* in different entities such as *CrudResource*, *Page*, *Layout*, *Component* and *Field*.
 
 ```php
 use MoonShine\AssetManager\Js;
