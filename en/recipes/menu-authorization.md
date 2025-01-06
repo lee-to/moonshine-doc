@@ -3,8 +3,12 @@
 1. Using Gate facade:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
+// [tl! collapse:start] 
 use Illuminate\Support\Facades\Gate;
 use MoonShine\Laravel\Enums\Ability;
+use MoonShine\MenuManager\MenuItem; 
+// [tl! collapse:end]
 
 protected function menu(): array
 {
@@ -39,7 +43,10 @@ protected function menu(): array
     ];
 
     if (request()->user()->isSuperUser()) {
-        $menu[] = MenuItem::make('Admins', MoonShineUserResource::class);
+        $menu[] = MenuItem::make(
+            'Admins',
+            MoonShineUserResource::class
+        );
     }
 
     return $menu;
