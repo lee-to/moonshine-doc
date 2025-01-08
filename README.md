@@ -103,6 +103,15 @@ ___
 - названия методов должны заканчиваться скобками, например: `setLabel()`,
 - для оформления блоков кода используется тройные апострофы ` ``` ` с указанием языка программирования и начинаться блок должен с новой строки,
 - для всех классов, используемых в примерах, необходимо указать use в алфавитном порядке и обернуть их в collapse.
+
+```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
+// [tl! collapse:1] 
+use MoonShine\UI\Fields\Text;
+
+Text::make('Title')
+```
+или
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"} 
 // [tl! collapse:start] 
