@@ -19,7 +19,7 @@
 ## Установка через Composer
 
 ```shell
-composer require "moonshine/moonshine:^3.0"
+composer require moonshine/moonshine
 ```
 
 <a name="install"></a>
