@@ -69,7 +69,8 @@ Available options:
 - `--t|title=` - section title,
 - `--type=` - Quick selection of resource type (1 - default, 2 - with pages, 3 - empty),
 - `--p|policy` - Also create Policy,
-- `--test` or `--pest` - additionally generate a test class.
+- `--test` or `--pest` - additionally generate a test class,
+- `--base-dir=, --base-namespace=` - change the base directory and namespace of the class.
 
 When creating a `Resource`, several options are available:
 
@@ -94,7 +95,8 @@ php artisan moonshine:page
 - `--crud` - creates a group of pages: index, detail, and form,
 - `--without-register` - without automatic registration in the provider,
 - `--dir=` - directory where the files will be located relative to `app/MoonShine`, defaults to Page,
-- `--extends=` - class that the page will extend, e.g., IndexPage, FormPage, or DetailPage.
+- `--extends=` - class that the page will extend, e.g., IndexPage, FormPage, or DetailPage,
+- `--base-dir=, --base-namespace=` - change the base directory and namespace of the class.
 
 After executing the command, a default page (or group of pages) will be created in the `app/MoonShine/Pages` directory.
 
@@ -113,7 +115,8 @@ php artisan moonshine:layout
 - `--compact` - inherits the compact theme,
 - `--full` - inherits the base theme,
 - `--default` - set as the default template in the config
-- `--dir=` - directory where the files will be located relative to `app/MoonShine`, defaults to `Layouts`.
+- `--dir=` - directory where the files will be located relative to `app/MoonShine`, defaults to `Layouts`,
+- `--base-dir=, --base-namespace=` - change the base directory and namespace of the class.
 
 After executing the command, a template will be created in the `app/MoonShine/Layouts` directory.
 
