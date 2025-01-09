@@ -208,7 +208,7 @@ final class MoonShineLayout extends CompactLayout
 Пример:
 `MoonShineUserResource` - `moon-shine-user-resource`
 
-Для того чтобы изменить `alias` можно воспользоваться свойство ресурса `$alias` или метод `getAlias`
+Для того чтобы изменить `alias` можно воспользоваться свойством ресурса `$alias` или методом `getAlias`
 
 ```php
 namespace App\MoonShine\Resources;
