@@ -4,6 +4,7 @@
 - [Creating a Template](#сreate)
 - [Changing the Page Template](#page)
 - [Assets](#assets)
+- [Favicons](#favicons)
 - [Menu](#menu)
     - [Top Menu](#top-menu)
 - [Colors](#colors)
@@ -322,6 +323,30 @@ final class MyLayout extends AppLayout
 
 > [!NOTE]
 > For more detailed information, refer to the [Assets](/docs/{{version}}/appearance/assets) section.
+
+<a name="favicons"></a>
+## Favicons
+
+You can replace the set of favicons in a template by overriding the `getFaviconComponent()` method:
+```php
+use MoonShine\Laravel\Layouts\AppLayout;
+
+final class MyLayout extends AppLayout
+{
+    // ..
+    
+    protected function getFaviconComponent(): Favicon
+    {
+        return parent::getFaviconComponent()->customAssets([
+            'apple-touch' => 'favicon_path',
+            '32' => 'favicon_path',
+            '16' => 'favicon_path',
+            'safari-pinned-tab' => 'favicon_path',
+            'web-manifest' => 'favicon_path',
+        ]);
+    }
+}
+```
 
 <a name="menu"></a>
 ## Menu

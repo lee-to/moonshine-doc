@@ -5,6 +5,7 @@
 - [Active Item](#active-item)
 - [Display Condition](#display-condition)
 - [Alias](#alias)
+- [Dropdown](#dropdown)
 
 ---
 
@@ -122,4 +123,21 @@ QueryTag::make(
     fn(Builder $query) => $query->where('is_archived', true)
 )
     ->alias('archive')
+```
+
+<a name="dropdown"></a>
+## Dropdown
+
+By default, all tag buttons are displayed in a line, but you can display them through a drop-down list.
+To do this, change the `$queryTagsInDropdown` property in the resource:
+
+```php
+class PostResource extends ModelResource 
+{
+    // ...
+    
+    protected bool $queryTagsInDropdown = true;
+    
+    // ...
+}
 ```

@@ -16,6 +16,7 @@
   - [Layout](#layout)
   - [Формы](#forms)
   - [Страницы](#pages)
+  - [Главная страница](#home-url)
 - [Получение страниц и форм](#pages-forms)
 - [Полный список параметров конфигурации](#configuration-options)
 - [Выбор метода конфигурации](#choosing-configuration-method)
@@ -502,6 +503,27 @@ tab: config/moonshine.php
 tab: app/Providers/MoonShineServiceProvider.php
 ```php
 $config->changePage(LoginPage::class, MyLoginPage::class);
+```
+~~~
+
+<a name="home-url"></a>
+### Главная страница
+
+Вы можете указать какой роут или урл является главной страницей панели. 
+Используется при редиректе после успешной аутентификации, ссылке на логотипе и 404 странице.
+
+~~~tabs
+tab: config/moonshine.php
+```php
+'home_route' => 'moonshine.index',
+// or url string
+'home_url' => '/admin/page/some-page',
+```
+tab: app/Providers/MoonShineServiceProvider.php
+```php
+$config->homeRoute('moonshine.index');
+// or url string
+$config->homeUrl('/admin/page/some-page');
 ```
 ~~~
 

@@ -16,6 +16,7 @@
   - [Layout](#layout)
   - [Forms](#forms)
   - [Pages](#pages)
+  - [Home page](#home-url)
 - [Getting Pages and Forms](#pages-forms)
 - [Full List of Configuration Parameters](#configuration-options)
 - [Choosing Configuration Method](#choosing-configuration-method)
@@ -499,6 +500,27 @@ tab: config/moonshine.php
 tab: app/Providers/MoonShineServiceProvider.php
 ```php
 $config->changePage(LoginPage::class, MyLoginPage::class);
+```
+~~~
+
+<a name="home-url"></a>
+### Home page
+
+You can specify which route or URL is the main page of the panel.
+Used when redirecting after successful authentication, link in logo and 404 page.
+
+~~~tabs
+tab: config/moonshine.php
+```php
+'home_route' => 'moonshine.index',
+// or url string
+'home_url' => '/admin/page/some-page',
+```
+tab: app/Providers/MoonShineServiceProvider.php
+```php
+$config->homeRoute('moonshine.index');
+// or url string
+$config->homeUrl('/admin/page/some-page');
 ```
 ~~~
 

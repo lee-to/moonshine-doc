@@ -5,6 +5,7 @@
 - [Активный элемент](#active-item)
 - [Условие отображения](#display-condition)
 - [Псевдоним](#alias)
+- [Выпадающий список](#dropdown)
 
 ---
 
@@ -122,4 +123,21 @@ QueryTag::make(
     fn(Builder $query) => $query->where('is_archived', true)
 )
     ->alias('archive')
+```
+
+<a name="dropdown"></a>
+## Выпадающий список
+
+По умолчанию все кнопки-теги выводятся в строку, но вы можете вывести их через выпадающий список.
+Для этого в ресурсе измените свойство `$queryTagsInDropdown`:
+
+```php
+class PostResource extends ModelResource 
+{
+    // ...
+    
+    protected bool $queryTagsInDropdown = true;
+    
+    // ...
+}
 ```
