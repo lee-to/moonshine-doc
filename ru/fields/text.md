@@ -114,7 +114,7 @@ Text::make('HTML-контент', 'content')
 <a name="extensions"></a>
 ## Расширения
 
-Поля поддерживает различные расширения для помощи и контроля ввода
+Поле поддерживает различные расширения для помощи и контроля ввода
 
 ![expansion](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/expansion.png)
 
