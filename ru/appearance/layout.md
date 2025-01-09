@@ -4,6 +4,7 @@
 - [Создание шаблона](#сreate)
 - [Изменение шаблона страницы](#page)
 - [Assets](#assets)
+- [Favicons](#favicons)
 - [Меню](#menu)
     - [Верхнее меню](#top-menu)
 - [Цвета](#colors)
@@ -323,6 +324,32 @@ final class MyLayout extends AppLayout
 
 > [!NOTE]
 > За более подробной информацией обратитесь в раздел [Assets](/docs/{{version}}/appearance/assets)
+
+
+<a name="favicons"></a>
+## Favicons
+
+Вы можете заменить набор favicons в шаблоне через переопределение метода `getFaviconComponent()`:
+
+```php
+use MoonShine\Laravel\Layouts\AppLayout;
+
+final class MyLayout extends AppLayout
+{
+    // ..
+    
+    protected function getFaviconComponent(): Favicon
+    {
+        return parent::getFaviconComponent()->customAssets([
+            'apple-touch' => 'favicon_path',
+            '32' => 'favicon_path',
+            '16' => 'favicon_path',
+            'safari-pinned-tab' => 'favicon_path',
+            'web-manifest' => 'favicon_path',
+        ]);
+    }
+}
+```
 
 <a name="menu"></a>
 ## Меню

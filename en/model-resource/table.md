@@ -49,22 +49,10 @@ class PostResource extends ModelResource
 <a name="buttons"></a>
 ## Buttons
 
-To add buttons to the table, you can use `ActionButton` and the methods `indexButtons` or `customIndexButtons`, as well as `detailButtons` and `customDetailButtons` for the detail page.
+To add buttons to the table, you can use `ActionButton` and the methods `indexButtons`, as well as `detailButtons` for the detail page.
 
 > [!TIP]
 > [More details ActionButton](/docs/{{version}}/components/action-button)
-
-```php
-use MoonShine\Support\ListOf;
-use MoonShine\UI\Components\ActionButton;
-
-protected function customIndexButtons(): ListOf
-{
-   return parent::customIndexButtons()->add(ActionButton::make('Link', '/endpoint'));
-}
-```
-
-When using the `customIndexButtons` method, all your buttons will be added before the main `CRUD` buttons. However, if you need to replace the main buttons or add new ones after the main buttons, you can use the `indexButtons` method.
 
 After the main buttons:
 
@@ -115,7 +103,7 @@ protected function indexButtons(): ListOf
 ```
 
 > [!NOTE]
-> The same approach is used for the table on the detail page, only through the methods `detailButtons` and `customDetailButtons`.
+> The same approach is used for the table on the detail page, only through the method `detailButtons`.
 
 For bulk actions, you need to add the `bulk` method.
 
@@ -123,9 +111,23 @@ For bulk actions, you need to add the `bulk` method.
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\ActionButton;
 
-protected function customIndexButtons(): ListOf
+protected function indexButtons(): ListOf
 {
-   return parent::customIndexButtons()->add(ActionButton::make('Link', '/endpoint')->bulk());
+   return parent::indexButtons()->add(ActionButton::make('Link', '/endpoint')->bulk());
+}
+```
+
+By default, all buttons in the table are displayed in a line, but you can change the behavior and display them through a drop-down list.
+To do this, change the `$indexButtonsInDropdown` property in the resource:
+
+```php
+class PostResource extends ModelResource 
+{
+    // ...
+    
+    protected bool $indexButtonsInDropdown = true;
+    
+    // ...
 }
 ```
 

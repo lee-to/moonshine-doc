@@ -51,22 +51,10 @@ class PostResource extends ModelResource
 <a name="buttons"></a>
 ## Кнопки
 
-Для добавления кнопок в таблицу используются `ActionButton` и методы `indexButtons` или `customIndexButtons`, а также `detailButtons` и `customDetailButtons` для детальной страницы
+Для добавления кнопок в таблицу используются `ActionButton` и методы `indexButtons`, а также `detailButtons` для детальной страницы
 
 > [!TIP]
 > [More details ActionButton](/docs/{{version}}/components/action-button)
-
-```php
-use MoonShine\Support\ListOf;
-use MoonShine\UI\Components\ActionButton;
-
-protected function customIndexButtons(): ListOf
-{
-   return parent::customIndexButtons()->add(ActionButton::make('Link', '/endpoint'));
-}
-```
-
-При использовании метода `customIndexButtons` все ваши кнопки будут добавлятся перед основными `CRUD` кнопками, но если вам необходимо заменить основные кнопки или добавить новые после основных, то воспользуйтесь методом `indexButtons`
 
 После основных:
 
@@ -117,7 +105,7 @@ protected function indexButtons(): ListOf
 ```
 
 > [!NOTE]
-> Такой же подход используется и для таблицы на детальной страницы, только через методы `detailButtons` и `customDetailButtons`
+> Такой же подход используется и для таблицы на детальной страницы, только через метод `detailButtons`
 
 Для массовых действий необходимо добавить метод `bulk`
 
@@ -125,9 +113,23 @@ protected function indexButtons(): ListOf
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\ActionButton;
 
-protected function customIndexButtons(): ListOf
+protected function indexButtons(): ListOf
 {
-   return parent::customIndexButtons()->add(ActionButton::make('Link', '/endpoint')->bulk());
+   return parent::indexButtons()->add(ActionButton::make('Link', '/endpoint')->bulk());
+}
+```
+
+По умолчанию все кнопки в таблице выводятся в строку, но вы можете изменить поведение и вывести их через выпадающий список.
+Для этого в ресурсе измените свойство `$indexButtonsInDropdown`:
+
+```php
+class PostResource extends ModelResource 
+{
+    // ...
+    
+    protected bool $indexButtonsInDropdown = true;
+    
+    // ...
 }
 ```
 
