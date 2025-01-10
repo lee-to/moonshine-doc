@@ -114,7 +114,7 @@ class MoonShineServiceProvider extends ServiceProvider
         $config
             ->title('My Application')
             ->logo('/assets/logo.png')
-            ->prefix('admin')
+            ->prefixes('admin', 'page', 'resource')
             ->guard('moonshine')
             ->authEnable()
             ->useMigrations()
