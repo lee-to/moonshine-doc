@@ -70,11 +70,23 @@ You can also specify the model binding and section title for the command:
 ```php
 php artisan moonshine:resource Post --model=CustomPost --title="Articles"
 ```
-
+or with the full model namespace:
 ```php
 php artisan moonshine:resource Post --model="App\Models\CustomPost" --title="Articles"
 ```
+Additional options:
 
+- --policy — to create a policy for access control.
+
+- --test — to generate a test for the resource (PHPUnit).
+
+- --pest — to generate a test using Pest.
+
+Example with policy and test:
+
+```php
+php artisan moonshine:resource Post --model=CustomPost --title="Articles" --policy --test
+```
 <a name="basic-section-properties"></a>
 ## Basic Properties
 
