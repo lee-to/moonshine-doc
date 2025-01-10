@@ -73,11 +73,22 @@ MoonShine автоматически, исходя из названия, при
 ```php
 php artisan moonshine:resource Post --model=CustomPost --title="Articles"
 ```
-
+или с полным namespace модели:
 ```php
 php artisan moonshine:resource Post --model="App\Models\CustomPost" --title="Articles"
 ```
+Дополнительно можно указать:
 
+- --policy — чтобы создать политику для управления правами доступа.
+
+- --test — чтобы сгенерировать тест для ресурса (PHPUnit).
+
+- --pest — чтобы сгенерировать тест с использованием Pest.
+
+Пример с политикой и тестом:
+```php
+php artisan moonshine:resource Post --model=CustomPost --title="Articles" --policy --test
+```
 <a name="basic-section-properties"></a>
 ## Базовые свойства
 
