@@ -57,19 +57,8 @@ But this work can be entrusted to the admin panel `MoonShine`, which will genera
 php artisan moonshine:resource Post
 ```
 
-When creating a resource, several options are available:
-
-- [Default model resource](/docs/{{version}}/model-resource/fields) - with field declarations inside resource methods (`indexFields`, `formFields`, `detailFields`),
-- [Model resource with pages](/docs/{{version}}/model-resource/pages) - with page publications (`IndexPage`, `FormPage`, `DetailPage`),
-- **Empty Resource** - empty resource for custom implementations.
-
-As a result, a class `PostResource` will be created, which will be the basis of the new section in the panel.
-It is located, by default, in the directory `app/MoonShine/Resources`.
-MoonShine will automatically bind the resource to the model `app/Models/Post` based on the name.
-The section title will also be generated automatically and will be "Posts".
-
 > [!TIP]
-> You can learn about all supported options in the section [Commands](/docs/{{version}}/advanced/commands#resource).
+> For more details, refer to the [Commands](/docs/{{version}}/advanced/commands#resource).
 
 <a name="basic-properties"></a>
 ## Basic Properties

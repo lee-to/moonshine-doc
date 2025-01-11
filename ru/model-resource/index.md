@@ -57,19 +57,8 @@ Route::resource('resources', Controller::class);
 php artisan moonshine:resource Post
 ```
 
-При создании ресурса доступно несколько вариантов:
-
-- [Default model resource](/docs/{{version}}/model-resource/fields) - с объявлением полей внутри методов ресурса (`indexFields`, `formFields`, `detailFields`),
-- [Model resource with pages](/docs/{{version}}/model-resource/pages) - c публикацией страниц (`IndexPage`, `FormPage`, `DetailPage`),
-- **Пустой ресурс** - пустой ресурс для кастомных реализаций.
-
-В результате будет создан класс `PostResource`, который будет основой нового раздела в панели.
-Располагается он, по умолчанию, в директории `app/MoonShine/Resources`.
-MoonShine автоматически, исходя из названия, привяжет ресурс к модели `app/Models/Post`.
-Заголовок раздела так же сгенерируется автоматически и будет "Posts".
-
 > [!TIP]
-> О всех поддерживаемых опциях можно узнать в разделе [Команды](/docs/{{version}}/advanced/commands#resource).
+> Для более подробной информации обратитесь к разделу [Команды](/docs/{{version}}/advanced/commands#resource).
 
 <a name="basic-properties"></a>
 ## Базовые свойства

@@ -63,23 +63,35 @@ php artisan moonshine:user
 php artisan moonshine:resource
 ```
 
+Сигнатура:
+```
+moonshine:resource {className?} {--type=} {--m|model=} {--t|title=} {--test} {--pest} {--p|policy} {--base-dir=} {--base-namespace=}
+```
+
 Доступные опции:
 
-- `--m|model=` - Eloquent модель для модельного ресурса,
+- `--m|model=` - eloquent модель для модельного ресурса,
 - `--t|title=` - заголовок раздела,
-- `--type=` - Быстрый выбор типа ресурса (1 - по умолчанию, 2 - со страницами, 3 - пустой),
-- `--p|policy` - Также создать Policy,
+- `--type=` - быстрый выбор типа ресурса (1 - по умолчанию, 2 - со страницами, 3 - пустой),
+- `--p|policy` - также создать Policy,
 - `--test` или `--pest` - дополнительно сгенерировать тестовый класс,
 - `--base-dir=, --base-namespace=` - изменить базовую директорию и неймспейс класса.
 
-При создании `Resource` доступно несколько вариантов:
+При создании ресурса доступно несколько вариантов:
 
-- **[Модельный ресурс по умолчанию](/docs/{{version}}/model-resource/fields)** - модельный ресурс по умолчанию,
-- **[Модельный ресурс со страницами](/docs/{{version}}/model-resource/pages)** - модельный ресурс со страницами,
-- **Пустой ресурс** - пустой ресурс для кастомных реализаций.
+- [Default model resource](/docs/{{version}}/model-resource/fields) - модельный ресурс по умолчанию с объявлением полей в методах `indexFields`, `formFields` и `detailFields`,
+- [Model resource with pages](/docs/{{version}}/model-resource/pages) - модельный ресурс c публикацией страниц `IndexPage`, `FormPage` и `DetailPage`,
+- **Empty resource** - пустой ресурс для кастомных реализаций.
 
 После выполнения команды в директории `app/MoonShine/Resources/` будет создан файл ресурса.
-Если создается модельный ресурс со страницами, в директории `app/MoonShine/Pages` будут созданы дополнительные страницы.
+Если создается модельный ресурс со страницами, то в директории `app/MoonShine/Pages` будут созданы дополнительные страницы.
+
+Примеры:
+```shell
+php artisan moonshine:resource Post --model=CustomPost --title="Articles"
+
+php artisan moonshine:resource Post --model="App\Models\CustomPost"
+```
 
 > [!NOTE]
 > Для более подробной информации обратитесь к разделу [Модельные ресурсы](/docs/{{version}}/model-resource/index).
