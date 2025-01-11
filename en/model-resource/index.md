@@ -2,9 +2,9 @@
 
 - [Basics](#basics)
 - [Creating](#creating)
-- [Basic Properties](#basic-section-properties)
-- [Declaring in the System](#declaring-a-section-in-the-system)
-- [Adding to the Menu](#declaring-a-section-in-the-menu)
+- [Basic Properties](#basic-properties)
+- [Declaring in the System](#declaring-in-the-system)
+- [Adding to the Menu](#adding-to-the-menu)
     - [Alias](#alias)
 - [Current Element/Model](#current-element-model)
 - [Modal Windows](#modal-windows)
@@ -71,7 +71,7 @@ The section title will also be generated automatically and will be "Posts".
 > [!TIP]
 > You can learn about all supported options in the section [Commands](/docs/{{version}}/advanced/commands#resource).
 
-<a name="basic-section-properties"></a>
+<a name="basic-properties"></a>
 ## Basic Properties
 
 Basic parameters that can be changed for a resource to customize its functionality.
@@ -108,7 +108,7 @@ class PostResource extends ModelResource
 ![resource_paginate](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_paginate.png)
 ![resource_paginate_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_paginate_dark.png)
 
-<a name="declaring-a-section-in-the-system"></a>
+<a name="declaring-in-the-system"></a>
 ## Declaring in the System
 
 The resource is automatically registered in `MoonShineServiceProvider` when executing the command `php artisan moonshine:resource`.
@@ -154,7 +154,7 @@ class MoonShineServiceProvider extends ServiceProvider
 }
 ```
 
-<a name="declaring-a-section-in-the-menu"></a>
+<a name="adding-to-the-menu"></a>
 ## Adding to the Menu
 
 All pages in `MoonShine` have a `Layout`, and each page can have its own.

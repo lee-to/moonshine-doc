@@ -2,9 +2,9 @@
 
 - [Основы](#basics)
 - [Создание](#creating)
-- [Базовые свойства](#basic-section-properties)
-- [Объявление в системе](#declaring-a-section-in-the-system)
-- [Добавление в меню](#declaring-a-section-in-the-menu)
+- [Базовые свойства](#basic-properties)
+- [Объявление в системе](#declaring-in-the-system)
+- [Добавление в меню](#adding-to-the-menu)
     - [Alias](#alias)
 - [Текущий элемент/модель](#current-element-model)
 - [Модальные окна](#modal-windows)
@@ -71,7 +71,7 @@ MoonShine автоматически, исходя из названия, при
 > [!TIP]
 > О всех поддерживаемых опциях можно узнать в разделе [Команды](/docs/{{version}}/advanced/commands#resource).
 
-<a name="basic-section-properties"></a>
+<a name="basic-properties"></a>
 ## Базовые свойства
 
 Базовые параметры, которые можно менять у ресурса, чтобы кастомизировать его работу.
@@ -108,7 +108,7 @@ class PostResource extends ModelResource
 ![resource_paginate](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_paginate.png)
 ![resource_paginate_dark](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/resource_paginate_dark.png)
 
-<a name="declaring-a-section-in-the-system"></a>
+<a name="declaring-in-the-system"></a>
 ## Объявление в системе
 
 Ресурс автоматически регистрируется в `MoonShineServiceProvider` при вызове команды `php artisan moonshine:resource`.
@@ -154,7 +154,7 @@ class MoonShineServiceProvider extends ServiceProvider
 }
 ```
 
-<a name="declaring-a-section-in-the-menu"></a>
+<a name="adding-to-the-menu"></a>
 ## Добавление в меню
 
 Все страницы в `MoonShine` имеют `Layout` и у каждой страницы он может быть свой.
