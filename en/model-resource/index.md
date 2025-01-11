@@ -1,7 +1,7 @@
 # Basics
 
 - [Basics](#basics)
-- [Creating](#creating-a-section)
+- [Creating](#creating)
 - [Basic Properties](#basic-section-properties)
 - [Declaring in the System](#declaring-a-section-in-the-system)
 - [Adding to the Menu](#declaring-a-section-in-the-menu)
@@ -50,7 +50,7 @@ But this work can be entrusted to the admin panel `MoonShine`, which will genera
 
 `ModelResource` is the primary component for creating a section in the admin panel when working with databases.
 
-<a name="creating-a-section"></a>
+<a name="creating"></a>
 ## Creating
 
 ```shell

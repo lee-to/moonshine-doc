@@ -1,7 +1,7 @@
 # Основы
 
 - [Основы](#basics)
-- [Создание](#creating-a-section)
+- [Создание](#creating)
 - [Базовые свойства](#basic-section-properties)
 - [Объявление в системе](#declaring-a-section-in-the-system)
 - [Добавление в меню](#declaring-a-section-in-the-menu)
@@ -50,7 +50,7 @@ Route::resource('resources', Controller::class);
 
 `ModelResource` является основным компонентом для создания раздела в админ-панели при работе с базой данных.
 
-<a name="creating-a-section"></a>
+<a name="creating"></a>
 ## Создание
 
 ```shell
