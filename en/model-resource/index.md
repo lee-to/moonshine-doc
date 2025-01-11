@@ -125,8 +125,8 @@ use Illuminate\Support\ServiceProvider;
 use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
 use MoonShine\Laravel\DependencyInjection\ConfiguratorContract;
 use MoonShine\Laravel\DependencyInjection\MoonShine;
-use MoonShine\Laravel\DependencyInjection\MoonShineConfigurator;
-// [tl! collapse:end]
+use MoonShine\Laravel\DependencyInjection\MoonShineConfigurator; // [tl! collapse:end]
+
 class MoonShineServiceProvider extends ServiceProvider
 {
     /**
@@ -174,8 +174,8 @@ use MoonShine\Laravel\Layouts\CompactLayout;
 use MoonShine\Laravel\Resources\MoonShineUserResource;
 use MoonShine\Laravel\Resources\MoonShineUserRoleResource;
 use MoonShine\MenuManager\MenuGroup;
-use MoonShine\MenuManager\MenuItem;
-// [tl! collapse:end]
+use MoonShine\MenuManager\MenuItem; // [tl! collapse:end]
+
 final class MoonShineLayout extends CompactLayout
 {
     // ...
@@ -372,8 +372,8 @@ use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Support\AlpineJs;
 use MoonShine\Support\Enums\JsEvent;
 use MoonShine\Support\ListOf;
-use MoonShine\UI\Components\ActionButton;
-// [tl! collapse:end]
+use MoonShine\UI\Components\ActionButton; // [tl! collapse:end]
+
 class PostResource extends ModelResource
 {
     // ...
