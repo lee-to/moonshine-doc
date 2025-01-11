@@ -34,7 +34,7 @@ php artisan moonshine:install
 - `-m`, `--without-migrations` - без выполнения миграций,
 - `-l`, `--default-layout` - выбор шаблона по умолчанию (без вопроса про компактную тему),
 - `-a`, `--without-auth` - без аутентификации,
-- `-d`, `--without-notifications` - без уведомлений,
+- `-d`, `--without-notifications` - без уведомлений.
 
 > [!NOTE]
 > Для более подробной информации обратитесь к разделу [Установка](/docs/{{version}}/installation).
@@ -168,7 +168,6 @@ php artisan moonshine:controller
 > [!NOTE]
 > Для более подробной информации обратитесь к разделу [Контроллеры](/docs/{{version}}/advanced/controllers).
 
-
 <a name="handler"></a>
 ## Обработчик
 
@@ -182,7 +181,6 @@ php artisan moonshine:handler
 
 > [!NOTE]
 > Для более подробной информации обратитесь к разделу [Handlers](/docs/{{version}}/advanced/handlers).
-
 
 <a name="policy"></a>
 ## Политика
@@ -223,10 +221,10 @@ php artisan moonshine:publish
 
 Для публикации доступно несколько вариантов:
 
-- **Assets** - ассеты админ-панели `MoonShine`;
-- **Assets template** - создает шаблон для добавления собственных стилей или создания собственной темы для `MoonShine`;
-- **System Resources** - системные `MoonShineUserResource`, `MoonShineUserRoleResource`, которые вы можете изменить.
-- **System Forms** - системные `LoginForm`, `FiltersForm`, которые вы можете изменить.
+- **Assets** - ассеты админ-панели `MoonShine`,
+- **Assets template** - создает шаблон для добавления собственных стилей или создания собственной темы для `MoonShine`,
+- **System Resources** - системные `MoonShineUserResource`, `MoonShineUserRoleResource`, которые вы можете изменить,
+- **System Forms** - системные `LoginForm`, `FiltersForm`, которые вы можете изменить,
 - **System Pages** - системные `ProfilePage`, `LoginPage`, `ErrorPage`, которые вы можете изменить.
 
 #### Вы можете сразу указать тип публикации в команде.

@@ -34,7 +34,7 @@ Available options:
 - `-m`, `--without-migrations` - without running migrations,
 - `-l`, `--default-layout` - select the default template (without prompting for a compact theme),
 - `-a`, `--without-auth` - without authentication,
-- `-d`, `--without-notifications` - without notifications,
+- `-d`, `--without-notifications` - without notifications.
 
 > [!NOTE]
 > For more details, refer to the [Installation](/docs/{{version}}/installation) section.
@@ -220,10 +220,10 @@ php artisan moonshine:publish
 
 Several options are available for publishing:
 
-- **Assets** - assets for the `MoonShine` admin panel;
-- **Assets template** - creates a template for adding custom styles or creating a custom theme for `MoonShine`;
-- **System Resources** - system `MoonShineUserResource`, `MoonShineUserRoleResource`, which you can modify.
-- **System Forms** - system `LoginForm`, `FiltersForm`, which you can modify.
+- **Assets** - assets for the `MoonShine` admin panel,
+- **Assets template** - creates a template for adding custom styles or creating a custom theme for `MoonShine`,
+- **System Resources** - system `MoonShineUserResource`, `MoonShineUserRoleResource`, which you can modify,
+- **System Forms** - system `LoginForm`, `FiltersForm`, which you can modify,
 - **System Pages** - system `ProfilePage`, `LoginPage`, `ErrorPage`, which you can modify.
 
 #### You can specify the publication type directly in the command.
