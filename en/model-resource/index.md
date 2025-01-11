@@ -24,17 +24,19 @@
 <a name="basics"></a>
 ## Basics
 
-`ModelResource` extends `CrudResource` and provides functionality for working with Eloquent models. It serves as a foundation for creating resources associated with database models. `ModelResource` offers methods for performing CRUD operations, managing relationships, applying filters, and much more.
+`ModelResource` extends `CrudResource` and provides functionality for working with Eloquent models. It serves as a foundation for creating resources associated with database models.
+`ModelResource` offers methods for performing CRUD operations, managing relationships, applying filters, and much more.
 
 > [!TIP]
 > You can also refer to the section on [CrudResource](/docs/{{version}}/advanced/crud-resource).
 > `CrudResource` is an abstract class providing a basic interface for `CRUD` operations without binding to a storage and data type.
 
-Under the hood, `ModelResource` extends `CrudResource` and immediately includes the capability to work with `Eloquent`. If you delve into the details of MoonShine, you will see all the standard `Controller`, `Model`, and `blade views`.
+Under the hood, `ModelResource` extends `CrudResource` and immediately includes the capability to work with `Eloquent`.
+If you delve into the details of MoonShine, you will see all the standard `Controller`, `Model`, and `blade views`.
 
 If you were developing independently, you could create resource controllers and resource routes as follows:
 
-```php
+```shell
 php artisan make:controller Controller --resource
 ```
 
@@ -51,29 +53,23 @@ But this work can be entrusted to the admin panel `MoonShine`, which will genera
 <a name="creating-a-section"></a>
 ## Creating
 
-```php
+```shell
 php artisan moonshine:resource Post
 ```
 
-- Change the name of your resource if necessary
-- Choose the type of resource
+When creating a resource, several options are available:
 
-When creating a `ModelResource`, several options are available:
+- [Default model resource](/docs/{{version}}/model-resource/fields) - with field declarations inside resource methods (`indexFields`, `formFields`, `detailFields`),
+- [Model resource with pages](/docs/{{version}}/model-resource/pages) - with page publications (`IndexPage`, `FormPage`, `DetailPage`),
+- **Empty Resource** - empty resource for custom implementations.
 
-- [Default model resource](/docs/{{version}}/model-resource/fields) - with field declarations inside resource methods (`indexFields`, `formFields`, `detailFields`)
-- [Model resource with pages](/docs/{{version}}/model-resource/pages) - with page publications (`IndexPage`, `FormPage`, `DetailPage`)
+As a result, a class `PostResource` will be created, which will be the basis of the new section in the panel.
+It is located, by default, in the directory `app/MoonShine/Resources`.
+MoonShine will automatically bind the resource to the model `app/Models/Post` based on the name.
+The section title will also be generated automatically and will be "Posts".
 
-As a result, a class `PostResource` will be created, which will be the basis of the new section in the panel. It is located, by default, in the directory `app/MoonShine/Resources`. MoonShine will automatically bind the resource to the model `app/Models/Post` based on the name. The section title will also be generated automatically and will be "Posts".
-
-You can also specify the model binding and section title for the command:
-
-```php
-php artisan moonshine:resource Post --model=CustomPost --title="Articles"
-```
-
-```php
-php artisan moonshine:resource Post --model="App\Models\CustomPost" --title="Articles"
-```
+> [!TIP]
+> You can learn about all supported options in the section [Commands](/docs/{{version}}/advanced/commands#resource).
 
 <a name="basic-section-properties"></a>
 ## Basic Properties
@@ -81,6 +77,8 @@ php artisan moonshine:resource Post --model="App\Models\CustomPost" --title="Art
 Basic parameters that can be changed for a resource to customize its functionality.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 namespace App\MoonShine\Resources;
 
 use App\Models\Post;
@@ -91,15 +89,19 @@ use MoonShine\Laravel\Resources\ModelResource;
  */
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class; // Model
+    // Model
+    protected string $model = Post::class;
 
-    protected string $title = 'Posts'; // Section title
+    // Section title
+    protected string $title = 'Posts';
 
-    protected array $with = ['category']; // Eager load
+    // Eager load
+    protected array $with = ['category'];
 
-    protected string $column = 'id'; // Field for displaying values in relationships and breadcrumbs
+    // Field for displaying values in relationships and breadcrumbs
+    protected string $column = 'id';
 
-    //...
+    // ...
 }
 ```
 
@@ -109,21 +111,22 @@ class PostResource extends ModelResource
 <a name="declaring-a-section-in-the-system"></a>
 ## Declaring in the System
 
-The resource is automatically registered in `MoonShineServiceProvider` when executing the command `php artisan moonshine:resource`. However, if you create a section manually, you need to declare it in the system within `MoonShineServiceProvider`.
+The resource is automatically registered in `MoonShineServiceProvider` when executing the command `php artisan moonshine:resource`.
+However, if you create a section manually, you need to declare it in the system within `MoonShineServiceProvider`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
 namespace App\Providers;
+
+use App\MoonShine\Resources\ArticleResource;
 
 use Illuminate\Support\ServiceProvider;
 use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
+use MoonShine\Laravel\DependencyInjection\ConfiguratorContract;
 use MoonShine\Laravel\DependencyInjection\MoonShine;
 use MoonShine\Laravel\DependencyInjection\MoonShineConfigurator;
-use MoonShine\Laravel\DependencyInjection\ConfiguratorContract;
-
-use App\MoonShine\Resources\ArticleResource;
-use App\MoonShine\Resources\CategoryResource;
-use App\MoonShine\Resources\CommentResource;
-
+// [tl! collapse:end]
 class MoonShineServiceProvider extends ServiceProvider
 {
     /**
@@ -141,8 +144,7 @@ class MoonShineServiceProvider extends ServiceProvider
                 MoonShineUserResource::class,
                 MoonShineUserRoleResource::class,
                 ArticleResource::class,
-                CategoryResource::class,
-                CommentResource::class,
+                // ...
             ])
             ->pages([
                 ...$config->getPages(),
@@ -155,20 +157,25 @@ class MoonShineServiceProvider extends ServiceProvider
 <a name="declaring-a-section-in-the-menu"></a>
 ## Adding to the Menu
 
-All pages in `MoonShine` have a `Layout`, and each page can have its own. By default, when `MoonShine` is installed, a base `MoonShineLayout` is added to the directory `app/MoonShine/Layouts`. In `Layout`, everything related to the appearance of your pages, including navigation, is customized.
+All pages in `MoonShine` have a `Layout`, and each page can have its own.
+By default, when `MoonShine` is installed, a base `MoonShineLayout` is added to the directory `app/MoonShine/Layouts`.
+In `Layout`, everything related to the appearance of your pages, including navigation, is customized.
 
-To add a section to the menu, you need to declare it via the `menu()` method using `MenuManager`:
+To add a section to the menu, you need to declare it via the `menu()` method in `Layout`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
 namespace App\MoonShine\Layouts;
+
+use App\MoonShine\Resources\PostResource;
 
 use MoonShine\Laravel\Layouts\CompactLayout;
 use MoonShine\Laravel\Resources\MoonShineUserResource;
 use MoonShine\Laravel\Resources\MoonShineUserRoleResource;
 use MoonShine\MenuManager\MenuGroup;
 use MoonShine\MenuManager\MenuItem;
-use App\MoonShine\Resources\PostResource;
-
+// [tl! collapse:end]
 final class MoonShineLayout extends CompactLayout
 {
     // ...
@@ -176,17 +183,18 @@ final class MoonShineLayout extends CompactLayout
     protected function menu(): array
     {
         return [
-            MenuGroup::make(static fn () => __('moonshine::ui.resource.system'), [
+            MenuGroup::make(__('moonshine::ui.resource.system') , [
                 MenuItem::make(
-                    static fn () => __('moonshine::ui.resource.admins_title'),
+                    __('moonshine::ui.resource.admins_title'),
                     MoonShineUserResource::class
                 ),
                 MenuItem::make(
-                    static fn () => __('moonshine::ui.resource.role_title'),
+                    __('moonshine::ui.resource.role_title'),
                     MoonShineUserRoleResource::class
                 ),
-                MenuItem::make('Posts', PostResource::class),
             ]),
+            MenuItem::make('Posts', PostResource::class),
+            // ...
         ];
     }
 }
@@ -201,32 +209,33 @@ final class MoonShineLayout extends CompactLayout
 <a name="alias"></a>
 ### Alias
 
-By default, the alias of the resource used in the `url` is generated based on the class name in `kebab-case`.
-Example:
-`MoonShineUserResource` - `moon-shine-user-resource`
+By default, the alias of the resource used in the `url` is generated based on the class name in `kebab-case`, for example:
+`MoonShineUserResource` -> `moon-shine-user-resource`
 
 To change the `alias`, you can use the resource property `$alias` or the method `getAlias`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    //...
     protected ?string $alias = 'custom-alias';
-    //...
+
+    // ...
 }
 ```
 
 or
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
@@ -256,27 +265,24 @@ $this->getModel();
 <a name="modal-windows"></a>
 ## Modal Windows
 
-The ability to add, edit, and view records directly on the listing page in a modal window.
+You can add, edit, and view records directly on the listing page in a modal window.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
+    protected bool $createInModal = true;
 
-    protected string $title = 'Posts';
+    protected bool $editInModal = true;
 
-    protected bool $createInModal = false;
+    protected bool $detailInModal = true;
 
-    protected bool $editInModal = false;
-
-    protected bool $detailInModal = false;
-
-    //...
+    // ...
 }
 ```
 
@@ -286,6 +292,8 @@ class PostResource extends ModelResource
 By default, when creating and editing a record, a redirect to the form page is performed, but this behavior can be controlled.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Support\Enums\PageType;
 
 // Through a property in the resource
@@ -307,9 +315,13 @@ public function getRedirectAfterDelete(): string
 <a name="active-actions"></a>
 ## Active Actions
 
-Often, it is necessary to create a resource where the ability to delete, add, or edit is excluded. This is not about authorization, but rather a global exclusion of these sections. This can be done easily through the `activeActions` method in the resource.
+Often, it is necessary to create a resource where the ability to delete, add, or edit is excluded.
+This is not about authorization, but rather a global exclusion of these sections.
+This can be done easily through the `activeActions` method in the resource.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
+// [tl! collapse:5]
 namespace App\MoonShine\Resources;
 
 use MoonShine\Support\ListOf;
@@ -318,7 +330,7 @@ use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-    //...
+    // ...
 
     protected function activeActions(): ListOf
     {
@@ -328,13 +340,16 @@ class PostResource extends ModelResource
         ;
     }
 
-    //...
+    // ...
 }
 ```
 
-You can also create a new list:
+You can also create a new list, for example:
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Enums\Action;
+use MoonShine\Support\ListOf;
 
 protected function activeActions(): ListOf
 {
@@ -345,19 +360,23 @@ protected function activeActions(): ListOf
 <a name="buttons"></a>
 ## Buttons
 
-By default, the index page of the resource model contains only a button for creation. The `actions()` method allows you to add additional [buttons](/docs/{{version}}/action-button/index).
+By default, the index page of the resource model contains only a button for creation.
+The `actions()` method allows you to add additional [buttons](/docs/{{version}}/action-button/index).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
 namespace App\MoonShine\Resources;
 
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Support\AlpineJs;
 use MoonShine\Support\Enums\JsEvent;
+use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\ActionButton;
-
+// [tl! collapse:end]
 class PostResource extends ModelResource
 {
-    //...
+    // ...
 
     protected function topButtons(): ListOf
     {
@@ -367,7 +386,7 @@ class PostResource extends ModelResource
         );
     }
 
-    //...
+    // ...
 }
 ```
 
@@ -377,13 +396,16 @@ class PostResource extends ModelResource
 You can also change the button display, showing them inline or in a dropdown menu to save space.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 namespace App\MoonShine\Resources;
 
+use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\ActionButton;
 
 class PostResource extends ModelResource
 {
-    //...
+    // ...
 
     protected function indexButtons(): ListOf
     {
@@ -395,7 +417,7 @@ class PostResource extends ModelResource
         );
     }
 
-    //...
+    // ...
 }
 ```
 
@@ -405,6 +427,8 @@ class PostResource extends ModelResource
 To modify the main component of `IndexPage`, `FormPage`, or `DetailPage` from the resource, you can override the corresponding methods `modifyListComponent()`, `modifyFormComponent()`, and `modifyDetailComponent()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Contracts\UI\ComponentContract;
 
 public function modifyListComponent(ComponentContract $component): ComponentContract
@@ -416,6 +440,8 @@ public function modifyListComponent(ComponentContract $component): ComponentCont
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\UI\Components\FlexibleRender;
 
@@ -430,6 +456,8 @@ public function modifyFormComponent(ComponentContract $component): ComponentCont
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Contracts\UI\ComponentContract;
 
 public function modifyDetailComponent(ComponentContract $component): ComponentContract
@@ -443,10 +471,15 @@ public function modifyDetailComponent(ComponentContract $component): ComponentCo
 <a name="components"></a>
 ## Components
 
-The best way to change page components is to publish the pages and interact through them, but if you want to quickly add components to pages, you can use the resource methods `pageComponents`, `indexPageComponents`, `formPageComponents`, `detailPageComponents`.
+The best way to change page components is to publish the pages and interact through them.
+But, if you want to quickly add components to pages, you can use the resource methods `pageComponents`, `indexPageComponents`, `formPageComponents` and `detailPageComponents`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
+use MoonShine\Core\Collections\Components;
 use MoonShine\UI\Components\FormBuilder;
+use MoonShine\UI\Components\Modal;
 use MoonShine\UI\Fields\Text;
 
 // or indexPageComponents/formPageComponents/detailPageComponents
@@ -455,7 +488,7 @@ protected function pageComponents(): array
     return [
         Modal::make(
             'My Modal'
-            components: PageComponents::make([
+            components: Components::make([
                 FormBuilder::make()->fields([
                     Text::make('Title')
                 ])
@@ -480,18 +513,21 @@ protected function pageComponents(): array
 The `onLoad` method allows integration at the moment when the resource is loaded and currently active.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
     // ...
+
     protected function onLoad(): void
     {
-        //
+        // ...
     }
+
     // ...
 }
 ```
@@ -502,19 +538,25 @@ class PostResource extends ModelResource
 You can also attach a `trait` to the resource and within the `trait`, add a method according to the naming convention - `load{TraitName}` and use the trait to access the `onLoad` of the resource.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
-use MoonShine\Laravel\Resources\ModelResource;
 use App\Traits\WithPermissions;
+use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
     use WithPermissions;
+
+    // ...
 }
 ```
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
+use MoonShine\Support\Enums\Layer;
 use MoonShine\Support\Enums\PageType;
 
 trait WithPermissions
@@ -540,18 +582,21 @@ trait WithPermissions
 The `onBoot` method allows integration at the moment when MoonShine is creating an instance of the resource within the system.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
     // ...
+
     protected function onBoot(): void
     {
-        //
+        // ...
     }
+
     // ...
 }
 ```
@@ -562,6 +607,8 @@ You can also attach a `trait` to the resource and within the `trait`, add a meth
 ## Assets
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\AssetManager\Css;
 use MoonShine\AssetManager\Js;
 
