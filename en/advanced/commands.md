@@ -202,6 +202,7 @@ Available options:
 - `--base-dir=, --base-namespace=` - change the base directory and namespace of the class.
 
 When executing the command, you can specify whether the field will extend the base class or another field.
+
 After executing the command, a field class will be created in the `app/MoonShine/Fields` directory, and a `Blade` file will be created in the `/resources/views/admin/fields` directory.
 
 > [!NOTE]
@@ -215,6 +216,15 @@ Command to create a controller:
 ```shell
 php artisan moonshine:controller
 ```
+
+Signature:
+```
+moonshine:controller {className?} {--base-dir=} {--base-namespace=}
+```
+
+Available options:
+
+- `--base-dir=, --base-namespace=` - change the base directory and namespace of the class.
 
 After executing the command, a controller class will be created in the `app/MoonShine/Controllers` directory that can be used in the admin panel routes.
 

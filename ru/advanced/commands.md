@@ -202,6 +202,7 @@ moonshine:field {className?} {--base-dir=} {--base-namespace=}
 - `--base-dir=, --base-namespace=` - изменить базовую директорию и неймспейс класса.
 
 При выполнении команды можно указать, будет ли поле расширять базовый класс или другое поле.
+
 После выполнения команды в директории `app/MoonShine/Fields` будет создан класс поля, а в директории `/resources/views/admin/fields` - файл `Blade`.
 
 > [!NOTE]
@@ -215,6 +216,15 @@ moonshine:field {className?} {--base-dir=} {--base-namespace=}
 ```shell
 php artisan moonshine:controller
 ```
+
+Сигнатура:
+```
+moonshine:controller {className?} {--base-dir=} {--base-namespace=}
+```
+
+Доступные опции:
+
+- `--base-dir=, --base-namespace=` - изменить базовую директорию и неймспейс класса.
 
 После выполнения команды в директории `app/MoonShine/Controllers` будет создан класс контроллера, который можно использовать в маршрутах админ-панели.
 

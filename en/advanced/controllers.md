@@ -26,20 +26,26 @@ This is useful for showcasing your complex solutions or writing additional handl
 php artisan moonshine:controller
 ```
 
+> [!NOTE]
+> You can learn about all supported options in the section [Commands](/docs/{{version}}/advanced/commands#controller).
+
 <a name="show-blade-view"></a>
 ## Show Blade View
 
 ```php
 namespace App\MoonShine\Controllers;
 
-use MoonShine\Laravel\Http\Controllers\MoonShineController;
 use MoonShine\Contracts\Core\PageContract;
+use MoonShine\Laravel\Http\Controllers\MoonShineController;
 
 final class CustomViewController extends MoonShineController
 {
     public function __invoke(): PageContract
     {
-        return $this->view('path_to_blade', ['param' => 'value']);
+        return $this->view(
+            'path_to_blade',
+            ['param' => 'value']
+        );
     }
 }
 ```
@@ -50,8 +56,8 @@ final class CustomViewController extends MoonShineController
 ```php
 namespace App\MoonShine\Controllers;
 
-use MoonShine\Laravel\Http\Controllers\MoonShineController;
 use App\MoonShine\Pages\MyPage;
+use MoonShine\Laravel\Http\Controllers\MoonShineController;
 
 final class CustomViewController extends MoonShineController
 {
