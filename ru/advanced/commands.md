@@ -169,6 +169,15 @@ moonshine:layout {className?} {--compact} {--full} {--default} {--dir=} {--base-
 php artisan moonshine:component
 ```
 
+Сигнатура:
+```
+moonshine:component {className?} {--base-dir=} {--base-namespace=}
+```
+
+Доступные опции:
+
+- `--base-dir=, --base-namespace=` - изменить базовую директорию и неймспейс класса.
+
 После выполнения команды в директории `app/MoonShine/Components` будет создан класс для компонента, а в директории `resources/views/admin/components` - файл `Blade`.
 
 > [!NOTE]

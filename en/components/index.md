@@ -13,7 +13,8 @@
 <a name="description"></a>
 ## Description
 
-Almost everything in *MoonShine* consists of components. The *MoonShineComponent* itself is a *blade* component and contains additional convenient methods for interaction in the admin panel.
+Almost everything in *MoonShine* consists of components.
+The *MoonShineComponent* itself is a *blade* component and contains additional convenient methods for interaction in the admin panel.
 
 <a name="conditional-methods"></a>
 ## Conditional Methods
@@ -120,7 +121,8 @@ protected function booted(): void
 <a name="macroable"></a>
 ## Macroable Trait
 
-All components have access to the `Illuminate\Support\Traits\Macroable` trait, which includes the `mixin` and `macro` methods. With this trait, you can extend the capabilities of components by adding new functionality without using inheritance.
+All components have access to the `Illuminate\Support\Traits\Macroable` trait, which includes the `mixin` and `macro` methods.
+With this trait, you can extend the capabilities of components by adding new functionality without using inheritance.
 
 ```php
 MoonShineComponent::macro('myMethod', fn() => /*implementation*/)
@@ -147,3 +149,6 @@ To do this, use the command:
 ```shell
 php artisan moonshine:component
 ```
+
+> [!NOTE]
+> You can learn about all supported options in the section [Commands](/docs/{{version}}/advanced/commands#component).

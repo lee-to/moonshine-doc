@@ -169,6 +169,15 @@ Command creates a custom component:
 php artisan moonshine:component
 ```
 
+Signature:
+```
+moonshine:component {className?} {--base-dir=} {--base-namespace=}
+```
+
+Available options:
+
+- `--base-dir=, --base-namespace=` - change the base directory and namespace of the class.
+
 After executing the command, a class for the component will be created in the `app/MoonShine/Components` directory, and a `Blade` file will be created in the `resources/views/admin/components` directory.
 
 > [!NOTE]
