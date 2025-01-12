@@ -28,8 +28,12 @@ composer require moonshine/moonshine
 ```shell
 php artisan moonshine:install
 ```
+
+> [!NOTE]
+> О всех поддерживаемых опциях можно узнать в разделе [Команды](/docs/{{version}}/advanced/commands#install).
+
 > [!TIP]
-> Выполняйте установку единожды на старте, после установки все можно настроить через [конфигурацию](/docs/{{version}}/configuration)
+> Выполняйте установку единожды на старте, после установки все можно настроить через [конфигурацию](/docs/{{version}}/configuration).
 
 В процессе установки вам будет предложено выполнить:
 

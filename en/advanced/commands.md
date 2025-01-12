@@ -28,13 +28,19 @@ Command to install the `MoonShine` package in your `Laravel` project:
 php artisan moonshine:install
 ```
 
+Signature:
+```
+moonshine:install {--u|without-user} {--m|without-migrations} {--l|default-layout} {--a|without-auth} {--d|without-notifications} {--t|tests-mode}
+```
+
 Available options:
 
-- `-u`, `--without-user` - without creating a super user,
-- `-m`, `--without-migrations` - without running migrations,
-- `-l`, `--default-layout` - select the default template (without prompting for a compact theme),
-- `-a`, `--without-auth` - without authentication,
-- `-d`, `--without-notifications` - without notifications.
+- `--u|without-user` - without creating a superuser,
+- `--m|without-migrations` - without running migrations,
+- `--l|default-layout` - select the default template (without prompting for a compact theme),
+- `--a|without-auth` - without authentication,
+- `--d|without-notifications` - without notifications,
+- `--t|tests-mode` - test mode.
 
 > [!NOTE]
 > For more details, refer to the [Installation](/docs/{{version}}/installation) section.

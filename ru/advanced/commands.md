@@ -28,13 +28,19 @@
 php artisan moonshine:install
 ```
 
+Сигнатура:
+```
+moonshine:install {--u|without-user} {--m|without-migrations} {--l|default-layout} {--a|without-auth} {--d|without-notifications} {--t|tests-mode}
+```
+
 Доступные опции:
 
-- `-u`, `--without-user` - без создания супер-пользователя,
-- `-m`, `--without-migrations` - без выполнения миграций,
-- `-l`, `--default-layout` - выбор шаблона по умолчанию (без вопроса про компактную тему),
-- `-a`, `--without-auth` - без аутентификации,
-- `-d`, `--without-notifications` - без уведомлений.
+- `--u|without-user` - без создания супер-пользователя,
+- `--m|without-migrations` - без выполнения миграций,
+- `--l|default-layout` - выбор шаблона по умолчанию (без вопроса про компактную тему),
+- `--a|without-auth` - без аутентификации,
+- `--d|without-notifications` - без уведомлений,
+- `--t|tests-mode` - тестовый режим.
 
 > [!NOTE]
 > Для более подробной информации обратитесь к разделу [Установка](/docs/{{version}}/installation).
