@@ -34,7 +34,7 @@ php artisan moonshine:install
 - `-m`, `--without-migrations` - без выполнения миграций,
 - `-l`, `--default-layout` - выбор шаблона по умолчанию (без вопроса про компактную тему),
 - `-a`, `--without-auth` - без аутентификации,
-- `-d`, `--without-notifications` - без уведомлений,
+- `-d`, `--without-notifications` - без уведомлений.
 
 > [!NOTE]
 > Для более подробной информации обратитесь к разделу [Установка](/docs/{{version}}/installation).
@@ -63,23 +63,35 @@ php artisan moonshine:user
 php artisan moonshine:resource
 ```
 
+Сигнатура:
+```
+moonshine:resource {className?} {--type=} {--m|model=} {--t|title=} {--test} {--pest} {--p|policy} {--base-dir=} {--base-namespace=}
+```
+
 Доступные опции:
 
-- `--m|model=` - Eloquent модель для модельного ресурса,
+- `--m|model=` - eloquent модель для модельного ресурса,
 - `--t|title=` - заголовок раздела,
-- `--type=` - Быстрый выбор типа ресурса (1 - по умолчанию, 2 - со страницами, 3 - пустой),
-- `--p|policy` - Также создать Policy,
+- `--type=` - быстрый выбор типа ресурса (1 - по умолчанию, 2 - со страницами, 3 - пустой),
+- `--p|policy` - также создать Policy,
 - `--test` или `--pest` - дополнительно сгенерировать тестовый класс,
 - `--base-dir=, --base-namespace=` - изменить базовую директорию и неймспейс класса.
 
-При создании `Resource` доступно несколько вариантов:
+При создании ресурса доступно несколько вариантов:
 
-- **[Модельный ресурс по умолчанию](/docs/{{version}}/model-resource/fields)** - модельный ресурс по умолчанию,
-- **[Модельный ресурс со страницами](/docs/{{version}}/model-resource/pages)** - модельный ресурс со страницами,
-- **Пустой ресурс** - пустой ресурс для кастомных реализаций.
+- [Default model resource](/docs/{{version}}/model-resource/fields) - модельный ресурс по умолчанию с объявлением полей в методах `indexFields`, `formFields` и `detailFields`,
+- [Model resource with pages](/docs/{{version}}/model-resource/pages) - модельный ресурс c публикацией страниц `IndexPage`, `FormPage` и `DetailPage`,
+- **Empty resource** - пустой ресурс для кастомных реализаций.
 
 После выполнения команды в директории `app/MoonShine/Resources/` будет создан файл ресурса.
-Если создается модельный ресурс со страницами, в директории `app/MoonShine/Pages` будут созданы дополнительные страницы.
+Если создается модельный ресурс со страницами, то в директории `app/MoonShine/Pages` будут созданы дополнительные страницы.
+
+Примеры:
+```shell
+php artisan moonshine:resource Post --model=CustomPost --title="Articles"
+
+php artisan moonshine:resource Post --model="App\Models\CustomPost"
+```
 
 > [!NOTE]
 > Для более подробной информации обратитесь к разделу [Модельные ресурсы](/docs/{{version}}/model-resource/index).
@@ -168,7 +180,6 @@ php artisan moonshine:controller
 > [!NOTE]
 > Для более подробной информации обратитесь к разделу [Контроллеры](/docs/{{version}}/advanced/controllers).
 
-
 <a name="handler"></a>
 ## Обработчик
 
@@ -182,7 +193,6 @@ php artisan moonshine:handler
 
 > [!NOTE]
 > Для более подробной информации обратитесь к разделу [Handlers](/docs/{{version}}/advanced/handlers).
-
 
 <a name="policy"></a>
 ## Политика
@@ -223,10 +233,10 @@ php artisan moonshine:publish
 
 Для публикации доступно несколько вариантов:
 
-- **Assets** - ассеты админ-панели `MoonShine`;
-- **Assets template** - создает шаблон для добавления собственных стилей или создания собственной темы для `MoonShine`;
-- **System Resources** - системные `MoonShineUserResource`, `MoonShineUserRoleResource`, которые вы можете изменить.
-- **System Forms** - системные `LoginForm`, `FiltersForm`, которые вы можете изменить.
+- **Assets** - ассеты админ-панели `MoonShine`,
+- **Assets template** - создает шаблон для добавления собственных стилей или создания собственной темы для `MoonShine`,
+- **System Resources** - системные `MoonShineUserResource`, `MoonShineUserRoleResource`, которые вы можете изменить,
+- **System Forms** - системные `LoginForm`, `FiltersForm`, которые вы можете изменить,
 - **System Pages** - системные `ProfilePage`, `LoginPage`, `ErrorPage`, которые вы можете изменить.
 
 #### Вы можете сразу указать тип публикации в команде.

@@ -34,7 +34,7 @@ Available options:
 - `-m`, `--without-migrations` - without running migrations,
 - `-l`, `--default-layout` - select the default template (without prompting for a compact theme),
 - `-a`, `--without-auth` - without authentication,
-- `-d`, `--without-notifications` - without notifications,
+- `-d`, `--without-notifications` - without notifications.
 
 > [!NOTE]
 > For more details, refer to the [Installation](/docs/{{version}}/installation) section.
@@ -63,22 +63,35 @@ Command to create resources:
 php artisan moonshine:resource
 ```
 
+Signature:
+```
+moonshine:resource {className?} {--type=} {--m|model=} {--t|title=} {--test} {--pest} {--p|policy} {--base-dir=} {--base-namespace=}
+```
+
 Available options:
 
-- `--m|model=` - Eloquent model for the resource model,
+- `--m|model=` - eloquent model for the resource model,
 - `--t|title=` - section title,
-- `--type=` - Quick selection of resource type (1 - default, 2 - with pages, 3 - empty),
-- `--p|policy` - Also create Policy,
+- `--type=` - quick selection of resource type (1 - default, 2 - with pages, 3 - empty),
+- `--p|policy` - also create Policy,
 - `--test` or `--pest` - additionally generate a test class,
 - `--base-dir=, --base-namespace=` - change the base directory and namespace of the class.
 
-When creating a `Resource`, several options are available:
+When creating a resource, several options are available:
 
-- **[Default Model Resource](/docs/{{version}}/model-resource/fields)** - default model resource,
-- **[Model Resource with Pages](/docs/{{version}}/model-resource/pages)** - model resource with pages,
-- **Empty Resource** - empty resource for custom implementations.
+- [Default model resource](/docs/{{version}}/model-resource/fields) - default model resource with the declaration of fields in the methods `indexFields`, `formFields` and `detailFields`,
+- [Model resource with pages](/docs/{{version}}/model-resource/pages) - model resource with the publication of the pages `IndexPage`, `FormPage` and `DetailPage`,
+- **Empty resource** - empty resource for custom implementations.
 
-After executing the command, a resource file will be created in the `app/MoonShine/Resources/` directory. If a model resource with pages is created, additional pages will be created in the `app/MoonShine/Pages` directory.
+After executing the command, a resource file will be created in the `app/MoonShine/Resources/` directory.
+If a model resource with pages is created, additional pages will be created in the `app/MoonShine/Pages` directory.
+
+Examples:
+```shell
+php artisan moonshine:resource Post --model=CustomPost --title="Articles"
+
+php artisan moonshine:resource Post --model="App\Models\CustomPost"
+```
 
 > [!NOTE]
 > For more details, refer to the [Model Resources](/docs/{{version}}/model-resource/index) section.
@@ -220,10 +233,10 @@ php artisan moonshine:publish
 
 Several options are available for publishing:
 
-- **Assets** - assets for the `MoonShine` admin panel;
-- **Assets template** - creates a template for adding custom styles or creating a custom theme for `MoonShine`;
-- **System Resources** - system `MoonShineUserResource`, `MoonShineUserRoleResource`, which you can modify.
-- **System Forms** - system `LoginForm`, `FiltersForm`, which you can modify.
+- **Assets** - assets for the `MoonShine` admin panel,
+- **Assets template** - creates a template for adding custom styles or creating a custom theme for `MoonShine`,
+- **System Resources** - system `MoonShineUserResource`, `MoonShineUserRoleResource`, which you can modify,
+- **System Forms** - system `LoginForm`, `FiltersForm`, which you can modify,
 - **System Pages** - system `ProfilePage`, `LoginPage`, `ErrorPage`, which you can modify.
 
 #### You can specify the publication type directly in the command.
