@@ -271,11 +271,20 @@ After executing the command, a class will be created in the `app/Policies` direc
 <a name="type_cast"></a>
 ## Type Casting
 
-Command creates a `TypeCast` class for working with data:
+Command to create a `TypeCast` class for working with data:
 
 ```shell
 php artisan moonshine:type-cast
 ```
+
+Signature:
+```
+moonshine:type-cast {className?} {--base-dir=} {--base-namespace=}
+```
+
+Available options:
+
+- `--base-dir=, --base-namespace=` - change the base directory and namespace of the class.
 
 After executing the command, a file will be created in the `app/MoonShine/TypeCasts` directory.
 

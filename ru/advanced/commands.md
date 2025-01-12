@@ -271,11 +271,20 @@ php artisan moonshine:policy
 <a name="type_cast"></a>
 ## Приведение типов
 
-Команда создает класс `TypeCast` для работы с данными:
+Команда для создания класса `TypeCast` для работы с данными:
 
 ```shell
 php artisan moonshine:type-cast
 ```
+
+Сигнатура:
+```
+moonshine:type-cast {className?} {--base-dir=} {--base-namespace=}
+```
+
+Доступные опции:
+
+- `--base-dir=, --base-namespace=` - изменить базовую директорию и неймспейс класса.
 
 После выполнения команды в директории `app/MoonShine/TypeCasts` будет создан файл.
 
