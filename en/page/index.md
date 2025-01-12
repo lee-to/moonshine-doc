@@ -35,18 +35,14 @@ To create a page class, you can use the console command:
 php artisan moonshine:page
 ```
 
-After entering the class name, a file will be created that serves as the basis for the page in the admin panel. By default, it is located in the `app/MoonShine/Pages` directory.
+After entering the class name, a file will be created that serves as the basis for the page in the admin panel.
+By default, it is located in the `app/MoonShine/Pages` directory.
+
+> [!NOTE]
+> You can learn about all supported options in the section [Commands](/docs/{{version}}/advanced/commands#page).
 
 > [!NOTE]
 > Pages are automatically registered in the system when the command is executed, but if you create a page manually, it must be registered in the `MoonShineServiceProvider` in the `$core->pages()` method.
-
-You can also specify the class name and the directory location in the command.
-
-```php
-php artisan moonshine:page OrderStatistics --dir=Pages/Statistics
-```
-
-The `OrderStatistics` file will be created in the `app/MoonShine/Pages/Statistics` directory.
 
 <a name="title"></a>
 ## Title
@@ -155,7 +151,8 @@ class CustomPage extends Page
 <a name="layout"></a>
 ## Layout
 
-By default, pages use the `AppLayout` or `CompactLayout` display template. For more information about templates, see the [Layout](/docs/{{version}}/appearance/layout) section.
+By default, pages use the `AppLayout` or `CompactLayout` display template.
+For more information about templates, see the [Layout](/docs/{{version}}/appearance/layout) section.
 
 ```php
 use MoonShine\Laravel\Layouts\AppLayout;

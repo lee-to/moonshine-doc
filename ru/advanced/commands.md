@@ -110,14 +110,22 @@ php artisan moonshine:resource Post --model="App\Models\CustomPost"
 <a name="page"></a>
 ## Страница
 
-Команда создает страницу для админ-панели:
+Команда для создания страниц:
 
 ```shell
 php artisan moonshine:page
 ```
 
-- `--crud` - создает группу страниц: индексную, детальную и форму,
+Сигнатура:
+```
+moonshine:page {className?} {--force} {--without-register} {--crud} {--dir=} {--extends=} {--base-dir=} {--base-namespace=}
+```
+
+Доступные опции:
+
+- `--force` - не спрашивать тип страницы,
 - `--without-register` - без автоматической регистрации в провайдере,
+- `--crud` - создает группу страниц: индексную, детальную и форму,
 - `--dir=` - директория, в которой будут располагаться файлы относительно `app/MoonShine`, по умолчанию Page,
 - `--extends=` - класс, который будет расширять страница, например IndexPage, FormPage или DetailPage,
 - `--base-dir=, --base-namespace=` - изменить базовую директорию и неймспейс класса.
@@ -125,7 +133,7 @@ php artisan moonshine:page
 После выполнения команды в директории `app/MoonShine/Pages` будет создана страница по умолчанию (или группа страниц).
 
 > [!NOTE]
-> Для более подробной информации обратитесь к разделу [Страница](https:///docs/{{version}}/page/index).
+> Для более подробной информации обратитесь к разделу [Страница](/docs/{{version}}/page/index).
 
 <a name="layout"></a>
 ## Layout

@@ -110,14 +110,22 @@ php artisan moonshine:resource Post --model="App\Models\CustomPost"
 <a name="page"></a>
 ## Page
 
-Command creates a page for the admin panel:
+Command to create pages:
 
 ```shell
 php artisan moonshine:page
 ```
 
-- `--crud` - creates a group of pages: index, detail, and form,
+Signature:
+```
+moonshine:page {className?} {--force} {--without-register} {--crud} {--dir=} {--extends=} {--base-dir=} {--base-namespace=}
+```
+
+Available options:
+
+- `--force` - don't ask for the page type,
 - `--without-register` - without automatic registration in the provider,
+- `--crud` - creates a group of pages: index, detail, and form,
 - `--dir=` - directory where the files will be located relative to `app/MoonShine`, defaults to Page,
 - `--extends=` - class that the page will extend, e.g., IndexPage, FormPage, or DetailPage,
 - `--base-dir=, --base-namespace=` - change the base directory and namespace of the class.
@@ -125,7 +133,7 @@ php artisan moonshine:page
 After executing the command, a default page (or group of pages) will be created in the `app/MoonShine/Pages` directory.
 
 > [!NOTE]
-> For more details, refer to the [Page](https:///docs/{{version}}/page/index) section.
+> For more details, refer to the [Page](/docs/{{version}}/page/index) section.
 
 <a name="layout"></a>
 ## Layout
