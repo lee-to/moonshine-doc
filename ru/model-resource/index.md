@@ -172,7 +172,7 @@ final class MoonShineLayout extends CompactLayout
     protected function menu(): array
     {
         return [
-            MenuGroup::make(__('moonshine::ui.resource.system') , [
+            MenuGroup::make(__('moonshine::ui.resource.system'), [
                 MenuItem::make(
                     __('moonshine::ui.resource.admins_title'),
                     MoonShineUserResource::class
@@ -199,7 +199,7 @@ final class MoonShineLayout extends CompactLayout
 ### Alias
 
 По умолчанию, alias ресурса, который используется в `url`, генерируется на основе наименования класс в `kebab-case`, например:
-`MoonShineUserResource` -> `moon-shine-user-resource`
+`MoonShineUserResource` -> `moon-shine-user-resource`.
 
 Для того чтобы изменить `alias`, можно воспользоваться свойством ресурса `$alias` или методом `getAlias`.
 
@@ -328,8 +328,6 @@ class PostResource extends ModelResource
             // ->only(Action::VIEW)
         ;
     }
-
-    // ...
 }
 ```
 
@@ -374,8 +372,6 @@ class PostResource extends ModelResource
                 ->dispatchEvent(AlpineJs::event(JsEvent::TABLE_UPDATED, $this->getListComponentName()))
         );
     }
-
-    // ...
 }
 ```
 
@@ -402,11 +398,9 @@ class PostResource extends ModelResource
             ActionButton::make('Button 1', '/')
                 ->showInLine(),
             ActionButton::make('Button 2', '/')
-                ->showInDropdown()
+                ->showInDropdown(),
         );
     }
-
-    // ...
 }
 ```
 
@@ -516,8 +510,6 @@ class PostResource extends ModelResource
     {
         // ...
     }
-
-    // ...
 }
 ```
 
@@ -585,8 +577,6 @@ class PostResource extends ModelResource
     {
         // ...
     }
-
-    // ...
 }
 ```
 
