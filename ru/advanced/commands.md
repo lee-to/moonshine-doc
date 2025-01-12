@@ -234,11 +234,20 @@ moonshine:controller {className?} {--base-dir=} {--base-namespace=}
 <a name="handler"></a>
 ## Обработчик
 
-Команда создает класс `Handler`:
+Команда для создания класса `Handler`:
 
 ```shell
 php artisan moonshine:handler
 ```
+
+Сигнатура:
+```
+moonshine:handler {className?} {--base-dir=} {--base-namespace=}
+```
+
+Доступные опции:
+
+- `--base-dir=, --base-namespace=` - изменить базовую директорию и неймспейс класса.
 
 После выполнения команды в директории `app/MoonShine/Handlers` будет создан класс обработчика.
 

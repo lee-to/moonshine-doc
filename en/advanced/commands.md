@@ -234,11 +234,20 @@ After executing the command, a controller class will be created in the `app/Moon
 <a name="handler"></a>
 ## Handler
 
-Command creates a `Handler` class:
+Command to create a `Handler` class:
 
 ```shell
 php artisan moonshine:handler
 ```
+
+Signature:
+```
+moonshine:handler {className?} {--base-dir=} {--base-namespace=}
+```
+
+Available options:
+
+- `--base-dir=, --base-namespace=` - change the base directory and namespace of the class.
 
 After executing the command, a handler class will be created in the `app/MoonShine/Handlers` directory.
 

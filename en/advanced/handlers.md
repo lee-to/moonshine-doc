@@ -13,11 +13,11 @@
 `Handlers` in `MoonShine` are reusable handlers that allow you to easily add custom actions to resources.
 
 The main advantages:
-- Do not require the creation of controllers
-- Automatic error handling within `MoonShine`
-- Many ready-made methods for interaction with the system
-- Simple integration with `UI` through automatic button generation
-- Automatically displayed in the interface after connection
+- Do not require the creation of controllers,
+- Automatic error handling within `MoonShine`,
+- Many ready-made methods for interaction with the system,
+- Simple integration with `UI` through automatic button generation,
+- Automatically displayed in the interface after connection.
 
 <a name="create"></a>
 ## Creating Handler
@@ -28,13 +28,12 @@ To create a new `Handler`, use the command:
 php artisan moonshine:handler MyCustomHandler
 ```
 
+> [!NOTE]
+> You can learn about all supported options in the section [Commands](/docs/{{version}}/advanced/commands#handler).
+
 After executing the command, a `Handler` class will be created in the `app\MoonShine\Handlers` directory with the following structure:
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Handlers;
 
 use MoonShine\UI\Exceptions\ActionButtonException;
@@ -104,7 +103,7 @@ After registration, a button for launching the `Handler` will automatically appe
 
 `Handler` is closely integrated with the resource and has access to:
 
-- The current resource via `$this->getResource()`
-- Queueing capabilities
-- Notification system and settings for users who will receive notifications via `notifyUsers()`
-- Modifying the button via `modifyButton()`
+- The current resource via `$this->getResource()`,
+- Queueing capabilities,
+- Notification system and settings for users who will receive notifications via `notifyUsers()`,
+- Modifying the button via `modifyButton()`.
