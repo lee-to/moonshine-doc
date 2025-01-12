@@ -48,10 +48,15 @@ moonshine:install {--u|without-user} {--m|without-migrations} {--l|default-layou
 <a name="user"></a>
 ## Пользователь
 
-Команда, позволяющая создать супер-пользователя:
+Команда для создания супер-пользователя:
 
 ```shell
 php artisan moonshine:user
+```
+
+Сигнатура:
+```
+moonshine:user {--u|username=} {--N|name=} {--p|password=}
 ```
 
 Доступные опции:

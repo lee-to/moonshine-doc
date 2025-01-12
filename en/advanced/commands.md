@@ -48,10 +48,15 @@ Available options:
 <a name="user"></a>
 ## User
 
-Command to create a super user:
+Command to create a superuser:
 
 ```shell
 php artisan moonshine:user
+```
+
+Signature:
+```
+moonshine:user {--u|username=} {--N|name=} {--p|password=}
 ```
 
 Available options:
