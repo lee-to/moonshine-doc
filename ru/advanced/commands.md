@@ -138,7 +138,7 @@ moonshine:page {className?} {--force} {--without-register} {--crud} {--dir=} {--
 <a name="layout"></a>
 ## Layout
 
-Команда создает шаблон для админ-панели:
+Команда для создания layout'а:
 
 ```shell
 php artisan moonshine:layout
@@ -163,7 +163,7 @@ moonshine:layout {className?} {--compact} {--full} {--default} {--dir=} {--base-
 <a name="component"></a>
 ## Компонент
 
-Команда создает пользовательский компонент:
+Команда для создания пользовательского компонента:
 
 ```shell
 php artisan moonshine:component

@@ -138,7 +138,7 @@ After executing the command, a default page (or group of pages) will be created 
 <a name="layout"></a>
 ## Layout
 
-Command creates a template for the admin panel:
+Command to create a layout:
 
 ```shell
 php artisan moonshine:layout
@@ -163,7 +163,7 @@ Available options:
 <a name="component"></a>
 ## Component
 
-Command creates a custom component:
+Command to create a custom component:
 
 ```shell
 php artisan moonshine:component
