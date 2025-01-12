@@ -144,16 +144,21 @@ moonshine:page {className?} {--force} {--without-register} {--crud} {--dir=} {--
 php artisan moonshine:layout
 ```
 
+Сигнатура:
+```
+moonshine:layout {className?} {--compact} {--full} {--default} {--dir=} {--base-dir=} {--base-namespace=}
+```
+
+Доступные опции:
+
 - `--compact` - наследует компактную тему,
 - `--full` - наследует базовую тему,
-- `--default` - установить в конфиге как шаблон по умолчанию
+- `--default` - установить в конфиге как шаблон по умолчанию,
 - `--dir=` - директория, в которой будут располагаться файлы относительно `app/MoonShine`, по умолчанию `Layouts`,
 - `--base-dir=, --base-namespace=` - изменить базовую директорию и неймспейс класса.
 
-После выполнения команды в директории `app/MoonShine/Layouts` будет создан шаблон.
-
 > [!NOTE]
-> Для более подробной информации обратитесь к разделу [Layout](https:///docs/{{version}}/page/index).
+> Для более подробной информации обратитесь к разделу [Layout](/docs/{{version}}/appearance/layout).
 
 <a name="component"></a>
 ## Компонент

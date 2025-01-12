@@ -144,16 +144,21 @@ Command creates a template for the admin panel:
 php artisan moonshine:layout
 ```
 
+Signature:
+```
+moonshine:layout {className?} {--compact} {--full} {--default} {--dir=} {--base-dir=} {--base-namespace=}
+```
+
+Available options:
+
 - `--compact` - inherits the compact theme,
 - `--full` - inherits the base theme,
-- `--default` - set as the default template in the config
+- `--default` - set as the default template in the config,
 - `--dir=` - directory where the files will be located relative to `app/MoonShine`, defaults to `Layouts`,
 - `--base-dir=, --base-namespace=` - change the base directory and namespace of the class.
 
-After executing the command, a template will be created in the `app/MoonShine/Layouts` directory.
-
 > [!NOTE]
-> For more details, refer to the [Layout](https:///docs/{{version}}/page/index) section.
+> For more details, refer to the [Layout](/docs/{{version}}/appearance/layout) section.
 
 <a name="component"></a>
 ## Component
