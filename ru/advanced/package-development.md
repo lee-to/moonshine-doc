@@ -10,11 +10,12 @@
 <a name="basics"></a>
 ## Основы
 
-Основой `MoonShine` являются пакеты `Laravel`. Если вы новичок в разработке пакетов `Laravel`, вот несколько ресурсов, которые помогут вам понять основные концепции:
+Основой `MoonShine` являются пакеты `Laravel`.
+Если вы новичок в разработке пакетов `Laravel`, вот несколько ресурсов, которые помогут вам понять основные концепции:
 
-- Глава [Разработка пакетов](https://laravel.com/docs/packages) в документации `Laravel` служит отличным справочным руководством.
-- [Курс по разработке пакетов от CutCode](https://learn.cutcode.dev/moonshine)
-- [Бесплатное руководство по разработке пакетов от CutCode](https://youtu.be/a_udqxegrRI?si=F8F_v8uGLGLkEbpQ)
+- Глава [Разработка пакетов](https://laravel.com/docs/packages) в документации `Laravel` служит отличным справочным руководством,
+- [Курс по разработке пакетов от CutCode](https://learn.cutcode.dev/moonshine),
+- [Бесплатное руководство по разработке пакетов от CutCode](https://youtu.be/a_udqxegrRI?si=F8F_v8uGLGLkEbpQ).
 
 <a name="serviceprovider"></a>
 ## ServiceProvider
@@ -85,8 +86,7 @@ public function boot(CoreContract $core, AssetManagerContract $assets): void
 ```php
 use MoonShine\Contracts\ColorManager\ColorManagerContract;
 
-// ..
-
+// ...
 
 public function boot(CoreContract $core, ColorManagerContract $colors): void
 {
@@ -102,7 +102,7 @@ public function boot(CoreContract $core, ColorManagerContract $colors): void
 }
 ```
 
-Если вам нужно добавить дополнительную логику авторизации в приложение или во внешний пакет, используйте метод `defineAuthorization`
+Если вам нужно добавить дополнительную логику авторизации в приложение или во внешний пакет, используйте метод `defineAuthorization`.
 
 ```php
 use MoonShine\Contracts\Core\DependencyInjection\ConfiguratorContract;
@@ -132,7 +132,7 @@ public function boot(): void
 }
 ```
 
-Не забудьте автоматически подключить ваш `ServiceProvider` в `composer.json`
+Не забудьте автоматически подключить ваш `ServiceProvider` в `composer.json`.
 
 ```json
 "extra": {
@@ -147,7 +147,7 @@ public function boot(): void
 <a name="traits"></a>
 ## Traits
 
-Вы также можете включать в свой пакет трейты для ресурсов или страниц и изменять логику с помощью `load{TraitName}`/`boot{TraitName}` магических методов
+Вы также можете включать в свой пакет трейты для ресурсов или страниц и изменять логику с помощью `load{TraitName}`/`boot{TraitName}` магических методов.
 
 ```php
 trait HasMyPackageTrait
@@ -176,19 +176,17 @@ trait HasMyPackageTrait
 <a name="custom-field-example"></a>
 ## Пример пользовательского поля
 
-Давайте быстро рассмотрим создание собственного поля! Это будет визуальный редактор на основе плагина `Quill.js`
+Давайте быстро рассмотрим создание собственного поля! Это будет визуальный редактор на основе плагина `Quill.js`.
 
-Создадим поле с помощью команды `moonshine:field` и выберем, что оно расширяет `Textarea`
+Создадим поле с помощью команды `moonshine:field` и выберем, что оно расширяет `Textarea`.
 
 ```shell
 php artisan moonshine:field Quill
 ```
 
-Удалим ненужные методы и добавим css/js
+Удалим ненужные методы и добавим css/js.
 
 ```php
-declare(strict_types=1);
-
 namespace App\MoonShine\Fields;
 
 use MoonShine\UI\Fields\Textarea;
@@ -210,7 +208,7 @@ final class Quill extends Textarea
 }
 ```
 
-Также изменим представление поля
+Также изменим представление поля:
 
 ```blade
 <div x-data="quill">
@@ -225,7 +223,7 @@ final class Quill extends Textarea
 </div>
 ```
 
-Мы взяли `quill.snow.css` и `quill.js` из библиотеки, а инициализация `js` с использованием `Alpine.js` представлена ниже
+Мы взяли `quill.snow.css` и `quill.js` из библиотеки, а инициализация `js` с использованием `Alpine.js` представлена ниже.
 
 ```js
 document.addEventListener('alpine:init', () => {
@@ -254,4 +252,4 @@ document.addEventListener('alpine:init', () => {
 })
 ```
 
-Пример кода этого поля можно найти [в репозитории](https://github.com/moonshine-software/quill)
+Пример кода этого поля можно найти [в репозитории](https://github.com/moonshine-software/quill).

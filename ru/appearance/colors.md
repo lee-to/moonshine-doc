@@ -202,4 +202,4 @@ class MoonShineServiceProvider extends ServiceProvider
 ```
 
 > [!WARNING]
-> `Layout` загружается после `ServiceProvider` и будет иметь приоритет, поэтому при использовании указания цветов через `ServiceProvider` убедитесь, что они не переопределяются в `Layout`
+> `Layout` загружается после `ServiceProvider` и будет иметь приоритет, поэтому при использовании указания цветов через `ServiceProvider` убедитесь, что они не переопределяются в `Layout`.

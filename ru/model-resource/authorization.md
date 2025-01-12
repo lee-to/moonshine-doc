@@ -8,11 +8,13 @@
 <a name="policy"></a>
 ## Policy
 
-Мы не отходим от концепции `Laravel` и с помощью `Laravel policy` можем работать с правами доступа в рамках админ-панели MoonShine
+Мы не отходим от концепции `Laravel` и с помощью `Laravel policy` можем работать с правами доступа в рамках админ-панели MoonShine.
 
-В ресурс-контроллерах `MoonShine` каждый метод будет проверяться на наличие прав. Если возникают трудности, то ознакомьтесь с официально документацией `Laravel`
+В ресурс-контроллерах `MoonShine` каждый метод будет проверяться на наличие прав.
+Если возникают трудности, то ознакомьтесь с официально документацией `Laravel`.
 
-По умолчанию для ресурсов проверка прав отключена. Чтобы включить, необходимо добавить свойство `$withPolicy`
+По умолчанию, для ресурсов проверка прав отключена.
+Чтобы включить, необходимо добавить свойство `$withPolicy`.
 
 ```php
 namespace MoonShine\Resources;
@@ -22,13 +24,12 @@ use MoonShine\Laravel\Resources\ModelResource;
 
 class PostResource extends ModelResource
 {
-  //...
+    // ...
    
-  protected bool $withPolicy = true; 
+    protected bool $withPolicy = true; 
    
-  //...
+    // ...
 }
-
 ```
 
 Доступные методы `Policy`:
@@ -118,4 +119,4 @@ protected function isCan(Ability $ability): bool
 ```
 
 > [!TIP]
-> Также рекомендуем ознакомится с разделом [Авторизация](/docs/{{version}}/advanced/authorization)
+> Также рекомендуем ознакомится с разделом [Авторизация](/docs/{{version}}/advanced/authorization).

@@ -8,7 +8,8 @@
 php artisan moonshine:resource PostResource --test
 ```
 
-Помимо создания ресурса, вышеуказанная команда сгенерирует следующий тестовый файл `tests/Feature/PostResourceTest.php`. Если вы предпочитаете `Pest`, вы можете указать опцию `--pest`:
+Помимо создания ресурса, вышеуказанная команда сгенерирует следующий тестовый файл `tests/Feature/PostResourceTest.php`.
+Если вы предпочитаете `Pest`, вы можете указать опцию `--pest`:
 
 ```shell
 php artisan moonshine:resource PostResource --pest

@@ -1,6 +1,7 @@
 # Routes
 
-`MoonShine` under the hood uses standard `Laravel Routing`. All displayed pages are rendered through `PageController`, which has a very simple appearance.
+`MoonShine` under the hood uses standard `Laravel Routing`.
+All displayed pages are rendered through `PageController`, which has a very simple appearance.
 
 ```php
 public function __invoke(MoonShineRequest $request): PageContract
@@ -20,7 +21,7 @@ Thus, you are free to use self-declared routes and controllers (if needed) and r
 
 For CRUD pages to work correctly, it is necessary to pass route parameters `resourceUri` and `pageUri`. `resourceUri` is optional, as not all pages have a resource.
 
-Example of a standard route.
+Example of a standard route:
 
 ```php
 Route::get('/admin/resource/{resourceUri}/{pageUri}', CustomController::class)
@@ -29,12 +30,11 @@ Route::get('/admin/resource/{resourceUri}/{pageUri}', CustomController::class)
 ```
 
 > [!NOTE]
-> The prefix `resource` can be changed or removed through [configuration settings](/docs/{{version}}/configuration)
->
+> The prefix `resource` can be changed or removed through [configuration settings](/docs/{{version}}/configuration).
 
 This example includes a route with parameters for the resource and page, as well as a group of middleware `moonshine`, the list of which is located in the `moonshine.php` config file, and the middleware `Authenticate` for access to the endpoint only for authorized users.
 
-For a quick implementation of the example above, you can use the `Route` directive `moonshine`.
+For a quick implementation of the example above, you can use the `Route` directive `moonshine`:
 
 ```php
 Route::moonshine(static function (Router $router) {
@@ -49,13 +49,13 @@ Route::moonshine(static function (Router $router) {
 // middleware: moonshine, Authenticate::class
 ```
 
-Example of retrieving a route from the resource context. 
+Example of retrieving a route from the resource context: 
 
 ```php
 $this->getRoute('permissions')
 ```
 
-Example of retrieving a route outside the resource.
+Example of retrieving a route outside the resource:
 
 ```php
 route('moonshine.permissions', ['resourceUri' => 'user-resource', 'pageUri' => 'custom-page'])

@@ -15,11 +15,12 @@
 Но в реализации для `Laravel` мы предоставляем готовый `ModelResource` для работы с моделями и соответствующие `type-casts`.
 `MoonShine` очень гибкий и вы можете создать собственный ресурс для работы с любыми источниками данных.
 
-`CrudResource` предоставляет базовую структуру для работы с данными, не привязываясь к конкретной реализации. Это позволяет:
+`CrudResource` предоставляет базовую структуру для работы с данными, не привязываясь к конкретной реализации.
+Это позволяет:
 
-- Работать с любыми источниками данных (базы данных, `API`, файлы и т.д.)
-- Создавать собственные реализации для специфических задач
-- Использовать единый интерфейс независимо от источника данных
+- Работать с любыми источниками данных (базы данных, `API`, файлы и т.д.),
+- Создавать собственные реализации для специфических задач,
+- Использовать единый интерфейс независимо от источника данных.
 
 <a name="custom-resource"></a>
 ## Создание собственного ресурса
@@ -27,10 +28,6 @@
 Для создания собственного ресурса достаточно расширить `CrudResource` и реализовать абстрактные методы:
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Resources;
 
 use MoonShine\Contracts\Core\DependencyInjection\FieldsContract;
@@ -40,27 +37,27 @@ final class RestCrudResource extends CrudResource
 {
     public function findItem(bool $orFail = false): mixed
     {
-        //
+        // ...
     }
 
     public function getItems(): mixed
     {
-        //
+        // ...
     }
 
     public function massDelete(array $ids): void
     {
-        //
+        // ...
     }
 
     public function delete(mixed $item, ?FieldsContract $fields = null): bool
     {
-        //
+        // ...
     }
 
     public function save(mixed $item, ?FieldsContract $fields = null): mixed
     {
-        //
+        // ...
     }
 }
 ```
@@ -71,10 +68,6 @@ final class RestCrudResource extends CrudResource
 Вот пример реализации ресурса для работы с `REST API`:
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Resources;
 
 use Illuminate\Http\Client\Response;
@@ -128,5 +121,5 @@ final class RestCrudResource extends CrudResource
 <a name="full-customization"></a>
 # Полная кастомизация
 
-Если вам требуется полный контроль над ресурсом, вместо наследования от `CrudResource` вы можете реализовать интерфейс `MoonShine\Contracts\Core\CrudResourceContract`. 
+Если вам требуется полный контроль над ресурсом, вместо наследования от `CrudResource`, вы можете реализовать интерфейс `MoonShine\Contracts\Core\CrudResourceContract`. 
 Это даст вам максимальную гибкость в реализации всех необходимых методов.

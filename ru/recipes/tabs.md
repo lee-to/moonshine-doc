@@ -26,10 +26,6 @@ class ArticleResource extends ModelResource
 ## Кастомизация страницы
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Pages\Article;
 
 use App\Models\Comment;
@@ -299,5 +295,5 @@ final class ArticleFormPage extends FormPage
 
 > [!WARNING]
 > При более сложной кастомизации страниц необходимо соблюдать правила:
-> 1. Не создавать формы внутри форм, это приведет к конфликтам или потребует дополнительных действий (не связано с *MoonShine*)
+> 1. Не создавать формы внутри форм, это приведет к конфликтам или потребует дополнительных действий (не связано с *MoonShine*),
 > 2. Не забывайте наполнять поля данными и приводить к нужному типу.

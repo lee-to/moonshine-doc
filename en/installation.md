@@ -66,4 +66,5 @@ After installation, the project will have the following structure:
 
 Now everything is ready to use and create your admin panel. You can access it at `/admin`.
 
-We recommend following the documentation step by step to gain a deeper understanding of the concept. The next section is **Configuration**, where you will also find answers on how to proceed if you chose the path of custom authentication implementation and user entities.
+We recommend following the documentation step by step to gain a deeper understanding of the concept.
+The next section is **Configuration**, where you will also find answers on how to proceed if you chose the path of custom authentication implementation and user entities.

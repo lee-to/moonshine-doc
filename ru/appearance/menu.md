@@ -26,8 +26,7 @@
 
 В дальнейшем, если вам потребуется, вы сможете создавать другие ***Layout*** для определенных страниц.
 
-Для того чтобы добавить пункт меню, необходимо воспользоваться классом **MoonShine\Menu\MenuItem**
-и его статическим методом `make()`.
+Для того чтобы добавить пункт меню, необходимо воспользоваться классом **MoonShine\Menu\MenuItem** и его статическим методом `make()`.
 
 ```php
 MenuItem::make(Closure|string $label, Closure|MenuFillerContract|string $filler, string $icon = null, Closure|bool $blank = false)
@@ -71,8 +70,8 @@ final class MoonShineLayout extends AppLayout
 <a name="groups"></a>
 ## Группы
 
-Пункты меню можно объединять в группы. Для этого используется класс `MoonShine\MenuManager\MenuGroup`
-со статическим методом `make()`.
+Пункты меню можно объединять в группы.
+Для этого используется класс `MoonShine\MenuManager\MenuGroup` со статическим методом `make()`.
 
 ```php
 MenuGroup::make(Closure|string $label, iterable $items, string|null $icon = null)
@@ -94,7 +93,7 @@ use MoonShine\MenuManager\MenuItem;
 final class MoonShineLayout extends AppLayout
 {
 
-    //...
+    // ...
 
     protected function menu(): array
     {
@@ -565,14 +564,14 @@ changeButton(Closure $callback)
 ```php
 namespace App\MoonShine\Layouts;
 
-use MoonShine\UI\Components\ActionButton
 use MoonShine\Laravel\Layouts\AppLayout;
 use MoonShine\MenuManager\MenuItem;
+use MoonShine\UI\Components\ActionButton
 
 final class MoonShineLayout extends AppLayout
 {
 
-    //...
+    // ...
 
     protected function menu(): array
     {
@@ -585,7 +584,8 @@ final class MoonShineLayout extends AppLayout
 ```
 
 > [!WARNING]
-> Некоторые параметры **ActionButton**, такие как `url`, `badge`, `icon` и другие, системно переопределяются. Для их изменения используйте соответствующие методы.
+> Некоторые параметры **ActionButton**, такие, как `url`, `badge`, `icon` и другие, системно переопределяются.
+> Для их изменения используйте соответствующие методы.
 
 <a name="custom-view"></a>
 ## Изменение шаблона
@@ -608,7 +608,7 @@ use MoonShine\MenuManager\MenuItem;
 final class MoonShineLayout extends AppLayout
 {
 
-    //...
+    // ...
 
     protected function menu(): array
     {

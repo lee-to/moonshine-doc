@@ -114,8 +114,6 @@ If you need to restrict access to the MoonShine admin panel based on user roles 
 Create a new `middleware`, for example, `CheckAdminRole`:
 
 ```php
-<?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -175,8 +173,6 @@ $config->authPipelines([
 Example: Phone number login confirmation:
 
 ```php
-<?php
-
 namespace App\MoonShine\AuthPipelines;
 
 use Closure;
@@ -258,10 +254,6 @@ Add the trait `MoonShine\Socialite\Traits\HasMoonShineSocialite` to the model th
 Don't forget to publish the model if you're using the default configuration:
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\Models;
 
 use MoonShine\Socialite\Traits\HasMoonShineSocialite;
@@ -361,11 +353,11 @@ And replace in the configuration file:
 ```php
 // ..
 'auth' => [
-    // ..
+    // ...
     'model' => \App\Models\MoonshineUser::class,
-    // ..
+    // ...
 ],
-// ..
+// ...
 ```
 
 We will automatically add the `TwoFactor` component to the profile page, but if you have overridden it and are using your own, then add the component yourself:

@@ -70,7 +70,8 @@ final class MoonShineLayout extends AppLayout
 <a name="groups"></a>
 ## Groups
 
-Menu items can be grouped together. For this, the class `MoonShine\MenuManager\MenuGroup` is used with the static method `make()`.
+Menu items can be grouped together.
+For this, the class `MoonShine\MenuManager\MenuGroup` is used with the static method `make()`.
 
 ```php
 MenuGroup::make(Closure|string $label, iterable $items, string|null $icon = null)
@@ -92,7 +93,7 @@ use MoonShine\MenuManager\MenuItem;
 final class MoonShineLayout extends AppLayout
 {
 
-    //...
+    // ...
 
     protected function menu(): array
     {
@@ -563,14 +564,14 @@ changeButton(Closure $callback)
 ```php
 namespace App\MoonShine\Layouts;
 
-use MoonShine\UI\Components\ActionButton;
 use MoonShine\Laravel\Layouts\AppLayout;
 use MoonShine\MenuManager\MenuItem;
+use MoonShine\UI\Components\ActionButton;
 
 final class MoonShineLayout extends AppLayout
 {
 
-    //...
+    // ...
 
     protected function menu(): array
     {
@@ -583,7 +584,8 @@ final class MoonShineLayout extends AppLayout
 ```
 
 > [!WARNING]
-> Some parameters of **ActionButton**, such as `url`, `badge`, `icon`, and others are overridden in the system. To change them, use the corresponding methods.
+> Some parameters of **ActionButton**, such as `url`, `badge`, `icon`, and others are overridden in the system.
+> To change them, use the corresponding methods.
 
 <a name="custom-view"></a>
 ## Custom view
@@ -606,7 +608,7 @@ use MoonShine\MenuManager\MenuItem;
 final class MoonShineLayout extends AppLayout
 {
 
-    //...
+    // ...
 
     protected function menu(): array
     {
