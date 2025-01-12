@@ -12,6 +12,8 @@
 - [Asynchronous Mode](#asynchronous-mode)
   - [Calling Methods](#calling-methods)
   - [Reactivity](#reactive)
+  - [Field values](#fields-values)
+  - [Selectors](#selectors)
 - [Validation](#validation)
   - [Displaying Validation Errors](#displaying-validation-errors)
   - [Pre-Cognitive Validation](#precognitive)
@@ -344,6 +346,60 @@ By default, fields inside the form are reactive, but if the form is outside the 
 
 ```php
 FormBuilder::make()->reactiveUrl(fn(FormBuilder $form) => $form->getCore()->getRouter()->getEndpoints()->reactive($page, $resource, $extra))
+```
+
+<a name="fields-values"></a>
+### Field values
+
+If you are using your own controller handler, `asyncMethod` or response handler,
+then using `MoonShineJsonResponse` you have the opportunity to replace the values of form fields using the selector:
+
+```php
+public function formAction(): MoonShineJsonResponse
+{
+  return MoonShineJsonResponse::make()->fieldsValues([
+    '.title' => 'Hello',
+  ]);    
+}
+
+protected function components(): iterable
+{
+    return [
+        FormBuilder::make()
+            ->asyncMethod('formAction')
+            ->fields([
+                Text::make('Title')->class('title'),
+            ]),
+    ];
+}
+```
+
+<a name="selectors"></a>
+### Selectors
+
+You can also replace *HTML* areas by selectors using the `asyncSelector` method:
+
+```php
+public function formAction(): MoonShineJsonResponse
+{
+  return MoonShineJsonResponse::make()->html([
+    '.some-class1' => time(),
+    '.some-class2' => time(),
+  ]);    
+}
+
+protected function components(): iterable
+{
+    return [
+        FormBuilder::make()
+            ->asyncMethod('formAction')
+            ->asyncSelector(['.some-class1','.some-class2'])
+            ->fields([
+                Div::make([])->class('some-class1'),
+                Div::make([])->class('some-class2'),
+            ]),
+    ];
+}
 ```
 
 <a name="validation"></a>

@@ -12,6 +12,8 @@
 - [Асинхронный режим](#asynchronous-mode)
   - [Вызов методов](#calling-methods)
   - [Реактивность](#reactive)
+  - [Значения полей](#fields-values)
+  - [Селекторы](#selectors)
 - [Валидация](#validation)
   - [Отображение ошибок валидации](#displaying-validation-errors)
   - [Прекогнитивная валидация](#precognitive)
@@ -349,6 +351,60 @@ public function updateSomething(MoonShineRequest $request): void
 
 ```php
 FormBuilder::make()->reactiveUrl(fn(FormBuilder $form) => $form->getCore()->getRouter()->getEndpoints()->reactive($page, $resource, $extra))
+```
+
+<a name="fields-values"></a>
+### Значения полей
+
+Если вы используете собственный controller обработчик, `asyncMethod` или обработчик ответа, 
+то с помощью `MoonShineJsonResponse` у вас есть возможность заменить значения полей формы по селектору:
+
+```php
+public function formAction(): MoonShineJsonResponse
+{
+  return MoonShineJsonResponse::make()->fieldsValues([
+    '.title' => 'Hello',
+  ]);    
+}
+
+protected function components(): iterable
+{
+    return [
+        FormBuilder::make()
+            ->asyncMethod('formAction')
+            ->fields([
+                Text::make('Title')->class('title'),
+            ]),
+    ];
+}
+```
+
+<a name="selectors"></a>
+### Селекторы
+
+Также вы можете заменить *HTML* области по селекторам через метод `asyncSelector`:
+
+```php
+public function formAction(): MoonShineJsonResponse
+{
+  return MoonShineJsonResponse::make()->html([
+    '.some-class1' => time(),
+    '.some-class2' => time(),
+  ]);    
+}
+
+protected function components(): iterable
+{
+    return [
+        FormBuilder::make()
+            ->asyncMethod('formAction')
+            ->asyncSelector(['.some-class1','.some-class2'])
+            ->fields([
+                Div::make([])->class('some-class1'),
+                Div::make([])->class('some-class2'),
+            ]),
+    ];
+}
 ```
 
 <a name="validation"></a>
