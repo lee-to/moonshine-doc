@@ -57,7 +57,7 @@ But this work can be entrusted to the admin panel `MoonShine`, which will genera
 php artisan moonshine:resource Post
 ```
 
-> [!TIP]
+> [!NOTE]
 > For more details, refer to the [Commands](/docs/{{version}}/advanced/commands#resource).
 
 <a name="basic-properties"></a>
