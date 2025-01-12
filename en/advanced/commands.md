@@ -186,14 +186,22 @@ After executing the command, a class for the component will be created in the `a
 <a name="field"></a>
 ## Field
 
-Command allows you to create a custom field:
+Command to create a custom field:
 
 ```shell
 php artisan moonshine:field
 ```
 
-When executing the command, you can specify whether the field will extend the base class or another field.
+Signature:
+```
+moonshine:field {className?} {--base-dir=} {--base-namespace=}
+```
 
+Available options:
+
+- `--base-dir=, --base-namespace=` - change the base directory and namespace of the class.
+
+When executing the command, you can specify whether the field will extend the base class or another field.
 After executing the command, a field class will be created in the `app/MoonShine/Fields` directory, and a `Blade` file will be created in the `/resources/views/admin/fields` directory.
 
 > [!NOTE]

@@ -138,7 +138,6 @@ Text::make('Name')
     ->insideLabel(),
 ```
 
-
 #### beforeLabel()
 
 Для отображения Label после поля ввода можно использовать метод `beforeLabel()`.
@@ -206,7 +205,6 @@ badge(string|Color|Closure|null $color = null)
 <span style="background-color: rgb(243 232 255 / 1); color: rgb(153 27 27 / 1); padding: 5px; border-radius: 0.375rem">red</span>
 <span style="background-color: rgb(243 244 246 / 1); color: rgb(31 41 55 / 1); padding: 5px; border-radius: 0.375rem">gray</span>
 
-
 ```php
 use MoonShine\Support\Enums\Color;
 
@@ -240,7 +238,8 @@ Text::make('Title')
 <a name="wrapper"></a>
 ### Обертка
 
-Поля при отображении в формах используют специальную обертку `wrapper` для заголовков, подсказок, ссылок и тд. Иногда может возникнуть ситуация, когда требуется отобразить поле без дополнительных элементов.
+Поля при отображении в формах используют специальную обертку `wrapper` для заголовков, подсказок, ссылок и тд.
+Иногда может возникнуть ситуация, когда требуется отобразить поле без дополнительных элементов.
 Метод `withoutWrapper()` позволяет отключить создание *wrapper*.
 
 ```php
@@ -388,12 +387,13 @@ Text::make('Name')->wrapName('options')
 
 #### virtualName
 
-Иногда необходимо хранить по одному полю ввода два значения Field. Например, по условию отображение одно из полей может становиться невидимым, но присутствовать в DOM и отправляться вместе с запросом.
+Иногда необходимо хранить по одному полю ввода два значения Field.
+Например, по условию отображение одно из полей может становиться невидимым, но присутствовать в DOM и отправляться вместе с запросом.
 
 ```php
-File::make('image') //это поле отображается в DOM на одном условии
-//...
-File::make('image') //это поле отображается в DOM на другом условии
+File::make('image') // это поле отображается в DOM на одном условии
+
+File::make('image') // это поле отображается в DOM на другом условии
 ```
 
 Для того чтобы изменить атрибут name у этих полей, используется метод `virtualName`.
@@ -562,11 +562,12 @@ Text::make('Slug')
 unless($value = null, ?callable $callback = null, ?callable $default = null)
 ```
 
-
 <a name="apply"></a>
 ### Apply
 
-У каждого поля реализован метод `apply()`, который трансформирует данные. Чтобы переопределить стандартный `apply` у поля, можно воспользоваться методом `onApply()`. Подробнее *о цикле жизни применения поля* можно прочитать в разделе [Основы > Процесс применения полей](/docs/{{version}}/fields/index#apply).
+У каждого поля реализован метод `apply()`, который трансформирует данные.
+Чтобы переопределить стандартный `apply` у поля, можно воспользоваться методом `onApply()`.
+Подробнее *о цикле жизни применения поля* можно прочитать в разделе [Основы > Процесс применения полей](/docs/{{version}}/fields/index#apply).
 
 ```php
 /**
@@ -743,9 +744,9 @@ Select::make('Links')->options([
 <a name="on-change"></a>
 ### Методы onChange
 
-C помощью методов `onChangeMethod()` и `onChangeUrl()` можно добавить логику при изменении значений полей.
+С помощью методов `onChangeMethod()` и `onChangeUrl()` можно добавить логику при изменении значений полей.
 
->Методы onChangeUrl() или onChangeMethod() присутствуют у всех полей, кроме полей отношений HasOne и HasMany
+> Методы onChangeUrl() или onChangeMethod() присутствуют у всех полей, кроме полей отношений HasOne и HasMany.
 
 #### onChangeUrl()
 
@@ -952,7 +953,7 @@ Text::make('Name')->updateInPopover('index-table-post-resource')
 ```
 
 > [!NOTE]
-> Методы `updateOnPreview`, `withUpdateRow`, `updateInPopover` формируют нужные endpoints и передают методу `setUpdateOnPreviewUrl()`, который работает с [onChangeUrl()](#onchangeurl)
+> Методы `updateOnPreview`, `withUpdateRow`, `updateInPopover` формируют нужные endpoints и передают методу `setUpdateOnPreviewUrl()`, который работает с [onChangeUrl()](#onchangeurl).
 
 <a name="assets"></a>
 ## Ассеты
@@ -989,7 +990,7 @@ protected function assets(): array
 }
 ```
 
-1. Через метод `booted()`:
+2. Через метод `booted()`:
 
 ```php
 use MoonShine\AssetManager\Css;
@@ -1008,7 +1009,8 @@ protected function booted(): void
 <a name="macroable"></a>
 ## Трейт Macroable
 
-Всем полям доступен трейт `Illuminate\Support\Traits\Macroable` c методами `mixin` и `macro`. С помощью этого трейта вы можете расширять возможности полей, добавляя в них новый функционал без использования наследования.
+Всем полям доступен трейт `Illuminate\Support\Traits\Macroable` с методами `mixin` и `macro`.
+С помощью этого трейта вы можете расширять возможности полей, добавляя в них новый функционал без использования наследования.
 
 ```php
 use MoonShine\UI\Fields\Field;
@@ -1025,7 +1027,6 @@ use MoonShine\UI\Fields\Field;
 
 Field::mixin(new MyNewMethods())
 ```
-
 
 <a name="reactive"></a>
 ## Реактивность
@@ -1137,7 +1138,8 @@ Text::make('Name')
 
 В этом примере поле "Name" будет отображаться только если значение поля "category_id" равно 1, 2 или 3.
 
-Когда на поле присутствует условие `showWhen`, то при скрытии этого поля, на его DOM элемент устанавливается значение `display:none` и удаляется атрибут name, чтобы значение этого скрытого поля не попадало в итоговый запрос. Если вы не хотите, чтобы атрибут `name` удалялся, необходимо в вашем ресурсе установить флаг `$submitShowWhen` в значение `true`.
+Когда на поле присутствует условие `showWhen`, то при скрытии этого поля, на его DOM элемент устанавливается значение `display:none` и удаляется атрибут name, чтобы значение этого скрытого поля не попадало в итоговый запрос.
+Если вы не хотите, чтобы атрибут `name` удалялся, необходимо в вашем ресурсе установить флаг `$submitShowWhen` в значение `true`.
 
 ```php
 class ArticleResource extends ModelResource
@@ -1178,11 +1180,11 @@ Text::make('Content')
 > [!NOTE]
 > Вы можете использовать любой формат даты, который может быть распознан функцией `strtotime()`.
 
-
 <a name="nested-fields"></a>
 ### Вложенные поля
 
-Методы `showWhen` и `showWhenDate` поддерживают работу с вложенными полями, например для работы с полем `Json`. Для обращения к вложенным полям используется точечная нотация.
+Методы `showWhen` и `showWhenDate` поддерживают работу с вложенными полями, например для работы с полем `Json`.
+Для обращения к вложенным полям используется точечная нотация.
 
 ```php
 Text::make('Parts')
@@ -1207,7 +1209,7 @@ Json::make('Attributes', 'attributes')->fields([
     ])
 ]),
 ```
-В данном примере весь столбец `Parts` внтури `attributes` и весь столбец `Width` внтури `attributes.[n].settings` будет отображаться только если значение поля `category_id` равно 3.
+В данном примере весь столбец `Parts` внутри `attributes` и весь столбец `Width` внутри `attributes.[n].settings` будет отображаться только если значение поля `category_id` равно 3.
 
 <a name="multiple-conditions"></a>
 ### Множественные условия
@@ -1223,7 +1225,8 @@ BelongsTo::make('Category', 'category', , resource: CategoryResource::class)
 В этом примере поле "Category" будет отображаться только если значение поля "created_at" находится в диапазоне между '2024-08-05 10:00' и '2024-08-05 19:00'.
 
 > [!NOTE]
-> При использовании нескольких условий они объединяются логическим "И" (AND). Поле будет отображаться только если выполняются все заданные условия.
+> При использовании нескольких условий они объединяются логическим "И" (AND).
+> Поле будет отображаться только если выполняются все заданные условия.
 
 <a name="supported-operators"></a>
 ### Поддерживаемые операторы
@@ -1250,3 +1253,6 @@ BelongsTo::make('Category', 'category', , resource: CategoryResource::class)
 ```shell
 php artisan moonshine:field
 ```
+
+> [!NOTE]
+> О всех поддерживаемых опциях можно узнать в разделе [Команды](/docs/{{version}}/advanced/commands#field).

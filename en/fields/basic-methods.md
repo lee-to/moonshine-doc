@@ -238,7 +238,9 @@ Text::make('Title')
 <a name="wrapper"></a>
 ### Wrapper
 
-Fields when displayed in forms use a special wrapper for headers, hints, links, etc. Sometimes there may arise a situation when it is necessary to display a field without additional elements. The `withoutWrapper()` method allows disabling the creation of a *wrapper*.
+Fields when displayed in forms use a special wrapper for headers, hints, links, etc.
+Sometimes there may arise a situation when it is necessary to display a field without additional elements.
+The `withoutWrapper()` method allows disabling the creation of a *wrapper*.
 
 ```php
 withoutWrapper(mixed $condition = null)
@@ -385,11 +387,12 @@ As a result, the name attribute will look like `<input name="options[name]>`. Th
 
 #### virtualName
 
-Sometimes it is necessary to store two values in one input field. For example, under a display condition one of the fields may become invisible but still exist in the DOM and be sent with the request.
+Sometimes it is necessary to store two values in one input field.
+For example, under a display condition one of the fields may become invisible but still exist in the DOM and be sent with the request.
 
 ```php
 File::make('image') // this is displayed in DOM under one condition
-//...
+
 File::make('image') // this is displayed in DOM under another condition
 ```
 
@@ -562,7 +565,9 @@ unless($value = null, ?callable $callback = null, ?callable $default = null)
 <a name="apply"></a>
 ### Apply
 
-Each field has an `apply()` method that transforms the data. To override the default `apply` of a field, you can use the `onApply()` method. Read more about the *lifecycle of field application* in the section [Basics > Field Application Process](/docs/{{version}}/fields/index#apply).
+Each field has an `apply()` method that transforms the data.
+To override the default `apply` of a field, you can use the `onApply()` method.
+Read more about the *lifecycle of field application* in the section [Basics > Field Application Process](/docs/{{version}}/fields/index#apply).
 
 ```php
 /**
@@ -948,7 +953,7 @@ Text::make('Name')->updateInPopover('index-table-post-resource')
 ```
 
 > [!NOTE]
-> The methods `updateOnPreview`, `withUpdateRow`, and `updateInPopover` create the necessary endpoints and pass them to the `setUpdateOnPreviewUrl()` method, which works with [onChangeUrl()](#onchangeurl)
+> The methods `updateOnPreview`, `withUpdateRow`, and `updateInPopover` create the necessary endpoints and pass them to the `setUpdateOnPreviewUrl()` method, which works with [onChangeUrl()](#onchangeurl).
 
 <a name="assets"></a>
 ## Assets
@@ -1004,7 +1009,8 @@ protected function booted(): void
 <a name="macroable"></a>
 ## Macroable Trait
 
-All fields have access to the `Illuminate\Support\Traits\Macroable` trait with the `mixin` and `macro` methods. You can use this trait to extend the functionality of fields by adding new features without the need for inheritance.
+All fields have access to the `Illuminate\Support\Traits\Macroable` trait with the `mixin` and `macro` methods.
+You can use this trait to extend the functionality of fields by adding new features without the need for inheritance.
 
 ```php
 use MoonShine\UI\Fields\Field;
@@ -1063,7 +1069,8 @@ FormBuilder::make()
     ])
 ```
 
-In this example, the slug field is created based on the title. The slug will be generated during the input process.
+In this example, the slug field is created based on the title.
+The slug will be generated during the input process.
 
 > [!WARNING]
 > A reactive field can change the state of other fields but does not change its own state!
@@ -1131,7 +1138,8 @@ Text::make('Name')
 
 In this example, the field "Name" will only be displayed if the value of the field "category_id" is equal to 1, 2, or 3.
 
-When the showWhen condition is present on a field, hiding this field sets its DOM element to display:none and removes the name attribute so that the value of this hidden field does not end up in the final request. If you do not want the name attribute to be removed, you need to set the $submitShowWhen flag to true in your resource.
+When the showWhen condition is present on a field, hiding this field sets its DOM element to display:none and removes the name attribute so that the value of this hidden field does not end up in the final request.
+If you do not want the name attribute to be removed, you need to set the $submitShowWhen flag to true in your resource.
 
 ```php
 class ArticleResource extends ModelResource
@@ -1175,7 +1183,8 @@ In this example, the field "Content" will only be displayed if the value of the 
 <a name="nested-fields"></a>
 ### Nested Fields
 
-The `showWhen` and `showWhenDate` methods support working with nested fields, such as working with the `Json` field. Point notation is used to access nested fields.
+The `showWhen` and `showWhenDate` methods support working with nested fields, such as working with the `Json` field.
+Point notation is used to access nested fields.
 
 ```php
 Text::make('Parts')
@@ -1216,7 +1225,8 @@ BelongsTo::make('Category', 'category', resource: CategoryResource::class)
 In this example, the field "Category" will only be displayed if the value of the field "created_at" is within the range between '2024-08-05 10:00' and '2024-08-05 19:00'.
 
 > [!NOTE]
-> When using multiple conditions, they are combined logically with "AND". The field will be displayed only if all specified conditions are fulfilled.
+> When using multiple conditions, they are combined logically with "AND".
+> The field will be displayed only if all specified conditions are fulfilled.
 
 <a name="supported-operators"></a>
 ### Supported Operators
@@ -1243,3 +1253,6 @@ To do this, use the command:
 ```shell
 php artisan moonshine:field
 ```
+
+> [!NOTE]
+> You can learn about all supported options in the section [Commands](/docs/{{version}}/advanced/commands#field).
