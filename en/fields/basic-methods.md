@@ -621,6 +621,9 @@ First, create the `apply` class:
 php artisan moonshine:apply FileModelApply
 ```
 
+> [!NOTE]
+> You can learn about all supported options in the section [Commands](/docs/{{version}}/advanced/commands#apply).
+
 ```php
 use MoonShine\Contracts\UI\ApplyContract;
 use MoonShine\Contracts\UI\FieldContract;

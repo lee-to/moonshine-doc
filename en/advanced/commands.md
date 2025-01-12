@@ -324,10 +324,23 @@ Available types:
 <a name="apply"></a>
 ## Apply
 
-Command for creating an apply class:
+Command to create an apply class:
 
 ```shell
 php artisan moonshine:apply
 ```
 
-After executing the command, a file will be created in the `app/MoonShine/Applies` directory. The created class needs to be registered in the service provider.
+Signature:
+```
+moonshine:apply {className?} {--base-dir=} {--base-namespace=}
+```
+
+Available options:
+
+- `--base-dir=, --base-namespace=` - change the base directory and namespace of the class.
+
+After executing the command, a file will be created in the `app/MoonShine/Applies` directory.
+The created class needs to be registered in the service provider.
+
+> [!NOTE]
+> For more details, refer to the [Fields](/docs/{{version}}/fields/basic-methods#apply) section.

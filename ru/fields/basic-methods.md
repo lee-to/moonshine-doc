@@ -621,6 +621,9 @@ function onAfterApply(Closure $onBeforeApply)
 php artisan moonshine:apply FileModelApply
 ```
 
+> [!NOTE]
+> О всех поддерживаемых опциях можно узнать в разделе [Команды](/docs/{{version}}/advanced/commands#apply).
+
 ```php
 use MoonShine\Contracts\UI\ApplyContract;
 use MoonShine\Contracts\UI\FieldContract;

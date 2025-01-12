@@ -330,4 +330,17 @@ php artisan moonshine:publish assets
 php artisan moonshine:apply
 ```
 
-После выполнения команды в директории `app/MoonShine/Applies` будет создан файл. Созданный класс необходимо зарегистрировать в сервис-провайдере.
+Сигнатура:
+```
+moonshine:apply {className?} {--base-dir=} {--base-namespace=}
+```
+
+Доступные опции:
+
+- `--base-dir=, --base-namespace=` - изменить базовую директорию и неймспейс класса.
+
+После выполнения команды в директории `app/MoonShine/Applies` будет создан файл.
+Созданный класс необходимо зарегистрировать в сервис-провайдере.
+
+> [!NOTE]
+> Для более подробной информации обратитесь к разделу [Поля](/docs/{{version}}/fields/basic-methods#apply).
