@@ -257,7 +257,7 @@ After executing the command, a handler class will be created in the `app/MoonShi
 <a name="policy"></a>
 ## Policy
 
-Command creates a `Policy` tied to the admin panel user:
+Command to create a `Policy` class tied to the admin panel user:
 
 ```shell
 php artisan moonshine:policy

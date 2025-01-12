@@ -257,7 +257,7 @@ moonshine:handler {className?} {--base-dir=} {--base-namespace=}
 <a name="policy"></a>
 ## Политика
 
-Команда создает `Policy`, привязанную к пользователю админ-панели:
+Команда для создания класса `Policy`, привязанного к пользователю админ-панели:
 
 ```shell
 php artisan moonshine:policy
