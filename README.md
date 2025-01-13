@@ -96,6 +96,8 @@ ___
 > [!WARNING]
 > Все предложения должны заканчиваться точкой.
 
+Желательно построчно синхронизировать тексты в **ru** и **en** версиях разделов.
+
 <a name="code"></a>
 ## Пример кода
 
@@ -115,8 +117,8 @@ Text::make('Title')
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"} 
 // [tl! collapse:start] 
-use MoonShine\UI\Fields\Text; 
-// [tl! collapse:end]
+use MoonShine\UI\Fields\Text; // [tl! collapse:end]
+
 Text::make('Title')
 ```
 
