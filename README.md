@@ -49,7 +49,7 @@ ___
 <a name="subtitle"></a>
 ## Заголовок подраздела
 
-Заголовки подразделов указываются с ссылкой, для удобного копирования ссылки на конкретный раздел документации.
+Заголовки подразделов указываются со ссылкой, для удобного копирования ссылки на конкретный раздел документации.
 
 ```html
 ## Subtitle
@@ -107,16 +107,16 @@ ___
 - для всех классов, используемых в примерах, необходимо указать use в алфавитном порядке и обернуть их в collapse.
 
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:1] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\UI\Fields\Text;
 
 Text::make('Title')
 ```
 или
 ```php
-// torchlight! {"summaryCollapsedIndicator": "namespaces"} 
-// [tl! collapse:start] 
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
 use MoonShine\UI\Fields\Text; // [tl! collapse:end]
 
 Text::make('Title')
@@ -168,7 +168,7 @@ Content tab 2
 <a name="images"></a>
 ## Изображения
 
-Изображения добавляем в директорию `/resources/screenshots`
+Изображения добавляем в директорию `/resources/screenshots`.
 
 Ссылку указываем - https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/filename.png
 

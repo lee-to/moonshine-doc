@@ -160,7 +160,8 @@ $assetManager->modifyAssets(function($assets) {
 <a name="versioning"></a>
 ## Versioning
 
-***AssetManager*** supports versioning of assets to manage caching, by default it will use the version of *MoonShine*, but you can override it for a specific asset:
+***AssetManager*** supports versioning of assets to manage caching,
+by default it will use the version of *MoonShine*, but you can override it for a specific asset:
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"} 

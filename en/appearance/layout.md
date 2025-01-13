@@ -36,6 +36,8 @@ You can:
 An example of a possible template for your application:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
 namespace App\MoonShine\Layouts;
 
 use App\MoonShine\Resources\PackageCategoryResource;
@@ -67,7 +69,7 @@ use MoonShine\UI\Components\{Breadcrumbs,
     Layout\Sidebar,
     Layout\ThemeSwitcher,
     Layout\Wrapper,
-    When};
+    When}; // [tl! collapse:end]
 
 final class MoonShineLayout extends CompactLayout
 {
@@ -182,6 +184,8 @@ Find the complete list of components in the [Components](/docs/{{version}}/compo
 > As you may notice, there are a huge number of components, and for convenience, we have grouped them together so that you can conveniently override only the groups required.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Laravel\Layouts\CompactLayout;
 
 final class MoonShineLayout extends CompactLayout
@@ -283,6 +287,8 @@ But you can change it to your custom template by simply replacing the value of t
 Read more about pages in the [Page](/docs/{{version}}/page/index) section.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use App\MoonShine\Layouts\MyLayout;
 use MoonShine\Laravel\Pages\Page;
 
@@ -300,6 +306,8 @@ class CustomPage extends Page
 Each template can have its own set of styles and scripts defined through the `assets()` method:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Layouts\AppLayout;
 use MoonShine\AssetManager\Css;
 
@@ -329,6 +337,8 @@ final class MyLayout extends AppLayout
 You can replace the set of favicons in a template by overriding the `getFaviconComponent()` method:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Laravel\Layouts\AppLayout;
 
 final class MyLayout extends AppLayout
@@ -354,13 +364,15 @@ final class MyLayout extends AppLayout
 For each template, you can declare a list of menu items via the `menu()` method, which will be automatically passed to the `Menu` component.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Layouts\AppLayout;
 use MoonShine\MenuManager\MenuItem;
 
 final class MyLayout extends AppLayout
 {
     // ...
-    
+
     protected function menu(): array
     {
         return [
@@ -368,8 +380,6 @@ final class MyLayout extends AppLayout
             MenuItem::make('Articles', ArticleResource::class),
         ];
     }
-    
-    // ...
 }
 ```
 
@@ -386,6 +396,8 @@ By default, `MoonShine` has a top menu component that can be used instead of `Si
 Let’s see how to replace `Sidebar` with `TopBar` in `Layout`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Laravel\Layouts\CompactLayout;
 
 final class MoonShineLayout extends CompactLayout
@@ -432,9 +444,11 @@ final class MoonShineLayout extends CompactLayout
 <a name="colors"></a>
 ## Colors
 
-Each template can have its own color scheme defined in the `colors` method:
+Each template can have its own color scheme defined in the `colors` method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Layouts\AppLayout;
 use MoonShine\Contracts\ColorManager\ColorManagerContract;
 
@@ -492,8 +506,6 @@ final class MyLayout extends AppLayout
             ->infoBg('38, 93, 205', dark: true)
             ->infoText('179, 220, 255', dark: true);
     }
-
-    // ...
 }
 ```
 
