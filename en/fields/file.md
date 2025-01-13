@@ -221,7 +221,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
 File::make('File', 'file')
-    ->customName(fn(UploadedFile $file, Field $field) =>  Str::random(10) . '.' . $file->extension())
+    ->customName(fn(UploadedFile $file, FileModelApply $field) =>  Str::random(10) . '.' . $file->extension())
 ```
 
 <a name="names"></a>
