@@ -13,10 +13,10 @@
 
 `MoonShine` is an open-source package for projects on `Laravel` (license `MIT`), designed for accelerated development of web projects. It is perfect for creating:
 
-- Admin panels
-- `MVP` (minimum viable products)
-- Backoffice applications
-- Content management systems (`CMS`)
+- Admin panels,
+- `MVP` (minimum viable products),
+- Backoffice applications,
+- Content management systems (`CMS`).
 
 `MoonShine` provides developers with tools for quickly creating functional and user-friendly administrative interfaces, working as a "framework on framework" and extending the capabilities of `Laravel`.
 
@@ -25,11 +25,11 @@
 
 `MoonShine` has a number of key features:
 
-- **Flexibility**: No strict binding to models; any data sources can be used.
-- **Interface builder**: Convenient tools for creating forms and tables.
-- **Modern technologies**: Use of `AlpineJs` for lightweight and simple frontend functionality.
-- **Familiar tools**: `TailwindCSS` and `Blade`, familiar to most `Laravel` developers.
-- **Extensibility**: Ability to use `Blade` and `Livewire` components.
+- **Flexibility**: No strict binding to models; any data sources can be used,
+- **Interface builder**: Convenient tools for creating forms and tables,
+- **Modern technologies**: Use of `AlpineJs` for lightweight and simple frontend functionality,
+- **Familiar tools**: `TailwindCSS` and `Blade`, familiar to most `Laravel` developers,
+- **Extensibility**: Ability to use `Blade` and `Livewire` components,
 - **Customization**: Convenient template builder, possibility to change colors and overall design.
 
 <a name="who-is-it-for"></a>

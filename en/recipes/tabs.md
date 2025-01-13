@@ -26,10 +26,6 @@ class ArticleResource extends ModelResource
 ## Page customization
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Pages\Article;
 
 use App\Models\Comment;
@@ -299,5 +295,5 @@ You can also display your own tables and forms
 
 > [!WARNING]
 > For more complex page customization, you must follow the following rules:
-> 1. Do not create forms within forms, this will lead to conflicts or require additional actions (not related to *MoonShine*)
+> 1. Do not create forms within forms, this will lead to conflicts or require additional actions (not related to *MoonShine*),
 > 2. Don’t forget to fill the fields with data and convert them to the required type.

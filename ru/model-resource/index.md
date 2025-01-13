@@ -57,7 +57,7 @@ Route::resource('resources', Controller::class);
 php artisan moonshine:resource Post
 ```
 
-> [!TIP]
+> [!NOTE]
 > Для более подробной информации обратитесь к разделу [Команды](/docs/{{version}}/advanced/commands#resource).
 
 <a name="basic-properties"></a>

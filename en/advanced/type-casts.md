@@ -14,7 +14,8 @@ interface DataCasterContract
 }
 ```
 
-You also need to implement the `DataWrapperContract` interface. This abstraction helps to determine what exactly is the key of the object and how to convert it to an array.
+You also need to implement the `DataWrapperContract` interface.
+This abstraction helps to determine what exactly is the key of the object and how to convert it to an array.
 
 ```php
 interface DataWrapperContract

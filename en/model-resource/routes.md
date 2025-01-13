@@ -74,7 +74,6 @@ The model resource has a method `getActivePage()` that allows you to get the cur
 ```php
 $resource->getActivePage() // ?PageContract
 
-//
 if($resource->getActivePage() instanceof IndexPage)
 
 if($resource->getActivePage() instanceof FormPage)

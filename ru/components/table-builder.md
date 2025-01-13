@@ -476,6 +476,7 @@ TableBuilder::make()
 ```php
 ->pushState()
 ```
+
 <a name="modify-row-checkbox"></a>
 ### Модификация чекбокса массовых действий
 
@@ -560,10 +561,6 @@ TableBuilder::make()->name('my-table')->async(route('undefined-page.component', 
 `Controller`
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Controllers;
 
 use Illuminate\Contracts\View\View;
@@ -673,7 +670,7 @@ TableBuilder::make()
 В этом примере мы привели данные к формату модели `User` с использованием `ModelCaster`.
 
 > [!NOTE]
-> За более подробной информацией обратитесь к разделу [TypeCasts](/docs/{{version}}/advanced/type-casts)
+> За более подробной информацией обратитесь к разделу [TypeCasts](/docs/{{version}}/advanced/type-casts).
 
 <a name="blade"></a>
 ## Использование в blade

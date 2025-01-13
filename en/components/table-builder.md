@@ -87,7 +87,9 @@ TableBuilder::make()
 <a name="fields"></a>
 ### Fields
 
-Fields for `TableBuilder` simplify the filling of data and displaying table cells. By default, fields are displayed in `preview` mode. The `fields` method defines the table fields, each field is a table cell (`td`):
+Fields for `TableBuilder` simplify the filling of data and displaying table cells.
+By default, fields are displayed in `preview` mode.
+The `fields` method defines the table fields, each field is a table cell (`td`):
 
 ```php
 ->fields([
@@ -229,7 +231,8 @@ The `preview()` method disables the display of buttons and sorting for the table
 <a name="not-found"></a>
 ### With "Not Found" Notification
 
-By default, if the table has no data, it will be empty, but you can display a message saying "No records found yet." To do this, use the `withNotFound` method:
+By default, if the table has no data, it will be empty, but you can display a message saying "No records found yet."
+To do this, use the `withNotFound` method:
 
 ```php
 TableBuilder::make()
@@ -239,7 +242,8 @@ TableBuilder::make()
 <a name="rows"></a>
 ### Row Customization
 
-Fields accelerate the process and fill the table independently, constructing the table header with field headers and sorts, the body of the table with data output through fields, and the footer of the table with bulk actions. However, sometimes there may be a need to specify rows manually or add additional ones. For this task, methods are provided for the corresponding sections of the table: `headRows` (`thead`), `rows` (`tbody`), `footRows` (`tfoot`).
+Fields accelerate the process and fill the table independently, constructing the table header with field headers and sorts, the body of the table with data output through fields, and the footer of the table with bulk actions. However, sometimes there may be a need to specify rows manually or add additional ones.
+For this task, methods are provided for the corresponding sections of the table: `headRows` (`thead`), `rows` (`tbody`), `footRows` (`tfoot`).
 
 ```php
 // tbody
@@ -378,7 +382,9 @@ TableBuilder::make()
 <a name="reindexing"></a>
 ### Reindexing
 
-The `reindex()` method allows reindexing the table elements, adding an index to all `name` attributes of form elements. Example: The field `Text::make('Title', 'title')` in the first row of the table will look like `<input name="title[1]">`. In `creatable` or `removable` mode, when adding/removing a new row, all `name` attributes will be reindexed considering the ordinal number.
+The `reindex()` method allows reindexing the table elements, adding an index to all `name` attributes of form elements.
+Example: The field `Text::make('Title', 'title')` in the first row of the table will look like `<input name="title[1]">`.
+In `creatable` or `removable` mode, when adding/removing a new row, all `name` attributes will be reindexed considering the ordinal number.
 
 ```php
 ->reindex()
@@ -428,7 +434,8 @@ TableBuilder::make()
 ```
 
 > [!WARNING]
-> When using `columnSelection`, the `name` parameter of the `TableBuilder` component must be unique across all pages. This is because data is stored in `localStorage` based on the value of the component's `name`.
+> When using `columnSelection`, the `name` parameter of the `TableBuilder` component must be unique across all pages.
+> This is because data is stored in `localStorage` based on the value of the component's `name`.
 
 <a name="search"></a>
 ### Search
@@ -442,7 +449,8 @@ The `searchable()` method adds the search function for the table:
 <a name="click-action"></a>
 ### Click Action
 
-The `clickAction()` method sets an action to be performed on clicking the row: In the example below, clicking the table row will trigger a click on the edit button.
+The `clickAction()` method sets an action to be performed on clicking the row:
+In the example below, clicking the table row will trigger a click on the edit button.
 
 ```php
 ->clickAction(ClickAction::EDIT)
@@ -472,7 +480,8 @@ The `pushState()` method saves the state of the table in the URL:
 <a name="modify-row-checkbox"></a>
 ### Modify Row Checkbox
 
-The `modifyRowCheckbox()` method allows modifying the bulk action checkbox. The example below demonstrates selecting the active checkbox by default:
+The `modifyRowCheckbox()` method allows modifying the bulk action checkbox.
+The example below demonstrates selecting the active checkbox by default:
 
 ```php
 ->modifyRowCheckbox(
@@ -539,7 +548,8 @@ Event list for TableBuilder:
 
 All parameters of the `async` method are optional, and by default, `TableBuilder` will automatically set URL based on the current page.
 
-In the process of using *TableBuilder* in `async` mode, there may arise a task where you use it outside the admin panel on pages that are not declared in the MoonShine system. Then you will need to specify your own URL and implement a response with the HTML table. Let's consider an implementation example:
+In the process of using *TableBuilder* in `async` mode, there may arise a task where you use it outside the admin panel on pages that are not declared in the MoonShine system.
+Then you will need to specify your own URL and implement a response with the HTML table. Let's consider an implementation example:
 
 ```php
 TableBuilder::make()->name('my-table')->async(route('undefined-page.component', [
@@ -551,10 +561,6 @@ TableBuilder::make()->name('my-table')->async(route('undefined-page.component', 
 `Controller`
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Controllers;
 
 use Illuminate\Contracts\View\View;
@@ -579,7 +585,8 @@ final class UndefinedPageController extends MoonShineController
 <a name="lazy"></a>
 ### Lazy and whenAsync Methods
 
-If you need to send a request to update the `TableBuilder` component immediately upon page load, you must add the `lazy()` method. Additionally, the `lazy()` and `whenAsync()` methods in combination can solve the problem of lazy loading data or loading data from an external source.
+If you need to send a request to update the `TableBuilder` component immediately upon page load, you must add the `lazy()` method.
+Additionally, the `lazy()` and `whenAsync()` methods in combination can solve the problem of lazy loading data or loading data from an external source.
 
 ```php
 TableBuilder::make()
@@ -599,7 +606,8 @@ TableBuilder::make()
     ),
 ```
 
-The `whenAsync()` method checks if the current request is asynchronous to get the current `TableBuilder` component. An example interaction with the methods where the loading of the table occurs by clicking a button:
+The `whenAsync()` method checks if the current request is asynchronous to get the current `TableBuilder` component.
+An example interaction with the methods where the loading of the table occurs by clicking a button:
 
 ```php
 ActionButton::make('Reload')
@@ -627,7 +635,8 @@ TableBuilder::make()
 ## Type Cast
 
 > [!WARNING]
-> If you use data in the table without `cast`, you must specify what your data has as a key. Otherwise, some features, such as bulk operations, will not work.
+> If you use data in the table without `cast`, you must specify what your data has as a key.
+> Otherwise, some features, such as bulk operations, will not work.
 
 Example:
 
@@ -648,7 +657,8 @@ TableBuilder::make()
   ]),
 ```
 
-The `cast` method is used to cast values in the table to a certain type. Since by default, fields work with primitive types:
+The `cast` method is used to cast values in the table to a certain type.
+Since by default, fields work with primitive types:
 
 ```php
 use MoonShine\Laravel\TypeCasts\ModelCaster;

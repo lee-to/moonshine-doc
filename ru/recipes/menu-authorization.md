@@ -7,8 +7,8 @@
 // [tl! collapse:start] 
 use Illuminate\Support\Facades\Gate;
 use MoonShine\Laravel\Enums\Ability;
-use MoonShine\MenuManager\MenuItem; 
-// [tl! collapse:end]
+use MoonShine\MenuManager\MenuItem; // [tl! collapse:end]
+
 protected function menu(): array
 {
   return [

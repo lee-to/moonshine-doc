@@ -26,7 +26,8 @@
 <a name="introduction"></a>
 ## Introduction
 
-`MoonShine` provides flexible options for configuring your application. In this section, we will examine two main ways of configuration and the primary settings.
+`MoonShine` provides flexible options for configuring your application.
+In this section, we will examine two main ways of configuration and the primary settings.
 
 <a name="configuration-methods"></a>
 ## Configuration Methods
@@ -67,7 +68,8 @@ return [
 
 #### Partial Configuration
 
-Alternatively, you can leave only those parameters in the `moonshine.php` file that differ from the default values. This makes the configuration cleaner and easier to understand. 
+Alternatively, you can leave only those parameters in the `moonshine.php` file that differ from the default values.
+This makes the configuration cleaner and easier to understand. 
 Example of optimized content for the `moonshine.php` file:
 
 ```php
@@ -215,7 +217,7 @@ $config
 <a name="middleware"></a>
 ### Middleware
 
-You can override or append to the list of `middleware` in the system
+You can override or append to the list of `middleware` in the system.
 
 ~~~tabs
 tab: config/moonshine.php
@@ -370,7 +372,8 @@ $config->authPipelines([TwoFactor::class]);
 
 #### User Fields
 
-If you have simply replaced the model with your own `auth.model`, you will likely encounter a naming mismatch of fields. To configure the correspondence, use the `userField` setting:
+If you have simply replaced the model with your own `auth.model`, you will likely encounter a naming mismatch of fields.
+To configure the correspondence, use the `userField` setting:
 
 ~~~tabs
 tab: config/moonshine.php
@@ -665,12 +668,13 @@ class MoonShineServiceProvider extends ServiceProvider
             })
         ;
 
-        // ..
+        // ...
     }
 }
 ```
 
-This complete list of parameters and methods allows you to configure almost every aspect of `MoonShine` operations. Choose the options that best meet your project requirements.
+This complete list of parameters and methods allows you to configure almost every aspect of `MoonShine` operations.
+Choose the options that best meet your project requirements.
 
 <a name="choosing-configuration-method"></a>
 ## Choosing Configuration Method
@@ -680,15 +684,16 @@ When choosing a configuration method, it's important to consider the following:
 1. **Priority**: Configuration via `MoonShineServiceProvider` takes precedence over settings in the `moonshine.php` file.
 
 2. **Flexibility**:
-   - Full configuration via `moonshine.php` provides a clear overview of all settings.
-   - Partial configuration via `moonshine.php` makes it easy to see what parameters have been changed.
+   - Full configuration via `moonshine.php` provides a clear overview of all settings,
+   - Partial configuration via `moonshine.php` makes it easy to see what parameters have been changed,
    - Configuration via `MoonShineServiceProvider` offers maximum flexibility and the ability to use logic during setup.
 
 3. **Ease of Maintenance**:
-   - Using the `moonshine.php` file may be easier for quick changes and understanding the overall structure of settings.
+   - Using the `moonshine.php` file may be easier for quick changes and understanding the overall structure of settings,
    - `MoonShineServiceProvider` allows centralized management of settings in one place in the code.
 
 4. **Integration with Code**:
    - Configuration via `MoonShineServiceProvider` integrates better with the rest of the application code and allows the use of Laravel dependencies and services.
 
-Choose the method that best fits your development style and project requirements. You can also combine these approaches, for example, using the `moonshine.php` file for basic settings and the `MoonShineServiceProvider` for more complex configurations.
+Choose the method that best fits your development style and project requirements.
+You can also combine these approaches, for example, using the `moonshine.php` file for basic settings and the `MoonShineServiceProvider` for more complex configurations.

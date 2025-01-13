@@ -39,15 +39,10 @@ php artisan moonshine:page
 По умолчанию он располагается в директории `app/MoonShine/Pages`.
 
 > [!NOTE]
+> О всех поддерживаемых опциях можно узнать в разделе [Команды](/docs/{{version}}/advanced/commands#page).
+
+> [!NOTE]
 > Страницы при выполнении команды автоматически регистрируются в системе, но если вы создаете страницу вручную, то её необходимо самостоятельно зарегистрировать в `MoonShineServiceProvider` в методе `$core->pages()`
-
-Также можно указать имя класса и директорию его расположения в команде.
-
-```php
-php artisan moonshine:page OrderStatistics --dir=Pages/Statistics
-```
-
-Файл `OrderStatistics` будет создан в директории `app/MoonShine/Pages/Statistics`.
 
 <a name="title"></a>
 ## Заголовок
@@ -136,7 +131,7 @@ class CustomPage extends Page
 За генерацию хлебных крошек отвечает метод `getBreadcrumbs()`.
 
 ```php
-use MoonShine\Pages\Page;
+use MoonShine\Laravel\Pages\Page;
 
 class CustomPage extends Page
 {

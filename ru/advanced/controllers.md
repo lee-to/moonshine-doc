@@ -10,14 +10,14 @@
 
 ---
 
-`MoonShine` позволяет работать привычным образом, используя контроллеры
+`MoonShine` позволяет работать привычным образом, используя контроллеры.
 
-Мы предоставляем вам наш базовый контроллер, который помогает удобно работать с `UI` и отображать ваши представления с макетом `MoonShine`
+Мы предоставляем вам наш базовый контроллер, который помогает удобно работать с `UI` и отображать ваши представления с макетом `MoonShine`.
 
-Это полезно для отображения ваших сложных решений или написания дополнительных обработчиков
+Это полезно для отображения ваших сложных решений или написания дополнительных обработчиков.
 
 > [!NOTE]
-> Наследовать `MoonshineController` не является обязательным, мы всего лишь предоставляем удобные готовые методы
+> Наследовать `MoonshineController` не является обязательным, мы всего лишь предоставляем удобные готовые методы.
 
 <a name="generate-controller"></a>
 ## Генерация контроллера
@@ -26,20 +26,26 @@
 php artisan moonshine:controller
 ```
 
+> [!NOTE]
+> О всех поддерживаемых опциях можно узнать в разделе [Команды](/docs/{{version}}/advanced/commands#controller).
+
 <a name="show-blade-view"></a>
 ## Отображение blade-представления
 
 ```php
 namespace App\MoonShine\Controllers;
 
-use MoonShine\Laravel\Http\Controllers\MoonShineController;
 use MoonShine\Contracts\Core\PageContract;
+use MoonShine\Laravel\Http\Controllers\MoonShineController;
 
 final class CustomViewController extends MoonShineController
 {
     public function __invoke(): PageContract
     {
-        return $this->view('path_to_blade', ['param' => 'value']);
+        return $this->view(
+            'path_to_blade',
+            ['param' => 'value']
+        );
     }
 }
 ```
@@ -50,8 +56,8 @@ final class CustomViewController extends MoonShineController
 ```php
 namespace App\MoonShine\Controllers;
 
-use MoonShine\Laravel\Http\Controllers\MoonShineController;
 use App\MoonShine\Pages\MyPage;
+use MoonShine\Laravel\Http\Controllers\MoonShineController;
 
 final class CustomViewController extends MoonShineController
 {
@@ -89,7 +95,7 @@ final class CustomViewController extends MoonShineController
 ```php
 namespace App\MoonShine\Controllers;
 
-use MoonShine\Laravel\Http\Controllers\**MoonShineController**;
+use MoonShine\Laravel\Http\Controllers\MoonShineController;
 use Symfony\Component\HttpFoundation\Response;
 
 final class CustomViewController extends MoonShineController

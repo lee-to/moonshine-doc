@@ -114,8 +114,6 @@ $config->changePage(\MoonShine\Laravel\Pages\ProfilePage::class, \App\MoonShine\
 Создайте новый `middleware`, например, `CheckAdminRole`:
 
 ```php
-<?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -175,8 +173,6 @@ $config->authPipelines([
 Пример: Подтверждение входа по номеру телефона:
 
 ```php
-<?php
-
 namespace App\MoonShine\AuthPipelines;
 
 use Closure;
@@ -258,10 +254,6 @@ return [
 Не забудьте опубликовать модель, если используете конфигурацию по умолчанию:
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\Models;
 
 use MoonShine\Socialite\Traits\HasMoonShineSocialite;
@@ -361,11 +353,11 @@ final class MoonshineUser extends \MoonShine\Laravel\Models\MoonshineUser
 ```php
 // ..
 'auth' => [
-    // ..
+    // ...
     'model' => \App\Models\MoonshineUser::class,
-    // ..
+    // ...
 ],
-// ..
+// ...
 ```
 
 Мы автоматически добавим компонент `TwoFactor` на страницу профиля, но если вы её переопределили и используете собственную, то добавьте компонент самостоятельно:
@@ -388,4 +380,4 @@ protected function components(): iterable
 
 `MoonShine` также предоставляет простой способ переключить панель администратора в режим `API` и взаимодействовать через токены.
 
-Подробнее читайте в разделе [API](/docs/{{version}}/frontend/api)
+Подробнее читайте в разделе [API](/docs/{{version}}/frontend/api).

@@ -13,7 +13,8 @@
 <a name="description"></a>
 ## Описание
 
-Практически всё в *MoonShine* это компоненты. Сами *MoonShineComponent* являются *blade* компонентами и содержат дополнительные удобные методы для взаимодействия в административной панели.
+Практически всё в *MoonShine* это компоненты.
+Сами *MoonShineComponent* являются *blade* компонентами и содержат дополнительные удобные методы для взаимодействия в административной панели.
 
 <a name="conditional-methods"></a>
 ## Условные методы
@@ -104,7 +105,7 @@ protected function assets(): array
 }
 ```
 
-1. Через метод `booted()`:
+2. Через метод `booted()`:
 
 ```php
 protected function booted(): void
@@ -120,7 +121,8 @@ protected function booted(): void
 <a name="macroable"></a>
 ## Трейт Macroable
 
-Всем компонентам доступен трейт `Illuminate\Support\Traits\Macroable` с методами `mixin` и `macro`. С помощью этого трейта вы можете расширять возможности компонентов, добавляя в них новый функционал без использования наследования.
+Всем компонентам доступен трейт `Illuminate\Support\Traits\Macroable` с методами `mixin` и `macro`.
+С помощью этого трейта вы можете расширять возможности компонентов, добавляя в них новый функционал без использования наследования.
 
 ```php
 MoonShineComponent::macro('myMethod', fn() => /*реализация*/)
@@ -147,3 +149,6 @@ Box::mixin(new MyNewMethods())
 ```shell
 php artisan moonshine:component
 ```
+
+> [!NOTE]
+> О всех поддерживаемых опциях можно узнать в разделе [Команды](/docs/{{version}}/advanced/commands#component).

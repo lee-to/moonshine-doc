@@ -53,7 +53,8 @@ public function di(MoonShineNotificationContract $notification)
 <a name="settings"></a>
 ## Settings
 
-During the installation of `MoonShine`, you have the option to choose whether you want to use notifications and `Database Notification`. Additionally, you can change these settings later through the configuration:
+During the installation of `MoonShine`, you have the option to choose whether you want to use notifications and `Database Notification`.
+Additionally, you can change these settings later through the configuration:
 
 ~~~tabs
 tab: config/moonshine.php
@@ -73,7 +74,7 @@ $config
 <a name="component"></a>
 ## Component
 
-The component `MoonShine\Laravel\Components\Layout\Notifications` is used to display notifications, which you can replace with your own through [Layout](/docs/{{version}}/appearance/layout)
+The component `MoonShine\Laravel\Components\Layout\Notifications` is used to display notifications, which you can replace with your own through [Layout](/docs/{{version}}/appearance/layout).
 
 <a name="custom"></a>
 ## Custom Notifications
@@ -84,7 +85,7 @@ The component `MoonShine\Laravel\Components\Layout\Notifications` is used to dis
 - `MoonShine\Laravel\Contracts\Notifications\NotificationItemContract`
 - `MoonShine\Laravel\Contracts\Notifications\NotificationButtonContract` (optional)
 
-Then, in the ServiceProvider, replace the implementation with your own
+Then, in the ServiceProvider, replace the implementation with your own:
 
 ```php
 public function boot(): void

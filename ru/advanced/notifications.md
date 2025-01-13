@@ -53,7 +53,8 @@ public function di(MoonShineNotificationContract $notification)
 <a name="settings"></a>
 ## Настройка
 
-Во время установки `MoonShine` у вас есть возможность выбрать, хотите ли вы использовать уведомления и `Database Notification`. Кроме того, вы можете изменить эти настройки позже через конфигурацию:
+Во время установки `MoonShine` у вас есть возможность выбрать, хотите ли вы использовать уведомления и `Database Notification`.
+Кроме того, вы можете изменить эти настройки позже через конфигурацию:
 
 ~~~tabs
 tab: config/moonshine.php
@@ -73,8 +74,7 @@ $config
 <a name="component"></a>
 ## Компонент
 
-Для вывода уведомлений используется компонент `MoonShine\Laravel\Components\Layout\Notifications`,
-который вы можете заменить на свой через [Layout](/docs/{{version}}/appearance/layout)
+Для вывода уведомлений используется компонент `MoonShine\Laravel\Components\Layout\Notifications`, который вы можете заменить на свой через [Layout](/docs/{{version}}/appearance/layout).
 
 <a name="custom"></a>
 ## Кастомные уведомления
@@ -85,7 +85,7 @@ $config
 - `MoonShine\Laravel\Contracts\Notifications\NotificationItemContract`
 - `MoonShine\Laravel\Contracts\Notifications\NotificationButtonContract`(опционально)
 
-После в ServiceProvider заменить реализацию на собственную
+После в ServiceProvider заменить реализацию на собственную:
 
 ```php
 public function boot(): void
@@ -101,4 +101,4 @@ public function boot(): void
 ## WebSocket
 
 > [!TIP]
-> Готовая реализация уведомлений через WebSocket реализована в пакете [Rush](/plugins/rush)
+> Готовая реализация уведомлений через WebSocket реализована в пакете [Rush](/plugins/rush).

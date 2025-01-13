@@ -82,10 +82,6 @@ php artisan moonshine:layout AppLayout --compact
 Далее соберем конструктор из нужных нам компонентов
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Layouts;
 
 use App\MoonShine\Resources\PackageCategoryResource;
@@ -109,7 +105,7 @@ final class AppLayout extends CompactLayout
 {
     protected function getHomeUrl(): string
     {
-        return route( 'home');
+        return route('home');
     }
 
     public function build(): Layout
@@ -149,10 +145,6 @@ php artisan moonshine:layout FormLayout --compact
 ```
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Layouts;
 
 use MoonShine\Laravel\Layouts\CompactLayout;
@@ -171,7 +163,7 @@ final class FormLayout extends CompactLayout
 {
     protected function getHomeUrl(): string
     {
-        return route( 'home');
+        return route('home');
     }
 
     public function build(): Layout
@@ -209,17 +201,13 @@ final class FormLayout extends CompactLayout
 
 ### LoginPage
 
-Выполним команду создания страницы, а тип выберем `Custom`
+Выполним команду создания страницы, а тип выберем `Custom`:
 
 ```shell
 php artisan moonshine:page LoginPage
 ```
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Pages;
 
 use App\MoonShine\Layouts\FormLayout;
@@ -303,10 +291,6 @@ php artisan moonshine:page RegisterPage
 ```
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Pages;
 
 use App\MoonShine\Layouts\FormLayout;
@@ -378,10 +362,6 @@ php artisan moonshine:page ForgotPage
 ```
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Pages;
 
 use App\MoonShine\Layouts\FormLayout;
@@ -453,10 +433,6 @@ php artisan moonshine:page ResetPasswordPage
 ```
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Pages;
 
 use App\MoonShine\Layouts\FormLayout;
@@ -528,10 +504,6 @@ php artisan moonshine:page ProfilePage
 ```
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\MoonShine\Pages;
 
 use App\MoonShine\Layouts\AppLayout;
@@ -619,10 +591,6 @@ class ProfilePage extends Page
 ### AuthenticateController
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthenticateFormRequest;
@@ -841,10 +809,6 @@ class ResetPasswordFormRequest extends FormRequest
 ### ProfileController
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileFormRequest;
@@ -915,10 +879,6 @@ class ProfileFormRequest extends FormRequest
 ### RegisterController
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterFormRequest;

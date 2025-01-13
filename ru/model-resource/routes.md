@@ -31,7 +31,7 @@ $resource->getFragmentLoadUrl('table-index', $resource->formPage());
 
 // CRUD
 $resource->getRoute('crud.update', $data->getKey()); // PUT
-$resource->getRoute('crud.store')); // POST
+$resource->getRoute('crud.store'); // POST
 $resource->getRoute('crud.destroy', $data->getKey()); // DELETE
 $resource->getRoute('crud.massDelete'); // DELETE
 
@@ -74,7 +74,6 @@ toPage(page: IndexPage::class, fragment: true);
 ```php
 $resource->getActivePage() // ?PageContract
 
-//
 if($resource->getActivePage() instanceof IndexPage)
 
 if($resource->getActivePage() instanceof FormPage)

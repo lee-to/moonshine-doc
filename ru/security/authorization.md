@@ -9,12 +9,15 @@
 ## Основы
 
 Админ-панель **MoonShine** не отходит от концепций Laravel и также использует *Laravel policy* для работы с правами доступа.
-В контроллерах ресурсов MoonShine каждый метод будет проверяться на наличие разрешений. Если у вас возникнут трудности, обратитесь к официальной документации [Laravel](https://laravel.com/docs/authorization#creating-policies)
+В контроллерах ресурсов MoonShine каждый метод будет проверяться на наличие разрешений.
+Если у вас возникнут трудности, обратитесь к официальной документации [Laravel](https://laravel.com/docs/authorization#creating-policies).
 
-По умолчанию проверка разрешений для ресурсов отключена. Чтобы включить её, необходимо добавить свойство `withPolicy`.
+По умолчанию, проверка разрешений для ресурсов отключена.
+Чтобы включить её, необходимо добавить свойство `withPolicy`.
 
 ```php
 namespace App\MoonShine\Resources;
+
 use App\Models\Post;
 use MoonShine\Resources\ModelResource;
 
@@ -23,6 +26,7 @@ class PostResource extends ModelResource
     protected string $model = Post::class;
 
     protected bool $withPolicy = true;
+
     //...
 }
 ```
@@ -45,8 +49,9 @@ php artisan moonshine:policy PostPolicy
 
 ```php
 namespace App\Policies;
-use Illuminate\Auth\Access\HandlesAuthorization;
+
 use App\Models\Post;
+use Illuminate\Auth\Access\HandlesAuthorization;
 use MoonShine\Models\MoonshineUser;
 
 class PostPolicy
@@ -103,15 +108,15 @@ class PostPolicy
 ```php
 namespace App\Providers;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
+use MoonShine\Contracts\Core\DependencyInjection\ConfiguratorContract;
 use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
+use MoonShine\Contracts\Core\ResourceContract;
+use MoonShine\Laravel\DependencyInjection\ConfiguratorContract;
 use MoonShine\Laravel\DependencyInjection\MoonShine;
 use MoonShine\Laravel\DependencyInjection\MoonShineConfigurator;
-use MoonShine\Laravel\DependencyInjection\ConfiguratorContract;
 use MoonShine\Laravel\Enums\Ability;
-use Illuminate\Database\Eloquent\Model;
-use MoonShine\Contracts\Core\DependencyInjection\ConfiguratorContract;
-use MoonShine\Contracts\Core\ResourceContract;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -131,7 +136,7 @@ class MoonShineServiceProvider extends ServiceProvider
             }
         );
 
-        // ..
+        // ...
     }
 }
 ```

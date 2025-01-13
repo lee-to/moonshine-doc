@@ -8,7 +8,8 @@ By adding the `--test` flag to the `moonshine:resource` command, you can generat
 php artisan moonshine:resource PostResource --test
 ```
 
-In addition to creating the resource, the above command will generate the following test file `tests/Feature/PostResourceTest.php`. If you prefer `Pest`, you can specify the `--pest` option:
+In addition to creating the resource, the above command will generate the following test file `tests/Feature/PostResourceTest.php`.
+If you prefer `Pest`, you can specify the `--pest` option:
 
 ```shell
 php artisan moonshine:resource PostResource --pest
