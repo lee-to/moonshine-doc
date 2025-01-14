@@ -12,7 +12,7 @@ Template::make('Config', 'config')->fields([
     ->onApply(function(mixed $item, mixed $value) {
         $content = str_replace(['array (', ')'], ['[', ']'], var_export($value, true));
 
-        file_put_contents(config_path('test.php'), "<?php \n\nreturn $content;");
+        file_put_contents(config_path('test.php'), "<\?php \n\nreturn $content;");
 
         return $item;
     })
