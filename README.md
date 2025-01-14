@@ -1,33 +1,35 @@
-# Типография
+[ru](README.ru.md)
 
-- [Заголовок](#title)
-- [Навигация](#navigations)
-- [Разделитель](#divider)
-- [Заголовок подраздела](#subtitle)
-- [Контент](#content)
-- [Пример кода](#code)
-- [Списки](#list)
-- [Вкладки](#tabs)
-- [Уведомления](#alert)
-- [Изображения](#images)
+# Typography
+
+- [Title](#title)
+- [Navigation](#navigations)
+- [Divider](#divider)
+- [Subtitle](#subtitle)
+- [Content](#content)
+- [Code Example](#code)
+- [Lists](#list)
+- [Tabs](#tabs)
+- [Alerts](#alert)
+- [Images](#images)
 
 ___
 
 <a name="title"></a>
-## Заголовок
+## Title
 
-Название раздела является первым и обязательным элементом страницы.
+The section title is the first and mandatory element of the page.
 
 ```html
 # Title
 ```
 
 <a name="navigations"></a>
-## Навигация
+## Navigation
 
-Если раздел большой, то его необходимо разбить на подразделы и создать навигационное меню.
+If the section is large, it should be divided into subsections and a navigation menu should be created.
 
-Навигационное меню представляет из себя список с ссылками на подраздел. У заголовков подраздела необходимо указать якорь.
+The navigation menu is a list with links to the subsection. The subsection headings should have an anchor specified.
 
 ```html
 - [Subtitle 1](#subtitle-1)
@@ -35,76 +37,76 @@ ___
 ```
 
 > [!NOTE]
-> Для разделения слов в ссылках используется `kebab-case`.
+> `Kebab-case` is used to separate words in links.
 
 <a name="divider"></a>
-## Разделитель
+## Divider
 
-После навигации (содержания) необходимо указать разделитель.
+After navigation (content), a divider should be specified.
 
 ```
 ---
 ```
 
 <a name="subtitle"></a>
-## Заголовок подраздела
+## Subtitle
 
-Заголовки подразделов указываются со ссылкой, для удобного копирования ссылки на конкретный раздел документации.
+Subsection headings are specified with a link for easy copying of the link to a specific section of the documentation.
 
 ```html
 ## Subtitle
 ```
 
-Если используется [Навигация](#navigations), то необходимо перед заголовком добавить якорь:
+If [Navigation](#navigations) is used, an anchor should be added before the heading:
 
 ```html
 <a name="anchor"></a>
 ## Subtitle
 ```
 
-Для названия первого пункта чаще всего необходимо использовать название `Основы`, вместо похожих `Начало`, `Введение` и др.
+For the name of the first item, it is often necessary to use the name `Basics`, instead of similar `Start`, `Introduction`, etc.
 ```html
 <a name="basics"></a>
-## Основы
+## Basics
 ```
 
-Если описывается компонент, который наследуется от другого класса, и в навигации есть пункт `Основы`, то описание наследования пишем строго после этого пункта.
+If a component is described that inherits from another class, and there is a `Basics` item in the navigation, then the description of inheritance is written strictly after this item.
 ```html
 <a name="basics"></a>
-## Основы
+## Basics
 
-Наследует [Select](/docs/{{version}}/fields/select).
+Inherits from [Select](/docs/{version}/fields/select).
 
-\* имеет те же возможности.
+\* has the same capabilities.
 
 ```
 
-Если базовые методы описываются в другом разделе документации, то пишем так
+If the basic methods are described in another section of the documentation, then write it like this
 
 ```html
 <a name="basics"></a>
-## Основы
+## Basics
 
-Содержит все [Базовые методы](#/docs/{{version}}/fields/basic-methods.md).
+Contains all [Basic methods](#/docs/{version}/fields/basic-methods.md).
 ```
 
 <a name="content"></a>
-## Контент
+## Content
 
-Кроме тегов `markdown` допускается использование `html-тегов`.
+In addition to `markdown` tags, `html-tags` are allowed.
 
 > [!WARNING]
-> Все предложения должны заканчиваться точкой.
+> All sentences should end with a period.
 
-Желательно построчно синхронизировать тексты в **ru** и **en** версиях разделов.
+It is desirable to synchronize the texts in the **ru** and **en** versions of the sections line by line.
 
 <a name="code"></a>
-## Пример кода
+## Code Example
 
-- для оформления методов, классов и тд. используется одиночный апостроф ``` ` ```,
-- названия методов должны заканчиваться скобками, например: `setLabel()`,
-- для оформления блоков кода используется тройные апострофы ` ``` ` с указанием языка программирования и начинаться блок должен с новой строки,
-- для всех классов, используемых в примерах, необходимо указать use в алфавитном порядке и обернуть их в collapse.
+- single apostrophe ``` ` ``` is used to format methods, classes, etc.,
+- method names should end with parentheses, for example: `setLabel()`,
+- triple apostrophes ` ``` ` with the programming language specified are used to format code blocks, and the block should start on a new line,
+- for all classes used in examples, you need to specify use in alphabetical order and wrap them in collapse.
 
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
@@ -113,7 +115,7 @@ use MoonShine\UI\Fields\Text;
 
 Text::make('Title')
 ```
-или
+or
 ```php
 // torchlight! {"summaryCollapsedIndicator": "namespaces"}
 // [tl! collapse:start]
@@ -123,15 +125,15 @@ Text::make('Title')
 ```
 
 <a name="list"></a>
-## Списки
+## Lists
 
 ```html
-- элементы списка заканчивается запятой,
-- после последнего ставится точка.
+- list items end with a comma,
+- a period is placed after the last one.
 ```
 
 <a name="tabs"></a>
-## Вкладки
+## Tabs
 
 ```
 ~~~tabs
@@ -146,32 +148,32 @@ Content tab 2
 ```
 
 <a name="alert"></a>
-## Уведомления
+## Alerts
 
-В документации используется несколько типов уведомлений:
+The documentation uses several types of alerts:
 
 ```
 > [!NOTE]
-> Простое уведомление.
+> Simple notification.
 ```
 
 ```
 > [!WARNING]
-> Предупреждение.
+> Warning.
 ```
 
 ```
 > [!TIP]
-> Советы.
+> Tips.
 ```
 
 <a name="images"></a>
-## Изображения
+## Images
 
-Изображения добавляем в директорию `/resources/screenshots`.
+Images are added to the `/resources/screenshots` directory.
 
-Ссылку указываем - https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/filename.png
+The link is specified - https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/filename.png
 
-Пример:
+Example:
 
 ![belongs_to_many](https://raw.githubusercontent.com/moonshine-software/doc/3.x/resources/screenshots/belongs_to_many.png)
