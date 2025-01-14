@@ -36,6 +36,8 @@
 Пример возможного шаблона вашего приложения:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
 namespace App\MoonShine\Layouts;
 
 use App\MoonShine\Resources\PackageCategoryResource;
@@ -67,7 +69,7 @@ use MoonShine\UI\Components\{Breadcrumbs,
     Layout\Sidebar,
     Layout\ThemeSwitcher,
     Layout\Wrapper,
-    When};
+    When}; // [tl! collapse:end]
 
 final class MoonShineLayout extends CompactLayout
 {
@@ -182,6 +184,8 @@ final class MoonShineLayout extends CompactLayout
 > Как можно заметить, компонентов огромное количество, и для удобства мы объединили их в группы, чтобы вы могли удобно переопределять только те группы, которые требуются.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Laravel\Layouts\CompactLayout;
 
 final class MoonShineLayout extends CompactLayout
@@ -283,6 +287,8 @@ php artisan moonshine:layout
 Подробнее про страницы читайте в разделе [Страница](/docs/{{version}}/page/index).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use App\MoonShine\Layouts\MyLayout;
 use MoonShine\Laravel\Pages\Page;
 
@@ -300,6 +306,8 @@ class CustomPage extends Page
 Каждый шаблон может иметь свой набор стилей и скриптов, определяемых через метод `assets()`:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Layouts\AppLayout;
 use MoonShine\AssetManager\Css;
 
@@ -329,6 +337,8 @@ final class MyLayout extends AppLayout
 Вы можете заменить набор favicons в шаблоне через переопределение метода `getFaviconComponent()`:
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Laravel\Layouts\AppLayout;
 
 final class MyLayout extends AppLayout
@@ -354,13 +364,15 @@ final class MyLayout extends AppLayout
 Для каждого шаблона можно объявить список пунктов меню через метод `menu()`, которые автоматически будут переданы в компонент `Menu`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Layouts\AppLayout;
 use MoonShine\MenuManager\MenuItem;
 
 final class MyLayout extends AppLayout
 {
     // ...
-    
+
     protected function menu(): array
     {
         return [
@@ -368,8 +380,6 @@ final class MyLayout extends AppLayout
             MenuItem::make('Articles', ArticleResource::class),
         ];
     }
-    
-    // ...
 }
 ```
 
@@ -386,6 +396,8 @@ final class MyLayout extends AppLayout
 Давайте посмотрим, как заменить `Sidebar` на `TopBar` в `Layout`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Laravel\Layouts\CompactLayout;
 
 final class MoonShineLayout extends CompactLayout
@@ -432,9 +444,11 @@ final class MoonShineLayout extends CompactLayout
 <a name="colors"></a>
 ## Цвета
 
-Каждый шаблон может иметь собственную цветовую схему, определяемую в методе `colors`:
+Каждый шаблон может иметь собственную цветовую схему, определяемую в методе `colors`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Layouts\AppLayout;
 use MoonShine\Contracts\ColorManager\ColorManagerContract;
 
@@ -492,8 +506,6 @@ final class MyLayout extends AppLayout
             ->infoBg('38, 93, 205', dark: true)
             ->infoText('179, 220, 255', dark: true);
     }
-
-    // ...
 }
 ```
 
