@@ -11,7 +11,8 @@
 <a name="basics"></a>
 ## Basics
 
-For all entities that have the method `icon()`, you can use one of the preset sets from the [Heroicons](https://heroicons.com) collection (by default, the **Outline** set) or create your own set.
+For all entities that have the method `icon()`, you can use one of the preset sets from the [Heroicons](https://heroicons.com) collection (by default, the **Outline** set)
+or create your own set.
 
 ```php
 icon(string $icon, bool $custom = false, ?string $path = null)
@@ -44,7 +45,6 @@ Example specifying the directory where your icons are located:
 
 > [!NOTE]
 > In this example, the icons should be located in the `resources/views/icons` directory, and the icon name is equivalent to the `blade` file in which the `svg` is located.
-
 
 <a name="outline"></a>
 ## Outline

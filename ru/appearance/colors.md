@@ -156,7 +156,7 @@ $colorManager->toHtml()
 <a name="conversion"></a>
 ## Конвертация цветов
 
-`ColorManager` включает утилиту `ColorMutator` для конвертации между HEX и RGB форматами:
+`ColorManager` включает утилиту `ColorMutator` для конвертации между HEX и RGB форматами.
 
 ```php
 use MoonShine\ColorManager\ColorMutator;
@@ -171,16 +171,18 @@ ColorMutator::toRGB('#7843e9'); // '120,67,233'
 <a name="service-provider"></a>
 ## Глобальное переопределение
 
-Вы также можете переопределить цвета глобально для всех `Layout` через `MoonShineServiceProvider`:
+Вы также можете переопределить цвета глобально для всех `Layout` через `MoonShineServiceProvider`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
 use Illuminate\Support\ServiceProvider;
-use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
-use MoonShine\Laravel\DependencyInjection\MoonShine;
-use MoonShine\Laravel\DependencyInjection\MoonShineConfigurator;
-use MoonShine\Laravel\DependencyInjection\ConfiguratorContract;
 use MoonShine\ColorManager\ColorManager;
 use MoonShine\Contracts\ColorManager\ColorManagerContract;
+use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
+use MoonShine\Laravel\DependencyInjection\ConfiguratorContract;
+use MoonShine\Laravel\DependencyInjection\MoonShine;
+use MoonShine\Laravel\DependencyInjection\MoonShineConfigurator; // [tl! collapse:end]
 
 class MoonShineServiceProvider extends ServiceProvider
 {
