@@ -440,7 +440,7 @@ final class MoonShineLayout extends AppLayout
     {
         return [
             MenuItem::make('MoonShine Docs', 'https://moonshine-laravel.com/docs', 'heroicons.arrow-up', true),
-            MenuItem::make('Laravel Docs', 'https://laravel.com/docs', blank: fn() => true),
+            MenuItem::make('Laravel Docs', 'https://laravel.com/docs')->blank(fn() => true),
         ];
     }
 }
