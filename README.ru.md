@@ -1,4 +1,4 @@
-[en](README.md)
+Lang: [en](README.md) _ru_
 
 # Типография
 
