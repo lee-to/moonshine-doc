@@ -1,4 +1,4 @@
-Lang: [ru](README.ru.md) _eng_
+Lang: _en_ [ru](README.ru.md)
 
 # Typography
 
