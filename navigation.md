@@ -171,3 +171,4 @@
     - [Async remove on click](/docs/{{version}}/recipes/async-remove-on-click)
     - [Fields group](/docs/{{version}}/recipes/fields-group)
     - [Multiple selectors/fragments](/docs/{{version}}/recipes/multiple-fragments-selectors)
+    - [Change config](/docs/{{version}}/recipes/change-config)
