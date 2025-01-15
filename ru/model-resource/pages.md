@@ -11,39 +11,36 @@
 <a name="basics"></a>
 ## Основы
 
-`MoonShine` предоставляет возможность настройки `CRUD` страниц в `ModelResource`, для этого необходимо при создании ресурса через команду выбрать тип ресурса `Model resource with pages`.
+**MoonShine** предоставляет возможность настройки `CRUD` страниц в **MoonShine**.
+Для этого необходимо при создании ресурса через команду выбрать тип ресурса `Model resource with pages`.
 
-Это создаст класс ресурса модели и дополнительные классы для страниц индекса, детального просмотра и формы. Классы страниц по умолчанию будут располагаться в директории `app/MoonShine/Pages`.
+Это создаст класс ресурса модели и дополнительные классы для страниц индекса, детального просмотра и формы.
+Классы страниц по умолчанию будут располагаться в директории `app/MoonShine/Pages`.
 
 В созданном ресурсе модели страницы `CRUD` будут зарегистрированы в методе `pages()`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use App\MoonShine\Pages\Post\PostIndexPage;
 use App\MoonShine\Pages\Post\PostFormPage;
 use App\MoonShine\Pages\Post\PostDetailPage;
-use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\Laravel\Resources\ModelResource; // [tl! collapse:end]
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function pages(): array
     {
         return [
-            PostIndexPage::class
+            PostIndexPage::class,
             PostFormPage::class,
             PostDetailPage::class,
         ];
     }
-
-    //...
 }
 ```
 
@@ -52,29 +49,25 @@ class PostResource extends ModelResource
 
 Для указания типа страницы в `ModelResource` используется `enum` класс `PageType`.
 
-Доступны следующие типы страниц:
-
-- `INDEX` - страница индекса,
-- `FORM` - страница формы,
-- `DETAIL` - страница детального просмотра.
-
 ```php
-use MoonShine\Support\Enums;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\Support\Enums\PageType;
 
-//...
-
-PageType::INDEX;
-PageType::FORM;
-PageType::DETAIL;
+PageType::INDEX; // Страница индекса
+PageType::FORM; // Страница формы
+PageType::DETAIL; // Страница детального просмотра
 ```
 
 <a name="fields"></a>
 ## Добавление полей
 
-[Поля](/docs/{{version}}/fields/index) в `MoonShine` используются не только для ввода данных, но и для их вывода.  
+[Поля](/docs/{{version}}/fields/index) в **MoonShine** используются не только для ввода данных, но и для их вывода.  
 Метод `fields()` в классе страницы `CRUD` позволяет указать необходимые поля.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:5]
 namespace App\MoonShine\Pages\Post;
 
 use MoonShine\Laravel\Pages\Crud\IndexPage;
@@ -83,6 +76,8 @@ use MoonShine\UI\Fields\Text;
 
 class PostIndexPage extends IndexPage
 {
+    // ...
+
     protected function fields(): iterable
     {
         return [
@@ -90,15 +85,13 @@ class PostIndexPage extends IndexPage
             Text::make('Title'),
         ];
     }
-
-    //...
 }
 ```
 
 <a name="components"></a>
 ## Основные компоненты
 
-В админ-панели `MoonShine` можно быстро изменить основной компонент на странице.
+В **MoonShine** можно быстро изменить основной компонент на странице.
 
 #### IndexPage
 
@@ -112,8 +105,11 @@ getItemsComponent(iterable $items, Fields $fields): ComponentContract
 - `$fields` - поля.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Contracts\UI\TableBuilderContract;
+use MoonShine\Laravel\Pages\Crud\IndexPage;
 use MoonShine\UI\Components\Table\TableBuilder;
 
 class ArticleIndexPage extends IndexPage
@@ -165,8 +161,9 @@ class ArticleIndexPage extends IndexPage
     }
 }
 ```
-> [!TIP]
-> Пример страницы индекса с компонентом `CardsBuilder` в разделе [Рецепты](/docs/{{version}}/recipes/index-page-cards)
+
+> [!NOTE]
+> Пример страницы индекса с компонентом `CardsBuilder` в разделе [Рецепты](/docs/{{version}}/recipes/index-page-cards).
 
 #### DetailPage
 
@@ -176,10 +173,12 @@ class ArticleIndexPage extends IndexPage
 getDetailComponent(?DataWrapperContract $item, Fields $fields): ComponentContract
 ```
 
--`$item` - данные
--`$fields` - поля
+- `$item` - данные,
+- `$fields` - поля.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Laravel\Collections\Fields;
@@ -205,6 +204,8 @@ class ArticleDetailPage extends DetailPage
 Метод `getFormComponent()` позволяет изменить основной компонент на странице с формой.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Laravel\Collections\Fields;
@@ -217,12 +218,14 @@ getFormComponent(
 ): ComponentContract
 ```
 
--`$action` - endpoint,
--`$item` - данные,
--`$fields` - поля,
--`$isAsync` - асинхронный режим.
+- `$action` - endpoint,
+- `$item` - данные,
+- `$fields` - поля,
+- `$isAsync` - асинхронный режим.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
 use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Contracts\UI\FormBuilderContract;
@@ -231,7 +234,7 @@ use MoonShine\Laravel\Pages\Crud\FormPage;
 use MoonShine\Support\AlpineJs;
 use MoonShine\Support\Enums\JsEvent;
 use MoonShine\UI\Components\FormBuilder;
-use MoonShine\UI\Fields\Hidden;
+use MoonShine\UI\Fields\Hidden; // [tl! collapse:end]
 
 class ArticleFormPage extends FormPage
 {
@@ -304,19 +307,21 @@ class ArticleFormPage extends FormPage
 
 Для удобства все страницы *crud* разделены на три слоя, которые отвечают за отображение определенной области на странице.
 
-- `TopLayer` - используется для отображения метрик на странице индекса и для дополнительных кнопок на странице редактирования
-- `MainLayer` - этот слой используется для отображения основной информации с помощью [FormBuilder](/docs/{{version}}/components/form-builder) и [TableBuilder](/docs/{{version}}/components/table-builder)
-- `BottomLayer` - используется для отображения дополнительной информации
+- `TopLayer` - используется для отображения метрик на странице индекса и для дополнительных кнопок на странице редактирования,
+- `MainLayer` - этот слой используется для отображения основной информации с помощью [FormBuilder](/docs/{{version}}/components/form-builder) и [TableBuilder](/docs/{{version}}/components/table-builder),
+- `BottomLayer` - используется для отображения дополнительной информации.
 
 Для настройки слоев используются соответствующие методы: `topLayer()`, `mainLayer()` и `bottomLayer()`. Методы должны возвращать массив [Компонентов](/docs/{{version}}/page/index#components).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Pages\Crud\IndexPage;
 use MoonShine\UI\Components\Heading;
 
 class PostIndexPage extends IndexPage
 {
-    //...
+    // ...
 
     protected function topLayer(): array
     {
@@ -341,14 +346,15 @@ class PostIndexPage extends IndexPage
             ...parent::bottomLayer()
         ];
     }
-
-    //...
 }
+
 ```
 > [!TIP]
 > Если вам нужно получить доступ к компонентам определенного слоя через ресурс или страницу, то используйте метод `getLayerComponents`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Support\Enums\Layer;
 
 // ...
@@ -364,6 +370,8 @@ $this->getLayerComponents(Layer::BOTTOM);
 > Если вам нужно добавить компонент для указанной страницы в нужный слой через ресурс, то используйте метод `onLoad` ресурса и `pushToLayer` страницы.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Permissions\Components\Permissions;
 use MoonShine\Support\Enums\Layer;
 
