@@ -10,30 +10,46 @@
 ## Основы
 
 ```php
-$resource->getUrl(); // First page of the resource
+// Первая страница ресурса
+$resource->getUrl();
 
-$resource->getRoute($name, $key, $params); // Advanced method for obtaining routes
+// Расширенный метод получения маршрутов
+$resource->getRoute($name, $key, $params);
 
-$resource->getPageUrl($page, $params, $fragment); // Advanced method for obtaining page`s route
+// Расширенный способ получения маршрута страницы
+$resource->getPageUrl($page, $params, $fragment);
 
-$resource->getIndexPageUrl(); // index page
-$resource->getIndexPageUrl(['query-tag' => $tag->uri()]); // query tag
+// Индексная страница
+$resource->getIndexPageUrl();
+// Query tag
+$resource->getIndexPageUrl(['query-tag' => $tag->uri()]);
 
-$resource->getFormPageUrl(); // create page
-$resource->getFormPageUrl(1); // edit page by int
-$resource->getFormPageUrl($item); // edit page by Model
+// Страница создания
+$resource->getFormPageUrl();
+// Страница редактирования по int
+$resource->getFormPageUrl(1);
+// Страница редактирования по Model
+$resource->getFormPageUrl($item);
 
-$resource->getDetailPageUrl(1); // detail page by int
-$resource->getDetailPageUrl($item); // detail page by Model
+// Детальная страница по int
+$resource->getDetailPageUrl(1);
+// Детальная страница по Model
+$resource->getDetailPageUrl($item);
 
-$resource->getAsyncMethodUrl('updateSomething'); // ANY
+// ANY
+$resource->getAsyncMethodUrl('updateSomething');
 $resource->getFragmentLoadUrl('table-index', $resource->formPage());
 
 // CRUD
-$resource->getRoute('crud.update', $data->getKey()); // PUT
-$resource->getRoute('crud.store'); // POST
-$resource->getRoute('crud.destroy', $data->getKey()); // DELETE
-$resource->getRoute('crud.massDelete'); // DELETE
+
+// PUT
+$resource->getRoute('crud.update', $data->getKey());
+// POST
+$resource->getRoute('crud.store');
+// DELETE
+$resource->getRoute('crud.destroy', $data->getKey());
+// DELETE
+$resource->getRoute('crud.massDelete');
 
 // Handlers
 $resource->getRoute('handler', query: ['handlerUri' => $export->getUriKey()]);
@@ -41,7 +57,7 @@ $resource->getRoute('handler', query: ['handlerUri' => $export->getUriKey()]);
 
 <a name="helper"></a>
 ## Helper
-Также можно воспользоваться хелпером `toPage`:
+Также можно воспользоваться хелпером `toPage()`.
 
 ```php
 toPage(

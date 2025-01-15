@@ -90,11 +90,11 @@ moonshine:resource {className?} {--type=} {--m|model=} {--t|title=} {--test} {--
 
 При создании ресурса доступно несколько вариантов:
 
-- [Default model resource](/docs/{{version}}/model-resource/fields) - модельный ресурс по умолчанию с объявлением полей в методах `indexFields`, `formFields` и `detailFields`,
+- [Default model resource](/docs/{{version}}/model-resource/fields) - модельный ресурс по умолчанию с объявлением полей в методах `indexFields()`, `formFields()` и `detailFields()`,
 - [Model resource with pages](/docs/{{version}}/model-resource/pages) - модельный ресурс c публикацией страниц `IndexPage`, `FormPage` и `DetailPage`,
 - **Empty resource** - пустой ресурс для кастомных реализаций.
 
-После выполнения команды в директории `app/MoonShine/Resources/` будет создан файл ресурса.
+После выполнения команды в директории `app/MoonShine/Resources` будет создан файл ресурса.
 Если создается модельный ресурс со страницами, то в директории `app/MoonShine/Pages` будут созданы дополнительные страницы.
 
 Примеры:
@@ -266,7 +266,7 @@ php artisan moonshine:policy
 После выполнения команды в директории `app/Policies` будет создан класс.
 
 > [!NOTE]
-> Для более подробной информации обратитесь к разделу [Авторизация](/docs/{{version}}/security/authorization).
+> Для более подробной информации обратитесь к разделу [Безопасность > Авторизация](/docs/{{version}}/security/authorization).
 
 <a name="type_cast"></a>
 ## Приведение типов

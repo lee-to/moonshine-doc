@@ -90,11 +90,11 @@ Available options:
 
 When creating a resource, several options are available:
 
-- [Default model resource](/docs/{{version}}/model-resource/fields) - default model resource with the declaration of fields in the methods `indexFields`, `formFields` and `detailFields`,
+- [Default model resource](/docs/{{version}}/model-resource/fields) - default model resource with the declaration of fields in the methods `indexFields()`, `formFields()` and `detailFields()`,
 - [Model resource with pages](/docs/{{version}}/model-resource/pages) - model resource with the publication of the pages `IndexPage`, `FormPage` and `DetailPage`,
 - **Empty resource** - empty resource for custom implementations.
 
-After executing the command, a resource file will be created in the `app/MoonShine/Resources/` directory.
+After executing the command, a resource file will be created in the `app/MoonShine/Resources` directory.
 If a model resource with pages is created, additional pages will be created in the `app/MoonShine/Pages` directory.
 
 Examples:
@@ -266,7 +266,7 @@ php artisan moonshine:policy
 After executing the command, a class will be created in the `app/Policies` directory.
 
 > [!NOTE]
-> For more details, refer to the [Authorization](/docs/{{version}}/security/authorization) section.
+> For more details, refer to the [Security > Authorization](/docs/{{version}}/security/authorization) section.
 
 <a name="type_cast"></a>
 ## Type Casting

@@ -11,28 +11,27 @@
 <a name="basics"></a>
 ## Basics
 
-`MoonShine` provides the ability to configure `CRUD` pages in `ModelResource`. To do this, you need to choose the resource type `Model resource with pages` when creating a resource via the command.
+**MoonShine** provides the ability to configure `CRUD` pages in **MoonShine**.
+To do this, you need to choose the resource type `Model resource with pages` when creating a resource via the command.
 
-This will create a model resource class and additional classes for the index, detail view, and form pages. The page classes will, by default, be located in the `app/MoonShine/Pages` directory.
+This will create a model resource class and additional classes for the index, detail view, and form pages.
+The page classes will, by default, be located in the `app/MoonShine/Pages` directory.
 
 In the created model resource, `CRUD` pages will be registered in the `pages()` method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
 namespace App\MoonShine\Resources;
 
-use App\Models\Post;
 use App\MoonShine\Pages\Post\PostIndexPage;
 use App\MoonShine\Pages\Post\PostFormPage;
 use App\MoonShine\Pages\Post\PostDetailPage;
-use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\Laravel\Resources\ModelResource; // [tl! collapse:end]
 
 class PostResource extends ModelResource
 {
-    protected string $model = Post::class;
-
-    protected string $title = 'Posts';
-
-    //...
+    // ...
 
     protected function pages(): array
     {
@@ -42,8 +41,6 @@ class PostResource extends ModelResource
             PostDetailPage::class,
         ];
     }
-
-    //...
 }
 ```
 
@@ -52,29 +49,25 @@ class PostResource extends ModelResource
 
 To specify the page type in `ModelResource`, the `enum` class `PageType` is used.
 
-The following page types are available:
-
-- `INDEX` - index page,
-- `FORM` - form page,
-- `DETAIL` - detail view page.
-
 ```php
-use MoonShine\Support\Enums;
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
+use MoonShine\Support\Enums\PageType;
 
-//...
-
-PageType::INDEX;
-PageType::FORM;
-PageType::DETAIL;
+PageType::INDEX; // Index page
+PageType::FORM; // Form page
+PageType::DETAIL; // Detail page
 ```
 
 <a name="fields"></a>
 ## Adding Fields
 
-[Fields](/docs/{{version}}/fields/index) in `MoonShine` are used not only for data input but also for output.  
+[Fields](/docs/{{version}}/fields/index) in **MoonShine** are used not only for data input but also for output.  
 The `fields()` method in the `CRUD` page class allows you to specify the necessary fields.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:5]
 namespace App\MoonShine\Pages\Post;
 
 use MoonShine\Laravel\Pages\Crud\IndexPage;
@@ -83,6 +76,8 @@ use MoonShine\UI\Fields\Text;
 
 class PostIndexPage extends IndexPage
 {
+    // ...
+
     protected function fields(): iterable
     {
         return [
@@ -90,15 +85,13 @@ class PostIndexPage extends IndexPage
             Text::make('Title'),
         ];
     }
-
-    //...
 }
 ```
 
 <a name="components"></a>
 ## Main Components
 
-In the `MoonShine` admin panel, you can quickly change the main component on the page.
+In **MoonShine**, you can quickly change the main component on the page.
 
 #### IndexPage
 
@@ -112,8 +105,11 @@ getItemsComponent(iterable $items, Fields $fields): ComponentContract
 - `$fields` - fields.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Contracts\UI\TableBuilderContract;
+use MoonShine\Laravel\Pages\Crud\IndexPage;
 use MoonShine\UI\Components\Table\TableBuilder;
 
 class ArticleIndexPage extends IndexPage
@@ -165,7 +161,8 @@ class ArticleIndexPage extends IndexPage
     }
 }
 ```
-> [!TIP]
+
+> [!NOTE]
 > Example of an index page with the `CardsBuilder` component in the [Recipes](/docs/{{version}}/recipes/index-page-cards) section.
 
 #### DetailPage
@@ -173,17 +170,15 @@ class ArticleIndexPage extends IndexPage
 The `getDetailComponent()` method allows you to change the main component of the detail page.
 
 ```php
-use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
-use MoonShine\Contracts\UI\ComponentContract;
-use MoonShine\Laravel\Collections\Fields;
-
 getDetailComponent(?DataWrapperContract $item, Fields $fields): ComponentContract
 ```
 
-- `$item` - data
-- `$fields` - fields
+- `$item` - data,
+- `$fields` - fields.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:4]
 use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Laravel\Collections\Fields;
@@ -209,6 +204,8 @@ class ArticleDetailPage extends DetailPage
 The `getFormComponent()` method allows you to change the main component on the form page.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:3]
 use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Laravel\Collections\Fields;
@@ -227,6 +224,8 @@ getFormComponent(
 - `$isAsync` - asynchronous mode.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:start]
 use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Contracts\UI\FormBuilderContract;
@@ -235,7 +234,7 @@ use MoonShine\Laravel\Pages\Crud\FormPage;
 use MoonShine\Support\AlpineJs;
 use MoonShine\Support\Enums\JsEvent;
 use MoonShine\UI\Components\FormBuilder;
-use MoonShine\UI\Fields\Hidden;
+use MoonShine\UI\Fields\Hidden; // [tl! collapse:end]
 
 class ArticleFormPage extends FormPage
 {
@@ -308,19 +307,21 @@ class ArticleFormPage extends FormPage
 
 For convenience, all *CRUD* pages are divided into three layers, which are responsible for displaying a certain area on the page.
 
-- `TopLayer` - used for displaying metrics on the index page and for additional buttons on the edit page
-- `MainLayer` - this layer is used for displaying main information using [FormBuilder](/docs/{{version}}/components/form-builder) and [TableBuilder](/docs/{{version}}/components/table-builder)
-- `BottomLayer` - used for displaying additional information
+- `TopLayer` - used for displaying metrics on the index page and for additional buttons on the edit page,
+- `MainLayer` - this layer is used for displaying main information using [FormBuilder](/docs/{{version}}/components/form-builder) and [TableBuilder](/docs/{{version}}/components/table-builder),
+- `BottomLayer` - used for displaying additional information.
 
 To configure the layers, the corresponding methods are used: `topLayer()`, `mainLayer()`, and `bottomLayer()`. The methods must return an array of [Components](/docs/{{version}}/page/index#components).
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Laravel\Pages\Crud\IndexPage;
 use MoonShine\UI\Components\Heading;
 
 class PostIndexPage extends IndexPage
 {
-    //...
+    // ...
 
     protected function topLayer(): array
     {
@@ -345,14 +346,15 @@ class PostIndexPage extends IndexPage
             ...parent::bottomLayer()
         ];
     }
-
-    //...
 }
 ```
+
 > [!TIP]
 > If you need to access components of a specific layer from a resource or page, use the `getLayerComponents` method.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:1]
 use MoonShine\Support\Enums\Layer;
 
 // ...
@@ -368,6 +370,8 @@ $this->getLayerComponents(Layer::BOTTOM);
 > If you need to add a component to a specified page in the desired layer from a resource, use the resource's `onLoad` method and the page's `pushToLayer`.
 
 ```php
+// torchlight! {"summaryCollapsedIndicator": "namespaces"}
+// [tl! collapse:2]
 use MoonShine\Permissions\Components\Permissions;
 use MoonShine\Support\Enums\Layer;
 
